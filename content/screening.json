@@ -166,17 +166,20 @@
                 {
                   "title": "3D Mammogram also known as Digital Breast Tomosynthesis (DBT)",
                   "src": "type-mammogram-3d.jpg",
-                  "alt": "Illustration of a mammography machine next to a monitor."
+                  "alt": "Illustration of a mammography machine next to a monitor.",
+                  "href": "chapter-2/slide-2.html"
                 },
                 {
                   "title": "Breast Ultrasound (US)",
                   "src": "type-ultrasound.jpg",
-                  "alt": "Illustration of a technologist performing a breast ultrasound on a patient lying on an exam table."
+                  "alt": "Illustration of a technologist performing a breast ultrasound on a patient lying on an exam table.",
+                  "href": "chapter-2/slide-4.html"
                 },
                 {
                   "title": "Breast Magnetic Resonance Imaging (MRI)",
                   "src": "type-mri.jpg",
-                  "alt": "Illustration of a patient lying face down on a table that slides into an MRI machine."
+                  "alt": "Illustration of a patient lying face down on a table that slides into an MRI machine.",
+                  "href": "chapter-2/slide-5.html"
                 }
               ]
             }

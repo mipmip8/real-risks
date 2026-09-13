@@ -158,13 +158,26 @@ def r_takeaways(b, _):
 
 
 def r_cards(b, depth):
-    items = "".join(
-        '<li><figure><img src="%sassets/img/%s" alt="%s" loading="lazy">'
-        "<figcaption>%s</figcaption></figure></li>"
-        % (depth, e(i["src"]), e(i["alt"]), e(i["title"]))
-        for i in b["items"]
-    )
-    return '<ul class="cards">%s</ul>' % items
+    """Captioned image cards, each optionally linking to the slide it names.
+
+    The whole card is one link rather than the image and caption being two, so
+    there is a single tab stop and a single target. Its accessible name is the
+    caption; the alt text stays for anyone reading the image itself.
+    """
+    items = []
+    for i in b["items"]:
+        figure = (
+            '<figure><img src="%sassets/img/%s" alt="%s" loading="lazy">'
+            "<figcaption>%s</figcaption></figure>"
+            % (depth, e(i["src"]), e(i["alt"]), e(i["title"]))
+        )
+        if i.get("href"):
+            figure = (
+                '<a class="cards__link" href="%s%s" aria-label="%s">%s</a>'
+                % (depth, e(i["href"]), e(i["title"]), figure)
+            )
+        items.append("<li>%s</li>" % figure)
+    return '<ul class="cards">%s</ul>' % "".join(items)
 
 
 def r_steps(b, depth):

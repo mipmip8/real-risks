@@ -667,6 +667,39 @@ a {
   color: var(--purple-heading);
 }
 
+/* A linked card lifts slightly so it reads as clickable. */
+.cards__link {
+  display: block;
+  text-decoration: none;
+  border-radius: var(--radius);
+}
+
+.cards__link img {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.cards__link:hover img,
+.cards__link:focus-visible img {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+.cards__link:hover figcaption,
+.cards__link:focus-visible figcaption {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cards__link img {
+    transition: none;
+  }
+
+  .cards__link:hover img,
+  .cards__link:focus-visible img {
+    transform: none;
+  }
+}
+
 /* Steps (preparation / positioning / imaging) */
 
 .steps {
