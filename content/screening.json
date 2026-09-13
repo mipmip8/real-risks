@@ -736,7 +736,7 @@
           "blocks": [
             {
               "type": "sliders",
-              "intro": "Screening involves tradeoffs, and people weigh them differently. Move each slider to where you sit. The facts stay the same — only what they mean for you changes.",
+              "intro": "Screening involves tradeoffs, and people weigh them differently. Move each slider to where you sit, then take the summary to your doctor.",
               "disclaimer": "This tool does not recommend a screening plan and does not give medical advice. It helps you put words to what matters to you so you can raise it with your doctor, who knows your risk.",
               "summaryHeading": "What to bring to your doctor",
               "summaryIntro": "Based on where you placed the sliders:",
@@ -746,9 +746,6 @@
                   "title": "False alarms vs. missed cancer",
                   "left": "A false alarm worries me most",
                   "right": "Missing something worries me most",
-                  "fact": "For women who got MRIs, 10 out of 100 patients will need further testing and most of those will be benign.",
-                  "source": "Chapter 1 — False Positives",
-                  "visual": "icon-array",
                   "framings": [
                     "Being called back for a scare weighs on you more than anything else. Tell your doctor that, and ask what the follow-up process actually involves and how long it takes to get an answer.",
                     "You would feel a callback more than most. Ask your doctor how often follow-up testing turns out to be benign, and what support is available while you wait.",
@@ -769,9 +766,6 @@
                   "title": "Radiation exposure",
                   "left": "Radiation worries me",
                   "right": "It's a non-issue for me",
-                  "fact": "A mammogram uses a small amount of radiation — about the same as a flight from New York to California. Breast ultrasound and breast MRI use no radiation.",
-                  "source": "Chapter 1 — Radiation Exposure, and the Chapter 2 comparison table",
-                  "visual": "equivalence",
                   "framings": [
                     "Radiation is a real concern for you. Bring it up directly, and note that breast ultrasound and breast MRI use no radiation at all, which is worth asking about for your situation.",
                     "You would like to keep radiation exposure down. Ask your doctor how many mammograms your screening plan would involve over the next ten years.",
@@ -792,9 +786,6 @@
                   "title": "Waiting for results",
                   "left": "Waiting is the hardest part",
                   "right": "I'd rather wait longer for a thorough read",
-                  "fact": "Biopsy findings usually take 5 to 10 business days to result, but sometimes can take longer.",
-                  "source": "Chapter 2 — Breast Biopsy",
-                  "visual": "timeline",
                   "framings": [
                     "The wait itself is the hard part for you. Ask your doctor who will call you, when, and whether there is any way to get results sooner.",
                     "Waiting is stressful for you. Ask what the typical turnaround is where you would be treated, and how you will be told.",
@@ -815,9 +806,6 @@
                   "title": "Screening frequency",
                   "left": "Screen me more often, even with more callbacks",
                   "right": "Space it out, even if something's caught a bit later",
-                  "fact": "Average-risk women can be screened every 1 to 2 years. Most high-risk women should be screened yearly.",
-                  "source": "Chapter 3 — Commonly asked questions",
-                  "visual": "interval",
                   "framings": [
                     "You lean toward screening as often as your risk level allows. Ask your doctor what the most frequent schedule appropriate for you would be.",
                     "You would prefer the shorter interval. Ask what your risk category suggests, and whether yearly screening is recommended for you.",
@@ -838,9 +826,6 @@
                   "title": "Cost and access",
                   "left": "I want the most thorough option regardless of cost",
                   "right": "Cost and coverage matter a lot to my choice",
-                  "fact": "A mammogram costs $, a breast ultrasound $$, and a breast MRI $$$$. Insurance often covers routine mammograms at no cost, but copays may be high for expensive studies like MRIs.",
-                  "source": "Chapter 2 comparison table, and Chapter 3 — Paying for Screening",
-                  "visual": "cost",
                   "framings": [
                     "Cost is not a constraint for you. Focus the conversation on which test is most accurate for your risk level.",
                     "You would stretch for the more thorough option. It is still worth asking what is covered so there are no surprises.",
