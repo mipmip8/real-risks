@@ -938,6 +938,7 @@ a {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 26px;
+  align-items: start; /* columns hug their content rather than matching heights */
 }
 
 .schedule__col {
@@ -946,10 +947,46 @@ a {
   padding: 22px 26px;
 }
 
+/* Tones match the risk categories slide, so the two read as a pair. */
+.schedule__col--calm {
+  background: #eaf6ec;
+  border: 1px solid #cbe6d1;
+}
+
+.schedule__col--alert {
+  background: #fdece9;
+  border: 1px solid #f5cec6;
+}
+
 .schedule__col h2 {
-  margin: 0 0 12px;
-  font-size: 21px;
+  margin: 0 0 2px;
+  font-size: 23px;
   color: var(--purple-heading);
+}
+
+.schedule__subtitle {
+  margin: 0 0 14px;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.schedule__col h2 + ul,
+.schedule__col h2 + .schedule__group {
+  margin-top: 14px;
+}
+
+.schedule__group + .schedule__group {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0, 0, 0, 0.09);
+}
+
+.schedule__group h3 {
+  margin: 0 0 10px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
 }
 
 .schedule__col ul {

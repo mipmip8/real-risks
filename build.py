@@ -264,12 +264,35 @@ def r_twocol(b, _):
 
 
 def r_schedule(b, _):
+    """Recommendation columns, optionally colour-toned and sub-grouped.
+
+    A column may hold one list of items, or several titled groups — high risk
+    splits by age, average risk does not.
+    """
+
+    def arrow_list(items):
+        return "<ul>%s</ul>" % "".join("<li>%s</li>" % e(i) for i in items)
+
     cols = []
     for col in b["columns"]:
-        title = "<h2>%s</h2>" % e(col["title"]) if col.get("title") else ""
-        items = "".join("<li>%s</li>" % e(i) for i in col["items"])
+        parts = []
+        if col.get("title"):
+            parts.append("<h2>%s</h2>" % e(col["title"]))
+        if col.get("subtitle"):
+            parts.append('<p class="schedule__subtitle">%s</p>' % e(col["subtitle"]))
+
+        if col.get("groups"):
+            for group in col["groups"]:
+                parts.append(
+                    '<div class="schedule__group"><h3>%s</h3>%s</div>'
+                    % (e(group["title"]), arrow_list(group["items"]))
+                )
+        else:
+            parts.append(arrow_list(col["items"]))
+
+        tone = " schedule__col--%s" % e(col["tone"]) if col.get("tone") else ""
         cols.append(
-            '<section class="schedule__col">%s<ul>%s</ul></section>' % (title, items)
+            '<section class="schedule__col%s">%s</section>' % (tone, "".join(parts))
         )
     return '<div class="schedule">%s</div>' % "".join(cols)
 
