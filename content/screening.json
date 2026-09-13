@@ -559,6 +559,7 @@
             {
               "type": "answer",
               "answer": "40 years old",
+              "reveal": true,
               "notes": [
                 "Screening isn't one-size-fits-all.",
                 "Some women may need to start breast cancer screening before age 40 based upon family history or genetic test results. Every woman should report new or concerning lumps to their doctor."
@@ -573,6 +574,7 @@
             {
               "type": "answer",
               "answer": "Every 1 to 2 years",
+              "reveal": true,
               "notes": [
                 "Although there are inconsistent breast cancer screening guidelines, most high-risk women should get screened yearly.",
                 "Average-risk women can get screened every 1-2 years."
@@ -587,6 +589,7 @@
             {
               "type": "answer",
               "answer": "No",
+              "reveal": true,
               "notes": [
                 "If MRI is used, it should be in addition to, not instead of, a screening mammogram.",
                 "Although an MRI is more likely to find cancer than a mammogram, it might still miss some cancers that a mammogram would find, so doctors recommend both a breast MRI and mammograms for women at high risk."

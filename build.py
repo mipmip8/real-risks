@@ -220,9 +220,26 @@ def r_birads(b, _):
 
 def r_answer(b, _):
     notes = "".join("<p>%s</p>" % e(n) for n in b["notes"])
+    body = '<p class="answer__value">%s</p><div class="answer__notes">%s</div>' % (
+        e(b["answer"]),
+        notes,
+    )
+
+    if not b.get("reveal"):
+        return '<div class="answer">%s</div>' % body
+
+    # A <details> disclosure rather than a scripted button: it reveals on
+    # click or keyboard without JavaScript, and a reader with JS disabled
+    # still gets to the answer instead of a dead control. The notes hide with
+    # the answer because they reference it ("before age 40").
     return (
-        '<div class="answer"><p class="answer__value">%s</p>'
-        '<div class="answer__notes">%s</div></div>' % (e(b["answer"]), notes)
+        '<div class="answer"><details class="reveal">'
+        '<summary class="reveal__toggle">'
+        '<span class="reveal__show">Click to reveal the answer</span>'
+        '<span class="reveal__hide">Hide the answer</span>'
+        "</summary>"
+        '<div class="reveal__body">%s</div>'
+        "</details></div>" % body
     )
 
 

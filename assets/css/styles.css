@@ -808,6 +808,79 @@ a {
   margin: 26px auto 0;
 }
 
+/* Click-to-reveal answers, built on <details> so they work without JS. */
+
+.reveal {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.reveal__toggle {
+  display: inline-block;
+  padding: 20px 42px;
+  border-radius: var(--radius);
+  background: var(--teal-active);
+  color: #fff;
+  font-size: 23px;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none; /* Firefox's default disclosure triangle */
+  user-select: none;
+}
+
+.reveal__toggle::-webkit-details-marker {
+  display: none; /* Safari/Chrome's default disclosure triangle */
+}
+
+.reveal__toggle:hover {
+  background: var(--teal-dark);
+}
+
+/* Once open, the toggle steps back so the answer is what stands out. */
+.reveal[open] .reveal__toggle {
+  padding: 6px 14px;
+  margin-bottom: 22px;
+  background: none;
+  color: var(--teal);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.reveal[open] .reveal__toggle:hover {
+  background: none;
+  color: var(--teal-dark);
+}
+
+.reveal__hide,
+.reveal[open] .reveal__show {
+  display: none;
+}
+
+.reveal[open] .reveal__hide {
+  display: inline;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal[open] .reveal__body {
+    animation: reveal-in 0.25s ease-out;
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 560px) {
+  .reveal__toggle {
+    padding: 16px 22px;
+    font-size: 19px;
+  }
+}
+
 .answer__notes p:first-child {
   font-weight: 700;
   font-size: 19px;
