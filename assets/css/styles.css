@@ -1152,3 +1152,389 @@ a {
     display: none;
   }
 }
+
+/* ==========================================================================
+   Tradeoff sliders
+   ========================================================================== */
+
+.sliders__intro {
+  font-size: 19px;
+  margin: 0 0 14px;
+}
+
+.sliders__disclaimer {
+  background: #fdf3e3;
+  border-left: 5px solid #d69f1a;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 14px 20px;
+  margin: 0 0 30px;
+  font-size: 16px;
+}
+
+.slider-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slider-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 26px 28px;
+  margin-bottom: 26px;
+}
+
+.slider__title {
+  margin: 0 0 10px;
+  font-size: 22px;
+  color: var(--purple-heading);
+}
+
+.slider__fact {
+  margin: 0 0 18px;
+  font-size: 16px;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+}
+
+.slider__fact-tag {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 2px 10px;
+  border-radius: 20px;
+  background: var(--panel-blue);
+  color: var(--teal-dark);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.slider__source {
+  display: block;
+  margin-top: 6px;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* ---- Control ---- */
+
+.slider__control {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 4px 20px;
+  align-items: end;
+  margin-top: 20px;
+}
+
+.slider__end {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.slider__end--right {
+  text-align: right;
+}
+
+.slider__input {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin: 10px 0 0;
+  accent-color: var(--teal-active);
+  cursor: pointer;
+}
+
+.slider__framings {
+  margin-top: 18px;
+}
+
+.slider__framing {
+  margin: 0;
+  padding: 16px 20px;
+  border-radius: var(--radius);
+  background: var(--panel-blue);
+  border-left: 5px solid var(--teal-active);
+  font-size: 17px;
+}
+
+/* ---- Visuals. Emphasis shifts with position; the figures never change. ---- */
+
+.viz {
+  margin: 4px 0 2px;
+}
+
+.viz__caption {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.viz__key {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  margin: 0 6px 0 14px;
+  vertical-align: baseline;
+}
+
+.viz__caption .viz__key:first-child {
+  margin-left: 0;
+}
+
+.viz__key--flagged {
+  background: #d69f1a;
+}
+
+.viz__key--plain {
+  background: #c9c9d2;
+}
+
+.viz--array {
+  display: grid;
+  grid-template-columns: repeat(25, 1fr);
+  gap: 4px;
+  max-width: 420px;
+}
+
+.viz--array .dot {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #c9c9d2;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.viz--array .dot.is-flagged {
+  background: #d69f1a;
+}
+
+/* Leaning left: the callbacks dominate. Leaning right: they recede into the
+   whole group, which is the same 10 dots read differently. */
+.slider-card[data-pos="1"] .viz--array .dot:not(.is-flagged),
+.slider-card[data-pos="2"] .viz--array .dot:not(.is-flagged) {
+  opacity: 0.35;
+}
+
+.slider-card[data-pos="4"] .viz--array .dot.is-flagged,
+.slider-card[data-pos="5"] .viz--array .dot.is-flagged {
+  background: #e3c98a;
+}
+
+.slider-card[data-pos="5"] .viz--array .dot:not(.is-flagged) {
+  background: var(--teal-active);
+}
+
+.viz--equivalence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.viz--equivalence .chip {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.viz--equivalence .chip__eq {
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--purple-heading);
+}
+
+.slider-card[data-pos="1"] .viz--equivalence .chip,
+.slider-card[data-pos="2"] .viz--equivalence .chip {
+  border-color: #d69f1a;
+}
+
+.slider-card[data-pos="4"] .viz--equivalence,
+.slider-card[data-pos="5"] .viz--equivalence {
+  opacity: 0.6;
+}
+
+.viz--timeline .track {
+  position: relative;
+  height: 16px;
+  border-radius: 8px;
+  background: #e2e2e8;
+  max-width: 420px;
+}
+
+.viz--timeline .band {
+  position: absolute;
+  left: 50%;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 8px;
+  background: var(--teal-active);
+}
+
+.slider-card[data-pos="1"] .viz--timeline .band,
+.slider-card[data-pos="2"] .viz--timeline .band {
+  background: #d69f1a;
+}
+
+.viz--timeline .ticks {
+  display: flex;
+  justify-content: space-between;
+  max-width: 420px;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.viz--interval .row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.viz--interval .row__label {
+  flex: none;
+  width: 108px;
+}
+
+.viz--interval .row__marks {
+  display: flex;
+  gap: 6px;
+}
+
+.viz--interval .mark {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--teal-active);
+}
+
+.viz--interval .mark.is-off {
+  background: #dcdce2;
+}
+
+/* Only the interval the reader leans toward stays lit. */
+.slider-card[data-pos="4"] .viz--interval .row--yearly,
+.slider-card[data-pos="5"] .viz--interval .row--yearly,
+.slider-card[data-pos="1"] .viz--interval .row--spaced,
+.slider-card[data-pos="2"] .viz--interval .row--spaced {
+  opacity: 0.35;
+}
+
+.viz--cost .row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.viz--cost .row__label {
+  flex: none;
+  width: 108px;
+  color: var(--muted);
+}
+
+.viz--cost .row__cost {
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--teal-dark);
+}
+
+.slider-card[data-pos="4"] .viz--cost .row__cost,
+.slider-card[data-pos="5"] .viz--cost .row__cost {
+  color: #b4740a;
+}
+
+.slider-card[data-pos="1"] .viz--cost,
+.slider-card[data-pos="2"] .viz--cost {
+  opacity: 0.6;
+}
+
+/* ---- Summary ---- */
+
+.sliders__summary {
+  margin-top: 36px;
+  padding: 26px 28px;
+  border-radius: var(--radius);
+  background: var(--panel-blue);
+}
+
+.sliders__summary h2 {
+  margin: 0 0 6px;
+  font-size: 23px;
+  color: var(--purple-heading);
+}
+
+.sliders__summary > p {
+  margin: 0 0 16px;
+}
+
+.sliders__summary-list {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.sliders__summary-list li {
+  margin-bottom: 10px;
+}
+
+.sliders__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.sliders__actions .btn {
+  padding: 11px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.sliders__status {
+  font-size: 15px;
+  color: var(--teal-dark);
+}
+
+@media (max-width: 560px) {
+  .slider-card {
+    padding: 20px 18px;
+  }
+
+  .slider__control {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .slider__end--right {
+    text-align: left;
+  }
+
+  .viz--interval .row__label,
+  .viz--cost .row__label {
+    width: 86px;
+  }
+}
+
+@media print {
+  .slider-list,
+  .sliders__intro,
+  .sliders__actions {
+    display: none;
+  }
+
+  .sliders__summary {
+    background: none;
+    padding: 0;
+  }
+}

@@ -728,6 +728,137 @@
               ]
             }
           ]
+        },
+        {
+          "title": "What matters most to you?",
+          "menu": "What matters most to you",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "sliders",
+              "intro": "Screening involves tradeoffs, and people weigh them differently. Move each slider to where you sit. The facts stay the same — only what they mean for you changes.",
+              "disclaimer": "This tool does not recommend a screening plan and does not give medical advice. It helps you put words to what matters to you so you can raise it with your doctor, who knows your risk.",
+              "summaryHeading": "What to bring to your doctor",
+              "summaryIntro": "Based on where you placed the sliders:",
+              "items": [
+                {
+                  "id": "false-alarms",
+                  "title": "False alarms vs. missed cancer",
+                  "left": "A false alarm worries me most",
+                  "right": "Missing something worries me most",
+                  "fact": "For women who got MRIs, 10 out of 100 patients will need further testing and most of those will be benign.",
+                  "source": "Chapter 1 — False Positives",
+                  "visual": "icon-array",
+                  "framings": [
+                    "Being called back for a scare weighs on you more than anything else. Tell your doctor that, and ask what the follow-up process actually involves and how long it takes to get an answer.",
+                    "You would feel a callback more than most. Ask your doctor how often follow-up testing turns out to be benign, and what support is available while you wait.",
+                    "You weigh both about equally. Ask your doctor to walk you through what a callback would mean for you, alongside what a missed finding would mean.",
+                    "You would put up with some false alarms to lower the chance of missing something. Ask your doctor which tests are most sensitive for someone at your risk level.",
+                    "Not missing anything matters most to you, even if that means more callbacks. Tell your doctor you would rather investigate a finding than leave it, and ask what that would look like in practice."
+                  ],
+                  "summary": [
+                    "False alarms worry me more than missing something.",
+                    "I lean toward worrying about false alarms.",
+                    "I weigh false alarms and missed findings about equally.",
+                    "I lean toward worrying about missing something.",
+                    "Missing something worries me more than a false alarm."
+                  ]
+                },
+                {
+                  "id": "radiation",
+                  "title": "Radiation exposure",
+                  "left": "Radiation worries me",
+                  "right": "It's a non-issue for me",
+                  "fact": "A mammogram uses a small amount of radiation — about the same as a flight from New York to California. Breast ultrasound and breast MRI use no radiation.",
+                  "source": "Chapter 1 — Radiation Exposure, and the Chapter 2 comparison table",
+                  "visual": "equivalence",
+                  "framings": [
+                    "Radiation is a real concern for you. Bring it up directly, and note that breast ultrasound and breast MRI use no radiation at all, which is worth asking about for your situation.",
+                    "You would like to keep radiation exposure down. Ask your doctor how many mammograms your screening plan would involve over the next ten years.",
+                    "You are neither especially worried nor dismissive. Ask what your total exposure would look like on the schedule you are considering.",
+                    "Radiation is a minor consideration for you. You may want to focus the conversation on which test finds cancer most reliably at your risk level.",
+                    "Radiation is not something you weigh. Saying so frees the conversation to focus on what matters more to you."
+                  ],
+                  "summary": [
+                    "Radiation exposure is a real concern for me.",
+                    "I would like to limit radiation where I can.",
+                    "I have no strong feeling about radiation.",
+                    "Radiation is a minor consideration for me.",
+                    "Radiation is not a concern for me."
+                  ]
+                },
+                {
+                  "id": "waiting",
+                  "title": "Waiting for results",
+                  "left": "Waiting is the hardest part",
+                  "right": "I'd rather wait longer for a thorough read",
+                  "fact": "Biopsy findings usually take 5 to 10 business days to result, but sometimes can take longer.",
+                  "source": "Chapter 2 — Breast Biopsy",
+                  "visual": "timeline",
+                  "framings": [
+                    "The wait itself is the hard part for you. Ask your doctor who will call you, when, and whether there is any way to get results sooner.",
+                    "Waiting is stressful for you. Ask what the typical turnaround is where you would be treated, and how you will be told.",
+                    "You can tolerate the wait as long as you know what to expect. Ask for a realistic timeline up front.",
+                    "You would rather the reading be unhurried. Ask whether a second read is standard, and what that adds to the timeline.",
+                    "A careful read matters more to you than a fast one. Tell your doctor you would rather wait than be rushed, and ask what a thorough review involves."
+                  ],
+                  "summary": [
+                    "Waiting for results is the hardest part for me.",
+                    "Waiting for results is stressful for me.",
+                    "I can handle the wait if I know the timeline.",
+                    "I would accept a longer wait for a careful read.",
+                    "I would rather wait longer for a thorough read."
+                  ]
+                },
+                {
+                  "id": "frequency",
+                  "title": "Screening frequency",
+                  "left": "Screen me more often, even with more callbacks",
+                  "right": "Space it out, even if something's caught a bit later",
+                  "fact": "Average-risk women can be screened every 1 to 2 years. Most high-risk women should be screened yearly.",
+                  "source": "Chapter 3 — Commonly asked questions",
+                  "visual": "interval",
+                  "framings": [
+                    "You lean toward screening as often as your risk level allows. Ask your doctor what the most frequent schedule appropriate for you would be.",
+                    "You would prefer the shorter interval. Ask what your risk category suggests, and whether yearly screening is recommended for you.",
+                    "You are open to either interval. Ask your doctor which one your risk level points to, and why.",
+                    "You would prefer the longer interval if it is reasonable for you. Ask what spacing is safe given your risk.",
+                    "You would rather screen less often. Ask your doctor what the longest safe interval is for someone at your risk level, and what the tradeoff is."
+                  ],
+                  "summary": [
+                    "I would rather screen more often, even with more callbacks.",
+                    "I lean toward screening more often.",
+                    "I am open to either screening interval.",
+                    "I lean toward spacing screening out.",
+                    "I would rather space screening out."
+                  ]
+                },
+                {
+                  "id": "cost",
+                  "title": "Cost and access",
+                  "left": "I want the most thorough option regardless of cost",
+                  "right": "Cost and coverage matter a lot to my choice",
+                  "fact": "A mammogram costs $, a breast ultrasound $$, and a breast MRI $$$$. Insurance often covers routine mammograms at no cost, but copays may be high for expensive studies like MRIs.",
+                  "source": "Chapter 2 comparison table, and Chapter 3 — Paying for Screening",
+                  "visual": "cost",
+                  "framings": [
+                    "Cost is not a constraint for you. Focus the conversation on which test is most accurate for your risk level.",
+                    "You would stretch for the more thorough option. It is still worth asking what is covered so there are no surprises.",
+                    "You are weighing thoroughness against cost. Ask for an out-of-pocket estimate for each option you are considering.",
+                    "Cost is a real factor for you. Ask which facilities are in network and whether you need a referral.",
+                    "Cost and coverage will shape your decision. Call your insurance before scheduling and ask what is covered, which facilities are in network, and whether a referral is needed."
+                  ],
+                  "summary": [
+                    "I want the most thorough option regardless of cost.",
+                    "I lean toward thoroughness over cost.",
+                    "I am weighing thoroughness against cost.",
+                    "Cost is an important factor for me.",
+                    "Cost and coverage will shape my choice."
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }

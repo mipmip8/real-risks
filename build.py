@@ -278,7 +278,145 @@ def r_factcards(b, _):
     return '<ul class="factcards">%s</ul>' % "".join(items)
 
 
+def _slider_visual(kind):
+    """Static markup for a dimension's visual.
+
+    The underlying figures never change — only which part of the picture is
+    emphasised, which CSS drives off the card's data-pos attribute. Nothing
+    here is computed from the slider, so the numbers cannot drift from the
+    module's own facts.
+    """
+    if kind == "icon-array":
+        dots = "".join(
+            '<span class="dot%s"></span>' % (" is-flagged" if i < 10 else "")
+            for i in range(100)
+        )
+        return (
+            '<div class="viz viz--array" aria-hidden="true">%s</div>'
+            '<p class="viz__caption">'
+            '<span class="viz__key viz__key--flagged"></span>10 called back'
+            '<span class="viz__key viz__key--plain"></span>90 not called back'
+            "</p>" % dots
+        )
+
+    if kind == "equivalence":
+        return (
+            '<div class="viz viz--equivalence" aria-hidden="true">'
+            '<span class="chip">1 mammogram</span>'
+            '<span class="chip__eq">=</span>'
+            '<span class="chip">1 flight, New York to California</span>'
+            "</div>"
+            '<p class="viz__caption">Ultrasound and MRI: no radiation</p>'
+        )
+
+    if kind == "timeline":
+        return (
+            '<div class="viz viz--timeline" aria-hidden="true">'
+            '<div class="track"><div class="band"></div></div>'
+            '<div class="ticks"><span>day 0</span><span>day 5</span>'
+            "<span>day 10</span></div>"
+            "</div>"
+            '<p class="viz__caption">Typical biopsy result window</p>'
+        )
+
+    if kind == "interval":
+        def row(cls, label, every):
+            marks = "".join(
+                '<span class="mark%s"></span>'
+                % ("" if y % every == 0 else " is-off")
+                for y in range(11)
+            )
+            return (
+                '<div class="row %s"><span class="row__label">%s</span>'
+                '<span class="row__marks">%s</span></div>' % (cls, label, marks)
+            )
+
+        return (
+            '<div class="viz viz--interval" aria-hidden="true">%s%s</div>'
+            '<p class="viz__caption">Screens over 10 years</p>'
+            % (row("row--yearly", "Every year", 1),
+               row("row--spaced", "Every 2 years", 2))
+        )
+
+    if kind == "cost":
+        tiers = [("Mammogram", 1), ("Ultrasound", 2), ("MRI", 4)]
+        bars = "".join(
+            '<div class="row"><span class="row__label">%s</span>'
+            '<span class="row__cost">%s</span></div>' % (name, "$" * n)
+            for name, n in tiers
+        )
+        return (
+            '<div class="viz viz--cost" aria-hidden="true">%s</div>'
+            '<p class="viz__caption">Relative cost, not a price</p>' % bars
+        )
+
+    raise SystemExit("Unknown slider visual: %s" % kind)
+
+
+def r_sliders(b, _):
+    cards = []
+    for item in b["items"]:
+        framings = "".join(
+            '<p class="slider__framing" data-framing="%d"%s>%s</p>'
+            % (i, "" if i == 3 else ' hidden=""', e(text))
+            for i, text in enumerate(item["framings"], 1)
+        )
+        # Position 3 renders as the default so the slide is still readable,
+        # and still says something true, with JavaScript unavailable.
+        cards.append(
+            """<li class="slider-card" data-pos="3" data-id="{id}">
+  <h2 class="slider__title">{title}</h2>
+  <p class="slider__fact"><span class="slider__fact-tag">This stays the same</span>
+    {fact} <span class="slider__source">{source}</span></p>
+  {visual}
+  <div class="slider__control">
+    <span class="slider__end slider__end--left" aria-hidden="true">{left}</span>
+    <span class="slider__end slider__end--right" aria-hidden="true">{right}</span>
+    <input type="range" id="slider-{id}" min="1" max="5" step="1" value="3"
+           class="slider__input" aria-describedby="framing-{id}"
+           aria-label="{title}. 1 means: {left}. 5 means: {right}."
+           data-summary="{summaries}">
+  </div>
+  <div class="slider__framings" id="framing-{id}" aria-live="polite">{framings}</div>
+</li>""".format(
+                id=e(item["id"]),
+                title=e(item["title"]),
+                fact=e(item["fact"]),
+                source=e(item["source"]),
+                left=e(item["left"]),
+                right=e(item["right"]),
+                visual=_slider_visual(item["visual"]),
+                summaries=e("|".join(item["summary"])),
+                framings=framings,
+            )
+        )
+
+    return """<div class="sliders">
+  <p class="sliders__intro">{intro}</p>
+  <p class="sliders__disclaimer">{disclaimer}</p>
+  <ol class="slider-list">{cards}</ol>
+  <section class="sliders__summary" id="slider-summary">
+    <h2>{sh}</h2>
+    <p>{si}</p>
+    <ul class="sliders__summary-list"></ul>
+    <div class="sliders__actions">
+      <button type="button" class="btn btn--primary" data-slider-print>Print or save as PDF</button>
+      <button type="button" class="btn" data-slider-copy>Copy to clipboard</button>
+      <button type="button" class="btn" data-slider-reset>Reset sliders</button>
+      <span class="sliders__status" role="status"></span>
+    </div>
+  </section>
+</div>""".format(
+        intro=e(b["intro"]),
+        disclaimer=e(b["disclaimer"]),
+        cards="".join(cards),
+        sh=e(b["summaryHeading"]),
+        si=e(b["summaryIntro"]),
+    )
+
+
 RENDERERS = {
+    "sliders": r_sliders,
     "text": r_text,
     "callout": r_callout,
     "bullets": r_bullets,
@@ -353,6 +491,7 @@ def shell(title, depth, body_attrs, breadcrumb, main, description):
   </div>
 </footer>
 <script src="{depth}assets/js/progress.js"></script>
+<script src="{depth}assets/js/sliders.js"></script>
 </body>
 </html>
 """.format(
