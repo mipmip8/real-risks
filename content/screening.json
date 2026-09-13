@@ -1,0 +1,719 @@
+{
+  "module": {
+    "number": 2,
+    "title": "Breast Cancer Screening",
+    "intro": "In this module, you will learn about various methods of screening for breast cancer."
+  },
+  "chapters": [
+    {
+      "slug": "chapter-1",
+      "number": 1,
+      "title": "Overview",
+      "icon": "lightbulb",
+      "slides": [
+        {
+          "title": "Why do we screen for breast cancer?",
+          "layout": "media-right",
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "Screening refers to tests used to find breast cancer in people who don't have symptoms",
+                "Breast cancer screening uses imaging tests like mammograms, ultrasounds and MRI to look for cancer at an early stage",
+                "Finding cancer early means it is smaller and easier to treat",
+                "This is why regular breast cancer screening is so important"
+              ]
+            },
+            {
+              "type": "callout",
+              "text": "Think of it like a smoke detector that warns you about an early fire!"
+            }
+          ],
+          "media": [
+            {
+              "src": "smoke-detector.jpg",
+              "alt": "Illustration of a ceiling smoke detector with alarm signals radiating from it."
+            }
+          ]
+        },
+        {
+          "title": "Benefits and Potential Harms of Screening",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "compare",
+              "benefits": {
+                "heading": "Benefits",
+                "items": [
+                  {
+                    "title": "Finding cancer early",
+                    "text": "Screening can detect breast cancer before a lump can be felt or symptoms develop."
+                  },
+                  {
+                    "title": "Less treatment",
+                    "text": "When cancer is found early, it is often smaller and easier to treat. This may allow for less extensive surgery and fewer treatments."
+                  },
+                  {
+                    "title": "Better outcomes",
+                    "text": "Early detection can lower risk of dying from cancer."
+                  }
+                ]
+              },
+              "harms": {
+                "heading": "Potential Harms",
+                "items": [
+                  {
+                    "title": "False positives",
+                    "text": "A false positive is when a screening test shows something that looks like cancer, but turns out not to be cancer. Think of it like a broken fire alarm that goes off when there is no fire."
+                  },
+                  {
+                    "title": "Extra tests",
+                    "text": "If something unusual appears on a screening test, your doctor may recommend more imaging or a biopsy. These tests often show no cancer, but the process can cause worry and discomfort."
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": "False Positives",
+          "layout": "media-right",
+          "blocks": [
+            {
+              "type": "text",
+              "text": "A false positive is when a screening test flags an abnormality that needs further workup but turns out not to be cancer."
+            },
+            {
+              "type": "callout",
+              "text": "Think of it like a fire alarm when there is no fire!"
+            },
+            {
+              "type": "factcards",
+              "items": [
+                {
+                  "text": "For women who got MRIs, 10 out of 100 patients will need further testing and most of those will be benign. These are false positives."
+                },
+                {
+                  "text": "Extra tests can lead to more worry, cost, discomfort. The benefits often outweigh the risks"
+                }
+              ]
+            }
+          ],
+          "media": [
+            {
+              "src": "burnt-cookies.jpg",
+              "alt": "Illustration of a woman opening an oven full of smoke, with burnt cookies inside.",
+              "caption": "“No fire, just burnt my cookies again!”"
+            }
+          ]
+        },
+        {
+          "title": "Radiation Exposure",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "equation",
+              "left": {
+                "label": "Mammogram",
+                "src": "mammogram-illustration.jpg",
+                "alt": "Illustration of a woman standing at a mammogram machine."
+              },
+              "right": {
+                "label": "A Flight from NYC to California",
+                "src": "airplane.jpg",
+                "alt": "Cartoon illustration of an airplane flying through clouds."
+              },
+              "caption": "They have the same amount!"
+            },
+            {
+              "type": "bullets",
+              "items": [
+                "Mammograms use a small amount of radiation, but the risk of radiation-related cancer is very low.",
+                "For most women, the benefits of screening outweigh this risk of radiation exposure."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Key Takeaways and Action Items",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "takeaways",
+              "items": [
+                "The main purpose of screening is to detect breast cancer early.",
+                "Screening can detect cancer before symptoms develop.",
+                "The benefits of screening (early detection, less treatment, better outcomes) need to be weighed against the harms (false positive results, biopsies, over diagnosis)."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "chapter-2",
+      "number": 2,
+      "title": "Types of Screening Tests",
+      "icon": "scan",
+      "slides": [
+        {
+          "title": "Types of Breast Imaging",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "cards",
+              "items": [
+                {
+                  "title": "3D Mammogram also known as Digital Breast Tomosynthesis (DBT)",
+                  "src": "type-mammogram-3d.jpg",
+                  "alt": "Illustration of a mammography machine next to a monitor."
+                },
+                {
+                  "title": "Breast Ultrasound (US)",
+                  "src": "type-ultrasound.jpg",
+                  "alt": "Illustration of a technologist performing a breast ultrasound on a patient lying on an exam table."
+                },
+                {
+                  "title": "Breast Magnetic Resonance Imaging (MRI)",
+                  "src": "type-mri.jpg",
+                  "alt": "Illustration of a patient lying face down on a table that slides into an MRI machine."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Mammogram",
+          "layout": "media-right",
+          "blocks": [
+            {
+              "type": "qablocks",
+              "items": [
+                {
+                  "q": "What is a mammogram?",
+                  "a": "A mammogram is a low-dose X-ray of the breast used to find cancer early"
+                },
+                {
+                  "q": "Does it hurt?",
+                  "a": "For many people mammograms are uncomfortable rather than truly painful."
+                }
+              ]
+            }
+          ],
+          "media": [
+            {
+              "src": "mammogram-diagram.jpg",
+              "alt": "Medical diagram of a mammogram, labelling the camera unit above, the X-ray beam passing through the compressed breast, and the film plate below."
+            }
+          ]
+        },
+        {
+          "title": "Mammogram",
+          "subtitle": "~15 min",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                {
+                  "title": "Preparation",
+                  "src": "mammo-step-preparation.jpg",
+                  "alt": "Illustration of a patterned hospital gown.",
+                  "items": [
+                    "No deodorant, perfume, or lotion on chest or underarms",
+                    "Remove jewelry",
+                    "Change into a gown (top off)"
+                  ]
+                },
+                {
+                  "title": "Positioning",
+                  "src": "mammo-step-positioning.jpg",
+                  "alt": "Photograph of a technologist helping position a patient at a mammography machine.",
+                  "items": [
+                    "Stand in front of the machine",
+                    "One breast is placed on a flat plate",
+                    "The technologist will help guide you"
+                  ]
+                },
+                {
+                  "title": "Imaging",
+                  "src": "mammo-step-imaging.jpg",
+                  "alt": "Illustration of a patient standing at a mammography machine while an image is taken.",
+                  "items": [
+                    "The breast is compressed between two plates for pictures at different angles",
+                    "X-ray images are taken",
+                    "They may reposition you",
+                    "This is repeated for the other breast"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Breast Ultrasound",
+          "subtitle": "15–30 min",
+          "layout": "media-right",
+          "blocks": [
+            {
+              "type": "qablocks",
+              "items": [
+                {
+                  "q": "What is a breast ultrasound?",
+                  "a": "Breast ultrasound uses sound waves to make images of the breast."
+                },
+                {
+                  "q": "When do you get a breast ultrasound?",
+                  "a": "Often used for screening in addition to mammography or as a follow-up test after an abnormal finding on a screening mammogram, MRI, or breast exam"
+                }
+              ]
+            },
+            {
+              "type": "numbered",
+              "heading": "What to expect:",
+              "items": [
+                "Undress from waist up",
+                "Lie on exam table",
+                "Cold jelly applied to breast",
+                "Ultrasound technologist will move probe over breast"
+              ]
+            }
+          ],
+          "media": [
+            {
+              "src": "ultrasound-exam.jpg",
+              "alt": "Photograph of a gloved hand moving an ultrasound probe over a patient's chest, with the ultrasound screen behind."
+            }
+          ]
+        },
+        {
+          "title": "Breast MRI",
+          "layout": "media-right",
+          "blocks": [
+            {
+              "type": "qablocks",
+              "items": [
+                {
+                  "q": "What is a breast MRI?",
+                  "a": "Breast MRI uses magnetic fields to create an image of the breast"
+                },
+                {
+                  "q": "When do you get a breast MRI?",
+                  "a": "Breast MRI is used for breast cancer screening for women at high risk and with dense breasts"
+                }
+              ]
+            },
+            {
+              "type": "bullets",
+              "heading": "Why doesn't everyone get an MRI?",
+              "items": [
+                "Requires contrast dye injected into your vein (through an IV) which some people may have allergies to",
+                "More likely than a mammogram to have false positive results",
+                "The machine can feel loud, narrow, or uncomfortable for some people",
+                "May not always be covered by insurance",
+                "Cannot be performed if pregnant or if you have certain types of metal in your body"
+              ]
+            }
+          ],
+          "media": [
+            {
+              "src": "mri-diagram.jpg",
+              "alt": "Medical diagram of a patient lying face down on a table that slides into the bore of an MRI machine."
+            }
+          ]
+        },
+        {
+          "title": "Breast MRI",
+          "subtitle": "15–20 min",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                {
+                  "title": "Preparation",
+                  "src": "mri-step-preparation.jpg",
+                  "alt": "Illustration of an IV drip line connected to a person's arm.",
+                  "items": [
+                    "Remove jewelry",
+                    "Change into gown",
+                    "IV placed in arm to give contrast"
+                  ]
+                },
+                {
+                  "title": "Positioning",
+                  "src": "mri-step-positioning.jpg",
+                  "alt": "Photograph of staff positioning a patient face down on an MRI table, with a close-up of the cushioned breast openings in the coil.",
+                  "items": [
+                    "Lie on your stomach",
+                    "Breasts rest in cushioned openings",
+                    "A safety button is provided to press if needed"
+                  ]
+                },
+                {
+                  "title": "Imaging",
+                  "src": "mri-step-imaging.jpg",
+                  "alt": "Photograph of an MRI table sliding a patient into the machine.",
+                  "items": [
+                    "Table slides into MRI machine",
+                    "Contrast is given",
+                    "You will hear loud tapping noises"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "text": "Time inside MRI tunnel 15-20 minutes"
+            }
+          ]
+        },
+        {
+          "title": "Comparison of Different Screening Methods",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "table",
+              "headers": [
+                "Imaging Type",
+                "Mammogram",
+                "Breast Ultrasound",
+                "Breast MRI"
+              ],
+              "rows": [
+                [
+                  "Use",
+                  "Routine screening",
+                  "Additional screening",
+                  "High-risk screening"
+                ],
+                [
+                  "Radiation exposure",
+                  "Yes (low dose)",
+                  "No",
+                  "No"
+                ],
+                [
+                  "Time",
+                  "~15 min",
+                  "15-30 min",
+                  "15 min prep + 15-20 min in machine"
+                ],
+                [
+                  "Cost",
+                  "$",
+                  "$$",
+                  "$$$$"
+                ],
+                [
+                  "IV Contrast",
+                  "No",
+                  "No",
+                  "Yes"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "How are results reported?",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "text",
+              "text": "Most mammography centers use the Breast Imaging Reporting and Data System (BI-RADS®) to classify findings in a standard way. You may see this on a radiology report."
+            },
+            {
+              "type": "birads",
+              "headers": [
+                "BI-RADS Category",
+                "What It Means"
+              ],
+              "rows": [
+                {
+                  "tone": "ok",
+                  "mark": "✓",
+                  "category": "1: Negative",
+                  "meaning": "Routine screening",
+                  "span": 2
+                },
+                {
+                  "tone": "ok",
+                  "mark": "✓",
+                  "category": "2: Benign Findings"
+                },
+                {
+                  "tone": "watch",
+                  "mark": "?",
+                  "category": "3: Probably benign",
+                  "meaning": "Short-term follow-up imaging in 6 months recommended",
+                  "span": 1
+                },
+                {
+                  "tone": "alert",
+                  "mark": "⚠",
+                  "category": "4: Suspicious abnormality",
+                  "meaning": "Biopsy recommended to know if benign or cancerous",
+                  "span": 2
+                },
+                {
+                  "tone": "alert",
+                  "mark": "⚠",
+                  "category": "5: Highly suspicious"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Breast Biopsy",
+          "subtitle": "30–60 min",
+          "layout": "media-right",
+          "blocks": [
+            {
+              "type": "qablocks",
+              "items": [
+                {
+                  "q": "What is a breast biopsy?",
+                  "a": "A breast biopsy uses a needle to take a sample of breast tissue to check for cancer. It is the only test that can confirm whether something is cancer."
+                },
+                {
+                  "q": "Why do you get a breast biopsy?",
+                  "a": "If a lump, breast change, or imaging test (like a mammogram or ultrasound) looks abnormal, your doctor may recommend a breast biopsy to find out if it is cancer."
+                },
+                {
+                  "q": "Does it Hurt?",
+                  "a": "Since the area is numbed, most patients describe it as a pressure, rather than a pain, though some report pain. There can be bruising and soreness in the days after."
+                }
+              ]
+            }
+          ],
+          "media": [
+            {
+              "src": "biopsy-diagram.jpg",
+              "alt": "Medical diagram of an ultrasound-guided breast biopsy, showing a needle inserted toward a mass in the breast while an ultrasound probe is held against the skin."
+            }
+          ]
+        },
+        {
+          "title": "Breast Biopsy",
+          "subtitle": "30–60 min",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "numbered",
+              "heading": "What to expect:",
+              "items": [
+                {
+                  "text": "The area is cleaned and numbed with local anesthesia (this feels similar to when you go to the dentist and they use numbing gel)",
+                  "sub": [
+                    "For lumps that can be seen with ultrasound, under ultrasound guidance, a hollow needle is inserted to remove small cores of tissue",
+                    "For findings that can only be seen with mammography or contrast-enhanced mammography, under X-ray guidance a hollow needle is inserted to remove small cores of tissue",
+                    "For findings only seen on breast MRI under MRI guidance a hollow needle is inserted to remove small cores of tissue."
+                  ]
+                },
+                {
+                  "text": "The samples are sent to the lab to be examined under the microscope by a pathologist"
+                },
+                {
+                  "text": "The findings usually take 5-10 business days to result, but sometimes can take longer"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Key Takeaways and Action Items",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "takeaways",
+              "items": [
+                "Mammograms are the mainstay of breast cancer screening for early detection.",
+                "For women at high-risk for breast cancer, breast MRI should be used for supplemental screening.",
+                "For women with dense breasts, breast ultrasound or contrast-enhanced mammogram may be used for supplemental screening.",
+                "After an abnormal screening test, a biopsy may be needed to confirm whether breast cancer is present."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "chapter-3",
+      "number": 3,
+      "title": "Screening Recommendations",
+      "icon": "calendar",
+      "slides": [
+        {
+          "title": "At what age should average risk women start breast cancer screening?",
+          "layout": "answer",
+          "blocks": [
+            {
+              "type": "answer",
+              "answer": "40 years old",
+              "notes": [
+                "Screening isn't one-size-fits-all.",
+                "Some women may need to start breast cancer screening before age 40 based upon family history or genetic test results. Every woman should report new or concerning lumps to their doctor."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "How frequently should average risk women get breast cancer screening?",
+          "layout": "answer",
+          "blocks": [
+            {
+              "type": "answer",
+              "answer": "Every 1 to 2 years",
+              "notes": [
+                "Although there are inconsistent breast cancer screening guidelines, most high-risk women should get screened yearly.",
+                "Average-risk women can get screened every 1-2 years."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Can a breast MRI replace mammograms for screening?",
+          "layout": "answer",
+          "blocks": [
+            {
+              "type": "answer",
+              "answer": "No",
+              "notes": [
+                "If MRI is used, it should be in addition to, not instead of, a screening mammogram.",
+                "Although an MRI is more likely to find cancer than a mammogram, it might still miss some cancers that a mammogram would find, so doctors recommend both a breast MRI and mammograms for women at high risk."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Breast Cancer Risk Categories",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "twocol",
+              "columns": [
+                {
+                  "tone": "calm",
+                  "title": "Average Risk Women",
+                  "subtitle": "All of the following must be true:",
+                  "items": [
+                    "No personal history of breast cancer or atypia on biopsy",
+                    "Do not carry a high risk genetic mutation (such as BRCA1 or BRCA2)",
+                    "No strong family history of breast or ovarian cancer"
+                  ]
+                },
+                {
+                  "tone": "alert",
+                  "title": "High Risk Women",
+                  "subtitle": "If any of the following are true:",
+                  "items": [
+                    "Have a known breast cancer risk gene change based on genetic testing",
+                    "Have a strong family history of breast or ovarian cancer",
+                    "Have a lifetime risk of breast cancer of about 20-25% or greater",
+                    "Have had a breast biopsy with atypia",
+                    "Have had chest radiation for cancer treatment before age 30"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Average Risk",
+          "subtitle": "Age 40 to 74 years",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "schedule",
+              "columns": [
+                {
+                  "items": [
+                    "Doctor's appointment every year",
+                    "Screening mammogram every 1-2 years"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "High Risk",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "schedule",
+              "columns": [
+                {
+                  "title": "Under 40 years old",
+                  "items": [
+                    "At initial visit, determine when to start screening",
+                    "Screening may start 5 to 10 years before the youngest age of breast cancer diagnosis in a family member or based upon positive genetic testing in a breast cancer risk gene"
+                  ]
+                },
+                {
+                  "title": "40 years or older",
+                  "items": [
+                    "Doctor's appointment every year",
+                    "Annual screening mammogram alternating every 6 months with annual breast MRI"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Paying for Screening",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "factcards",
+              "items": [
+                {
+                  "title": "Insurance often covers screening tests",
+                  "text": "Many health plans cover routine mammograms at no cost to you—check with your provider to be sure."
+                },
+                {
+                  "title": "Costs may vary for follow-up tests",
+                  "text": "If additional imaging or tests are needed, you may have out-of-pocket costs like copays or deductibles. Copays may be high for expensive studies like MRIs."
+                },
+                {
+                  "title": "Call your insurance to confirm coverage",
+                  "text": "Ask what is covered, which facilities are in-network, and whether you need a referral."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Key Takeaways and Action Items",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "takeaways",
+              "items": [
+                "Screening recommendations may vary among individuals based upon breast cancer risk.",
+                "Compared to average-risk people, those at high-risk for breast cancer may need to start screening at a younger age, more frequently, and with supplemental screening tests, such as breast MRI, in addition to mammogram.",
+                "Knowing your breast cancer risk can personalize your screening recommendations (see Module 1 on Breast Cancer Risk)."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Questions to ask your doctor",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "Do I meet high risk criteria for screening?",
+                "Am I eligible for enhanced screening with ultrasounds or MRIs?"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
