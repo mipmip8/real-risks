@@ -45,6 +45,10 @@ CHEVRON = (
 )
 
 
+POSITIONS = 9      # notches on each slider
+MIDDLE_POS = 5     # the neutral notch, and the default
+
+
 def e(text):
     """Escape a string for use in HTML text content."""
     return html.escape(str(text), quote=True)
@@ -283,21 +287,22 @@ def r_sliders(b, _):
     for item in b["items"]:
         framings = "".join(
             '<p class="slider__framing" data-framing="%d"%s>%s</p>'
-            % (i, "" if i == 3 else ' hidden=""', e(text))
+            % (i, "" if i == MIDDLE_POS else ' hidden=""', e(text))
             for i, text in enumerate(item["framings"], 1)
         )
-        # Position 3 renders as the default so the slide is still readable,
-        # and still says something true, with JavaScript unavailable.
+        # The middle position renders as the default so the slide is still
+        # readable, and still says something true, with JavaScript unavailable.
         cards.append(
-            """<li class="slider-card" data-pos="3" data-id="{id}">
+            """<li class="slider-card" data-pos="{mid}" data-id="{id}">
   <h2 class="slider__title">{title}</h2>
   <div class="slider__control">
     <span class="slider__end slider__end--left" aria-hidden="true">{left}</span>
     <span class="slider__end slider__end--right" aria-hidden="true">{right}</span>
-    <input type="range" id="slider-{id}" min="1" max="5" step="1" value="3"
-           class="slider__input" aria-describedby="framing-{id}"
-           aria-label="{title}. 1 means: {left}. 5 means: {right}."
+    <input type="range" id="slider-{id}" min="1" max="{max}" step="1" value="{mid}"
+           class="slider__input" list="slider-ticks" aria-describedby="framing-{id}"
+           aria-label="{title}. 1 means: {left}. {max} means: {right}."
            data-summary="{summaries}">
+    <span class="slider__notches" aria-hidden="true">{notches}</span>
   </div>
   <div class="slider__framings" id="framing-{id}" aria-live="polite">{framings}</div>
 </li>""".format(
@@ -305,12 +310,18 @@ def r_sliders(b, _):
                 title=e(item["title"]),
                 left=e(item["left"]),
                 right=e(item["right"]),
+                max=POSITIONS,
+                mid=MIDDLE_POS,
+                notches='<span class="notch"></span>' * POSITIONS,
                 summaries=e("|".join(item["summary"])),
                 framings=framings,
             )
         )
 
+    ticks = "".join('<option value="%d"></option>' % n
+                    for n in range(1, POSITIONS + 1))
     return """<div class="sliders">
+  <datalist id="slider-ticks">{ticks}</datalist>
   <p class="sliders__intro">{intro}</p>
   <p class="sliders__disclaimer">{disclaimer}</p>
   <ol class="slider-list">{cards}</ol>
@@ -326,6 +337,7 @@ def r_sliders(b, _):
     </div>
   </section>
 </div>""".format(
+        ticks=ticks,
         intro=e(b["intro"]),
         disclaimer=e(b["disclaimer"]),
         cards="".join(cards),

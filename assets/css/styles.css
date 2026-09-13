@@ -1210,12 +1210,50 @@ a {
   text-align: right;
 }
 
+/* The track is painted explicitly rather than left to accent-color: Chromium
+   derives the unfilled half from the accent, which renders near-black at the
+   mid-tone colours this scale uses. --fill is set from the slider position. */
 .slider__input {
   grid-column: 1 / -1;
   width: 100%;
-  margin: 10px 0 0;
-  accent-color: var(--teal-active);
+  height: 8px;
+  margin: 12px 0 0;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 4px;
+  background: linear-gradient(
+    to right,
+    var(--pos) 0 var(--fill, 50%),
+    #dcdce2 var(--fill, 50%) 100%
+  );
   cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.slider__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--pos);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+.slider__input::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--pos);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+.slider__input::-moz-range-track {
+  background: transparent;
 }
 
 .slider__framings {
@@ -1229,6 +1267,75 @@ a {
   background: var(--panel-blue);
   border-left: 5px solid var(--teal-active);
   font-size: 17px;
+}
+
+/* ---- Colour shifts with the notch ---- */
+.slider-card[data-pos="1"] {
+  --pos: #a1620a;
+  --pos-tint: #fbeed8;
+}
+.slider-card[data-pos="2"] {
+  --pos: #bd7d12;
+  --pos-tint: #fcf1de;
+}
+.slider-card[data-pos="3"] {
+  --pos: #d2962a;
+  --pos-tint: #fdf5e6;
+}
+.slider-card[data-pos="4"] {
+  --pos: #c0ab7e;
+  --pos-tint: #f7f3e9;
+}
+.slider-card[data-pos="5"] {
+  --pos: #8b8f96;
+  --pos-tint: #f1f2f4;
+}
+.slider-card[data-pos="6"] {
+  --pos: #6fa8b8;
+  --pos-tint: #eaf4f8;
+}
+.slider-card[data-pos="7"] {
+  --pos: #3f93ab;
+  --pos-tint: #e4f1f7;
+}
+.slider-card[data-pos="8"] {
+  --pos: #1d84a2;
+  --pos-tint: #ddeef6;
+}
+.slider-card[data-pos="9"] {
+  --pos: #0d6d88;
+  --pos-tint: #d6eaf4;
+}
+
+.slider-card {
+  transition: background 0.2s ease;
+}
+
+.slider__framing {
+  border-left-color: var(--pos);
+  background: var(--pos-tint);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.slider__title {
+  transition: color 0.2s ease;
+}
+
+/* Tick marks under the track. Browsers style datalist ticks inconsistently,
+   so these are drawn rather than left to the native rendering. */
+.slider__notches {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 9px;
+  margin-top: -2px;
+}
+
+.slider__notches .notch {
+  width: 2px;
+  height: 7px;
+  border-radius: 1px;
+  background: #c4c4cc;
 }
 
 /* ---- Summary ---- */

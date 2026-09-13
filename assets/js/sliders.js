@@ -1,9 +1,9 @@
 /* Tradeoff sliders.
  *
- * Each slider reports where the reader sits on one screening tradeoff. The
- * fact shown on a card never changes; moving a slider swaps the framing text
- * and shifts the emphasis of the visual, then rebuilds a summary the reader
- * can print or copy and take to an appointment.
+ * Each slider reports where the reader sits on one screening tradeoff. Moving
+ * one swaps the framing text, shifts the card's colour along a warm-to-cool
+ * scale, and rebuilds a summary the reader can print or copy and take to an
+ * appointment.
  *
  * Positions are saved per-browser in localStorage, the same as slide progress.
  */
@@ -16,7 +16,8 @@
   }
 
   var STORAGE_KEY = "realrisks.screening.sliders.v1";
-  var DEFAULT_POS = 3;
+  var POSITIONS = 9;
+  var DEFAULT_POS = 5; // the neutral notch
 
   var cards = Array.prototype.slice.call(root.querySelectorAll(".slider-card"));
   var summaryList = root.querySelector(".sliders__summary-list");
@@ -74,8 +75,15 @@
       }
     }
 
-    // Screen readers read the position as its meaning, not as a bare number.
     var input = card.querySelector(".slider__input");
+
+    // Drives the filled portion of the track; see --fill in the stylesheet.
+    input.style.setProperty(
+      "--fill",
+      ((pos - 1) / (POSITIONS - 1)) * 100 + "%"
+    );
+
+    // Screen readers read the position as its meaning, not as a bare number.
     input.setAttribute("aria-valuetext", summaryFor(card, pos));
   }
 
@@ -112,7 +120,7 @@
     var input = card.querySelector(".slider__input");
     var id = card.getAttribute("data-id");
     var pos = parseInt(saved[id], 10);
-    if (!(pos >= 1 && pos <= 5)) {
+    if (!(pos >= 1 && pos <= POSITIONS)) {
       pos = DEFAULT_POS;
     }
     input.value = String(pos);
