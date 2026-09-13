@@ -184,6 +184,7 @@
         },
         {
           "title": "Mammogram",
+          "menu": "Mammogram",
           "layout": "media-right",
           "blocks": [
             {
@@ -252,6 +253,7 @@
         },
         {
           "title": "Breast Ultrasound",
+          "menu": "Breast Ultrasound",
           "subtitle": "15–30 min",
           "layout": "media-right",
           "blocks": [
@@ -288,6 +290,7 @@
         },
         {
           "title": "Breast MRI",
+          "menu": "Breast MRI",
           "layout": "media-right",
           "blocks": [
             {
@@ -370,6 +373,7 @@
         },
         {
           "title": "Comparison of Different Screening Methods",
+          "menu": "Comparison of Different Screening Methods",
           "layout": "full",
           "blocks": [
             {
@@ -467,6 +471,7 @@
         },
         {
           "title": "Breast Biopsy",
+          "menu": "Breast Biopsy",
           "subtitle": "30–60 min",
           "layout": "media-right",
           "blocks": [
@@ -524,6 +529,7 @@
         },
         {
           "title": "Key Takeaways and Action Items",
+          "menu": "Key Takeaways and Action Items",
           "layout": "full",
           "blocks": [
             {

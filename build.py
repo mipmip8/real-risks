@@ -363,6 +363,46 @@ def crumbs(depth, trail):
     )
 
 
+def menu_entries(chapter):
+    """Group a chapter's slides into the entries shown in the home-page menu.
+
+    A slide carrying a "menu" label starts an entry, and that entry links
+    straight to it. Slides without one fold into the entry above, so detail
+    slides stay in the Next/Back flow without cluttering the menu — and a
+    topic spread over several slides appears once rather than repeating its
+    title. Slides before the first labelled one join that first entry.
+
+    A chapter with no labels at all lists every slide, which is the plain
+    behaviour chapters 1 and 3 rely on.
+    """
+    slug = chapter["slug"]
+    labelled = any(s.get("menu") for s in chapter["slides"])
+    entries = []
+    pending = []  # slides seen before the first labelled one
+
+    for index, slide in enumerate(chapter["slides"], 1):
+        sid = "%s-%d" % (slug, index)
+
+        if labelled:
+            label = slide.get("menu")
+        else:
+            label = slide["title"]
+            if slide.get("subtitle"):
+                label += " (%s)" % slide["subtitle"]
+
+        if label:
+            entries.append(
+                {"label": label, "index": index, "ids": pending + [sid]}
+            )
+            pending = []
+        elif entries:
+            entries[-1]["ids"].append(sid)
+        else:
+            pending.append(sid)
+
+    return entries
+
+
 def sidebar(module, total):
     return """<aside class="sidebar">
   <h2>Accomplishments</h2>
@@ -417,15 +457,16 @@ def build():
     for chapter in chapters:
         ids = [s["id"] for s in flat if s["chapter"] is chapter]
         links = []
-        for index, slide in enumerate(chapter["slides"], 1):
-            sid = "%s-%d" % (chapter["slug"], index)
-            label = slide["title"]
-            if slide.get("subtitle"):
-                label += " (%s)" % slide["subtitle"]
+        for entry in menu_entries(chapter):
             links.append(
-                '<li><span class="check" data-check-slide="%s"></span>'
+                '<li><span class="check" data-check-all="%s"></span>'
                 '<a href="%s/slide-%d.html">%s</a></li>'
-                % (sid, chapter["slug"], index, e(label))
+                % (
+                    ",".join(entry["ids"]),
+                    chapter["slug"],
+                    entry["index"],
+                    e(entry["label"]),
+                )
             )
         icon = CHAPTER_ICONS[chapter["icon"]]
         chapter_html.append(
@@ -438,7 +479,7 @@ def build():
            stroke-linecap="round" stroke-linejoin="round"
            aria-hidden="true">{icon}</svg>
       <span class="chapter__title">Chapter {num}: {title}</span>
-      <span class="check" data-check-chapter="{ids}"></span>
+      <span class="check" data-check-all="{ids}"></span>
       {chevron}
     </button>
   </h2>

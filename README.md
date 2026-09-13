@@ -51,10 +51,28 @@ python3 -m http.server 8000   # then open http://localhost:8000
 `build.py` deletes and recreates the `chapter-*/` directories on every run, so
 removing a slide from the JSON removes its page.
 
+### Controlling the home-page menu
+
+By default each slide gets its own entry in a chapter's dropdown. When a
+chapter has many slides on a few topics, that menu gets long and repeats
+titles. Adding a `"menu"` label to a slide groups the menu instead:
+
+- A slide with a `"menu"` label starts an entry, and the entry links to it.
+- Slides without one fold into the entry above, staying in the Next/Back flow
+  but out of the menu.
+- Slides before the first labelled slide join that first entry.
+- A chapter with no `"menu"` labels lists every slide, as chapters 1 and 3 do.
+
+Chapter 2 uses this: 11 slides collapse to 6 entries, so "Mammogram" appears
+once and opens the mammogram slide, with the `~15 min` walkthrough following
+on Next. An entry only shows its completion tick once **every** slide it
+covers has been visited.
+
 ### Slide schema
 
-Each slide has a `title`, an optional `subtitle`, an optional `media` array
-(images shown in a right-hand column), and a list of `blocks`. Available block
+Each slide has a `title`, an optional `subtitle`, an optional `menu` label
+(see above), an optional `media` array (images shown in a right-hand column),
+and a list of `blocks`. Available block
 types, all defined in `build.py`:
 
 | Type | Renders as |

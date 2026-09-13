@@ -81,36 +81,19 @@
       count.textContent = done + " / " + total;
     }
 
-    // Tick the checkbox next to each completed slide link.
-    var slideChecks = document.querySelectorAll("[data-check-slide]");
-    for (i = 0; i < slideChecks.length; i++) {
-      var el = slideChecks[i];
-      var isDone = visited.indexOf(el.getAttribute("data-check-slide")) !== -1;
-      el.classList.toggle("is-done", isDone);
-      el.setAttribute(
-        "aria-label",
-        isDone ? "Completed" : "Not completed yet"
-      );
-    }
-
-    // A chapter is complete when every one of its slides has been visited.
-    var chapterChecks = document.querySelectorAll("[data-check-chapter]");
-    for (i = 0; i < chapterChecks.length; i++) {
-      var chapterEl = chapterChecks[i];
-      var members = chapterEl
-        .getAttribute("data-check-chapter")
-        .split(",")
-        .filter(Boolean);
+    // Tick a checkbox once every slide it covers has been visited. A menu
+    // entry may stand for several slides, and a chapter for all of its own.
+    var checks = document.querySelectorAll("[data-check-all]");
+    for (i = 0; i < checks.length; i++) {
+      var el = checks[i];
+      var members = el.getAttribute("data-check-all").split(",").filter(Boolean);
       var complete =
         members.length > 0 &&
         members.every(function (id) {
           return visited.indexOf(id) !== -1;
         });
-      chapterEl.classList.toggle("is-done", complete);
-      chapterEl.setAttribute(
-        "aria-label",
-        complete ? "Chapter completed" : "Chapter not completed yet"
-      );
+      el.classList.toggle("is-done", complete);
+      el.setAttribute("aria-label", complete ? "Completed" : "Not completed yet");
     }
   }
 
