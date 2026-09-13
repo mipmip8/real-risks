@@ -651,7 +651,12 @@ a {
   text-align: center;
 }
 
+/* A fixed square keeps the three cards the same size even if a source image
+   arrives at a different shape. */
 .cards img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }

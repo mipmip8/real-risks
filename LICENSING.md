@@ -29,7 +29,7 @@ itself. They almost certainly require permission or removal:
 | `airplane.jpg` | Ch 1, slide 4 | Clip art |
 | `mammogram-illustration.jpg` | Ch 1, slide 4 | Stock illustration |
 | `type-mammogram-3d.jpg` | Ch 2, slide 1 | Stock illustration |
-| `type-ultrasound.jpg` | Ch 2, slide 1 | Stock illustration |
+| `type-ultrasound.jpg` | Ch 2, slide 1 | Stock illustration (canvas padded to a square with its own background colour; artwork unchanged) |
 | `type-mri.jpg` | Ch 2, slide 1 | Stock illustration |
 | `mammogram-diagram.jpg` | Ch 2, slide 2 | Medical illustration |
 | `mammo-step-preparation.jpg` | Ch 2, slide 3 | Clip art |
