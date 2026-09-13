@@ -553,6 +553,7 @@
       "slides": [
         {
           "title": "At what age should average risk women start breast cancer screening?",
+          "menu": "Commonly asked questions",
           "layout": "answer",
           "blocks": [
             {
@@ -595,6 +596,7 @@
         },
         {
           "title": "Breast Cancer Risk Categories",
+          "menu": "Breast Cancer Risk Categories",
           "layout": "full",
           "blocks": [
             {
@@ -628,6 +630,7 @@
         },
         {
           "title": "Average Risk",
+          "menu": "Average Risk (Age 40 to 74 years)",
           "subtitle": "Age 40 to 74 years",
           "layout": "full",
           "blocks": [
@@ -646,6 +649,7 @@
         },
         {
           "title": "High Risk",
+          "menu": "High Risk",
           "layout": "full",
           "blocks": [
             {
@@ -671,6 +675,7 @@
         },
         {
           "title": "Paying for Screening",
+          "menu": "Paying for Screening",
           "layout": "full",
           "blocks": [
             {
@@ -694,6 +699,7 @@
         },
         {
           "title": "Key Takeaways and Action Items",
+          "menu": "Key Takeaways and Action Items",
           "layout": "full",
           "blocks": [
             {
@@ -708,6 +714,7 @@
         },
         {
           "title": "Questions to ask your doctor",
+          "menu": "Questions to ask your doctor",
           "layout": "full",
           "blocks": [
             {
