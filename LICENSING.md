@@ -24,7 +24,7 @@ itself. They almost certainly require permission or removal:
 | File | Where it is used | Appears to be |
 | --- | --- | --- |
 | `smoke-detector.jpg` | Ch 1, slide 1 | Stock illustration |
-| `balance-scale.jpg` | *(extracted, not currently used)* | Clip art |
+| `balance-scale.jpg` | Ch 1, slide 2 | Clip art |
 | `burnt-cookies.jpg` | Ch 1, slide 3 | Stock illustration |
 | `airplane.jpg` | Ch 1, slide 4 | Clip art |
 | `mammogram-illustration.jpg` | Ch 1, slide 4 | Stock illustration |
@@ -43,6 +43,10 @@ itself. They almost certainly require permission or removal:
 | `biopsy-diagram.jpg` | Ch 2, slide 9 | **Mayo Foundation © — see above** |
 
 `favicon.svg` was written for this project and carries no third-party rights.
+
+The Raleway font in `assets/fonts/` is self-hosted under the SIL Open Font
+License 1.1 (`assets/fonts/OFL.txt`), which permits redistribution. Nothing to
+clear there.
 
 Two emoji glyphs in the original deck (a green check and a warning triangle)
 were **not** carried over — they are reproduced with text and CSS instead, so

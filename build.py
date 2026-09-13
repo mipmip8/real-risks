@@ -95,25 +95,33 @@ def _compare_items(items, mark):
     rows = []
     for item in items:
         rows.append(
-            '<li><span class="compare__mark" aria-hidden="true">%s</span>'
-            "<span><strong>%s</strong>%s</span></li>"
-            % (mark, e(item["title"]), e(item["text"]))
+            '<li><p class="compare__title">'
+            '<span class="compare__mark" aria-hidden="true">%s</span>%s</p>'
+            "<p>%s</p></li>" % (mark, e(item["title"]), e(item["text"]))
         )
     return "".join(rows)
 
 
-def r_compare(b, _):
+def r_compare(b, depth):
+    """Benefits and harms as staggered panels with a balance scale between,
+    matching the source slide. The column headings are visually hidden: the
+    slide does not show them, but screen readers need the two lists labelled.
+    """
     benefits, harms = b["benefits"], b["harms"]
     return (
         '<div class="compare">'
-        '<section class="compare__col compare__col--benefits"><h2>%s</h2>'
-        "<ul>%s</ul></section>"
-        '<section class="compare__col compare__col--harms"><h2>%s</h2>'
-        "<ul>%s</ul></section>"
+        '<section class="compare__col compare__col--benefits">'
+        '<h2 class="visually-hidden">%s</h2><ul>%s</ul></section>'
+        '<div class="compare__scale">'
+        '<img src="%sassets/img/balance-scale.jpg" alt="" width="342"'
+        ' height="360" loading="lazy"></div>'
+        '<section class="compare__col compare__col--harms">'
+        '<h2 class="visually-hidden">%s</h2><ul>%s</ul></section>'
         "</div>"
         % (
             e(benefits["heading"]),
             _compare_items(benefits["items"], "✓"),
+            depth,
             e(harms["heading"]),
             _compare_items(harms["items"], "⚠"),
         )
@@ -296,9 +304,7 @@ def shell(title, depth, body_attrs, breadcrumb, main, description):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{description}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<link rel="preload" href="{depth}assets/fonts/raleway-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{depth}assets/css/styles.css">
 <link rel="icon" href="{depth}assets/img/favicon.svg" type="image/svg+xml">
 </head>

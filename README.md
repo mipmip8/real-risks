@@ -26,7 +26,13 @@ build.py                  Generates the HTML from the JSON
 assets/css/styles.css     Styles
 assets/js/progress.js     Progress tracking, accordion, arrow-key navigation
 assets/img/               Images
+assets/fonts/             Raleway, self-hosted (SIL OFL 1.1)
 ```
+
+The site is set in **Raleway**, the same font as the source deck. It is
+self-hosted rather than loaded from Google Fonts, so the site renders correctly
+offline, makes no third-party requests, and never silently falls back to a
+different font.
 
 **The HTML files are generated. Don't edit them by hand** — your changes will
 be overwritten. Edit `content/screening.json` instead, then rebuild.
