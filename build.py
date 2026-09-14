@@ -276,40 +276,6 @@ def r_twocol(b, _):
     return '<div class="twocol">%s</div>' % "".join(cols)
 
 
-def r_schedule(b, _):
-    """Recommendation columns, optionally colour-toned and sub-grouped.
-
-    A column may hold one list of items, or several titled groups — high risk
-    splits by age, average risk does not.
-    """
-
-    def arrow_list(items):
-        return "<ul>%s</ul>" % "".join("<li>%s</li>" % e(i) for i in items)
-
-    cols = []
-    for col in b["columns"]:
-        parts = []
-        if col.get("title"):
-            parts.append("<h2>%s</h2>" % e(col["title"]))
-        if col.get("subtitle"):
-            parts.append('<p class="schedule__subtitle">%s</p>' % e(col["subtitle"]))
-
-        if col.get("groups"):
-            for group in col["groups"]:
-                parts.append(
-                    '<div class="schedule__group"><h3>%s</h3>%s</div>'
-                    % (e(group["title"]), arrow_list(group["items"]))
-                )
-        else:
-            parts.append(arrow_list(col["items"]))
-
-        tone = " schedule__col--%s" % e(col["tone"]) if col.get("tone") else ""
-        cols.append(
-            '<section class="schedule__col%s">%s</section>' % (tone, "".join(parts))
-        )
-    return '<div class="schedule">%s</div>' % "".join(cols)
-
-
 def r_factcards(b, _):
     items = []
     for i in b["items"]:
@@ -398,7 +364,6 @@ RENDERERS = {
     "birads": r_birads,
     "answer": r_answer,
     "twocol": r_twocol,
-    "schedule": r_schedule,
     "factcards": r_factcards,
 }
 

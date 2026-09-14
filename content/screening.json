@@ -635,47 +635,6 @@
           ]
         },
         {
-          "title": "Average Risk and High Risk",
-          "menu": "Average Risk and High Risk",
-          "layout": "full",
-          "blocks": [
-            {
-              "type": "schedule",
-              "columns": [
-                {
-                  "tone": "calm",
-                  "title": "Average Risk",
-                  "subtitle": "Age 40 to 74 years",
-                  "items": [
-                    "Doctor's appointment every year",
-                    "Screening mammogram every 1-2 years"
-                  ]
-                },
-                {
-                  "tone": "alert",
-                  "title": "High Risk",
-                  "groups": [
-                    {
-                      "title": "Under 40 years old",
-                      "items": [
-                        "At initial visit, determine when to start screening",
-                        "Screening may start 5 to 10 years before the youngest age of breast cancer diagnosis in a family member or based upon positive genetic testing in a breast cancer risk gene"
-                      ]
-                    },
-                    {
-                      "title": "40 years or older",
-                      "items": [
-                        "Doctor's appointment every year",
-                        "Annual screening mammogram alternating every 6 months with annual breast MRI"
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
           "title": "Paying for Screening",
           "menu": "Paying for Screening",
           "layout": "full",

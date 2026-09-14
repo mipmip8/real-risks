@@ -84,7 +84,6 @@ types, all defined in `build.py`:
 | `takeaways` | The starred key-takeaways list |
 | `compare` | Side-by-side benefits and harms |
 | `twocol` | Two colour-coded columns (average vs. high risk) |
-| `schedule` | Arrow-bulleted recommendation columns |
 | `cards` | A row of captioned images |
 | `steps` | Numbered preparation / positioning / imaging cards |
 | `qablocks` | Question-and-answer pairs |
