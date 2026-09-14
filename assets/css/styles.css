@@ -167,6 +167,31 @@ a {
   text-decoration: underline;
 }
 
+/* Language toggle. Sits in the header next to Module home, the position the
+   existing RealRisks site uses for it. */
+.lang-toggle {
+  padding: 6px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.lang-toggle:hover {
+  background: rgba(255, 255, 255, 0.14);
+  text-decoration: none !important;
+}
+
+@media (max-width: 560px) {
+  .site-nav {
+    gap: 14px;
+  }
+
+  .lang-toggle {
+    padding: 4px 12px;
+    font-size: 15px;
+  }
+}
+
 /* ---------- Layout ---------- */
 
 .page {
@@ -968,6 +993,51 @@ a {
 
 .twocol__col li {
   margin-bottom: 10px;
+}
+
+/* Schedule (arrow lists) */
+
+.schedule {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 26px;
+  align-items: start;
+}
+
+.schedule__col {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+}
+
+.schedule__col h2 {
+  margin: 0 0 12px;
+  font-size: 21px;
+  color: var(--purple-heading);
+}
+
+.schedule__col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.schedule__col li {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 18px;
+}
+
+.schedule__col li::before {
+  content: "\2794";
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.schedule__col li:last-child {
+  margin-bottom: 0;
 }
 
 /* Fact cards */

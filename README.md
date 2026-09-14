@@ -1,9 +1,9 @@
 # RealRisks — Breast Cancer Screening module
 
 A static educational website for women at high risk for breast cancer. This
-repository contains **Module 2: Breast Cancer Screening**, built as 25
-individual slide pages across 3 chapters, styled to match the existing
-RealRisks design.
+repository contains **Module 2: Breast Cancer Screening** in **English and
+Spanish**, built as 26 individual slide pages per language across 3 chapters,
+styled to match the existing RealRisks design.
 
 There is no server and no build step at request time — GitHub Pages serves the
 committed HTML directly.
@@ -17,12 +17,14 @@ Clear them before making the repository public.
 ## Structure
 
 ```
-index.html                Module home: 3 chapters, progress sidebar
+index.html                English module home
 chapter-1/slide-N.html    Overview (5 slides)
 chapter-2/slide-N.html    Types of Screening Tests (11 slides)
-chapter-3/slide-N.html    Screening Recommendations (9 slides)
-content/screening.json    All slide text and image references — edit this
-build.py                  Generates the HTML from the JSON
+chapter-3/slide-N.html    Screening Recommendations (10 slides)
+es/…                      The same tree in Spanish
+content/screening.en.json English slide text, image references and UI strings
+content/screening.es.json The same, in Spanish
+build.py                  Generates both language trees from the JSON
 assets/css/styles.css     Styles
 assets/js/progress.js     Progress tracking, accordion, arrow-key navigation
 assets/img/               Images
@@ -35,12 +37,30 @@ offline, makes no third-party requests, and never silently falls back to a
 different font.
 
 **The HTML files are generated. Don't edit them by hand** — your changes will
-be overwritten. Edit `content/screening.json` instead, then rebuild.
+be overwritten. Edit the content file for the language you mean, then rebuild.
+
+## Languages
+
+English is served from the site root, Spanish from `/es/`, and a toggle in the
+header links each page to the same page in the other language. Each page sets
+its own `lang` attribute and declares the other via `hreflang`, so screen
+readers pronounce it correctly and the pair is machine-discoverable.
+
+Progress is deliberately **shared** between languages: slide ids do not carry a
+language, so switching part-way through does not reset the reader's progress.
+
+Both content files must describe the same chapters, the same number of slides,
+and the same number of menu entries, or a toggle would land on a page that does
+not exist. `build.py` refuses to build if they drift apart.
+
+See [`TRANSLATION.md`](TRANSLATION.md) for what in the Spanish version still
+needs a fluent review, and for the places where the two source decks state
+different medical content.
 
 ## Editing content
 
 ```bash
-# 1. Edit content/screening.json
+# 1. Edit content/screening.en.json or content/screening.es.json
 # 2. Regenerate the pages (Python 3, no dependencies)
 python3 build.py
 # 3. Preview locally
@@ -48,8 +68,8 @@ python3 -m http.server 8000   # then open http://localhost:8000
 # 4. Commit both the JSON and the regenerated HTML
 ```
 
-`build.py` deletes and recreates the `chapter-*/` directories on every run, so
-removing a slide from the JSON removes its page.
+`build.py` recreates the generated pages on every run, so removing a slide
+from a content file removes its page.
 
 ### Controlling the home-page menu
 
@@ -84,6 +104,7 @@ types, all defined in `build.py`:
 | `takeaways` | The starred key-takeaways list |
 | `compare` | Side-by-side benefits and harms |
 | `twocol` | Two colour-coded columns (average vs. high risk) |
+| `schedule` | Arrow-bulleted recommendation columns |
 | `cards` | A row of captioned images |
 | `steps` | Numbered preparation / positioning / imaging cards |
 | `qablocks` | Question-and-answer pairs |
@@ -115,6 +136,7 @@ branch** and pick the branch plus the `/ (root)` folder. The included
 
 ## Content source
 
-All slide text is transcribed verbatim from the source deck
-(`RR Usability Testing - Screening`). Only typographic artifacts from the PDF
-were corrected. This site is for education and does not provide medical advice.
+All slide text is transcribed verbatim from the source decks
+(`RR Usability Testing - Screening` and `Copy Spanish Real Risk slides`). Only
+typographic artifacts from the PDFs were corrected. This site is for education
+and does not provide medical advice.

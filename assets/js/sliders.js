@@ -19,6 +19,12 @@
   var POSITIONS = 9;
   var DEFAULT_POS = 5; // the neutral notch
 
+  // Localised strings travel on the element rather than living in this file,
+  // so the same script serves every language.
+  function str(name, fallback) {
+    return root.getAttribute("data-" + name) || fallback;
+  }
+
   var cards = Array.prototype.slice.call(root.querySelectorAll(".slider-card"));
   var summaryList = root.querySelector(".sliders__summary-list");
   var status = root.querySelector(".sliders__status");
@@ -144,10 +150,8 @@
       return "- " + card.querySelector(".slider__title").textContent + ": " +
         summaryFor(card, pos);
     });
-    return "What matters most to me about breast cancer screening\n\n" +
-      lines.join("\n") +
-      "\n\nCreated with the RealRisks screening module. This is a list of " +
-      "personal priorities, not medical advice.\n";
+    return str("clipboard-title", "What matters most to me") + "\n\n" +
+      lines.join("\n") + "\n\n" + str("clipboard-footer", "") + "\n";
   }
 
   var printBtn = root.querySelector("[data-slider-print]");
@@ -164,14 +168,14 @@
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(
           function () {
-            announce("Copied to your clipboard.");
+            announce(str("copied", "Copied."));
           },
           function () {
-            announce("Could not copy. You can select the list and copy it.");
+            announce(str("copy-fail", "Could not copy."));
           }
         );
       } else {
-        announce("Copying is not supported here. You can select the list and copy it.");
+        announce(str("copy-unsupported", "Copying is not supported here."));
       }
     });
   }
@@ -185,7 +189,7 @@
       });
       renderSummary();
       save(currentPositions());
-      announce("Sliders reset to the middle.");
+      announce(str("reset", "Reset to the middle."));
     });
   }
 

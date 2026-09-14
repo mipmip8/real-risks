@@ -1,4 +1,35 @@
 {
+  "ui": {
+    "lang": "en",
+    "switchTo": "Español",
+    "switchToLang": "es",
+    "skipToContent": "Skip to content",
+    "moduleHome": "Module home",
+    "home": "Home",
+    "chapter": "Chapter",
+    "back": "Back",
+    "next": "Next",
+    "finish": "Finish module",
+    "slideCount": "Slide {n} of {total} in Chapter {ch}",
+    "accomplishments": "Accomplishments",
+    "progressHint": "Work through each section to complete this module!",
+    "resetProgress": "Reset my progress",
+    "resetConfirm": "Reset your progress through this module?",
+    "footerDisclaimer": "This website is for education only.",
+    "footerDisclaimerRest": " It does not give medical advice and is not a substitute for talking with your own doctor about your breast cancer risk and screening plan.",
+    "footerProgress": "Your progress is saved only in this browser. Clearing your browser data will reset it.",
+    "revealShow": "Click to reveal the answer",
+    "revealHide": "Hide the answer",
+    "sliderCopied": "Copied to your clipboard.",
+    "sliderCopyFail": "Could not copy. You can select the list and copy it.",
+    "sliderCopyUnsupported": "Copying is not supported here. You can select the list and copy it.",
+    "sliderReset": "Sliders reset to the middle.",
+    "sliderClipboardTitle": "What matters most to me about breast cancer screening",
+    "sliderClipboardFooter": "Created with the RealRisks screening module. This is a list of personal priorities, not medical advice.",
+    "completed": "Completed",
+    "notCompleted": "Not completed yet",
+    "progressAria": "{done} of {total} slides completed"
+  },
   "module": {
     "number": 2,
     "title": "Breast Cancer Screening",
@@ -628,6 +659,51 @@
                     "Have a lifetime risk of breast cancer of about 20-25% or greater",
                     "Have had a breast biopsy with atypia",
                     "Have had chest radiation for cancer treatment before age 30"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Average Risk",
+          "menu": "Average Risk",
+          "subtitle": "Age 40 to 74 years",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "schedule",
+              "columns": [
+                {
+                  "items": [
+                    "Doctor's appointment every year",
+                    "Screening mammogram every 1-2 years"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "High Risk",
+          "menu": "High Risk",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "schedule",
+              "columns": [
+                {
+                  "title": "Under 40 years old",
+                  "items": [
+                    "At initial visit, determine when to start screening",
+                    "Screening may start 5 to 10 years before the youngest age of breast cancer diagnosis in a family member or based upon positive genetic testing in a breast cancer risk gene"
+                  ]
+                },
+                {
+                  "title": "40 years or older",
+                  "items": [
+                    "Doctor's appointment every year",
+                    "Annual screening mammogram alternating every 6 months with annual breast MRI"
                   ]
                 }
               ]

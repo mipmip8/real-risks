@@ -11,7 +11,14 @@ import os
 import shutil
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-CONTENT = os.path.join(ROOT, "content", "screening.json")
+# Each language is a parallel content file rendered into its own tree: English
+# at the site root, Spanish under es/. The two files must describe the same
+# chapters and the same number of slides, so every page has a counterpart to
+# toggle to; build() asserts that.
+LANGUAGES = [
+    {"code": "en", "root": "", "content": "screening.en.json"},
+    {"code": "es", "root": "es/", "content": "screening.es.json"},
+]
 
 LOGO = (
     '<svg class="logo__mark" width="34" height="34" viewBox="0 0 24 24" '
@@ -59,15 +66,15 @@ def e(text):
 # ---------------------------------------------------------------------------
 
 
-def r_text(b, _):
+def r_text(b, _ctx):
     return "<p>%s</p>" % e(b["text"])
 
 
-def r_callout(b, _):
+def r_callout(b, _ctx):
     return '<p class="callout">%s</p>' % e(b["text"])
 
 
-def r_bullets(b, _):
+def r_bullets(b, _ctx):
     out = []
     if b.get("heading"):
         out.append('<h2 class="block-heading">%s</h2>' % e(b["heading"]))
@@ -76,7 +83,7 @@ def r_bullets(b, _):
     return "<div>%s</div>" % "".join(out) if b.get("heading") else out[0]
 
 
-def r_numbered(b, _):
+def r_numbered(b, _ctx):
     out = []
     if b.get("heading"):
         out.append('<h2 class="block-heading">%s</h2>' % e(b["heading"]))
@@ -106,7 +113,7 @@ def _compare_items(items, mark):
     return "".join(rows)
 
 
-def r_compare(b, depth):
+def r_compare(b, ctx):
     """Benefits and harms as staggered panels with a balance scale between,
     matching the source slide. The column headings are visually hidden: the
     slide does not show them, but screen readers need the two lists labelled.
@@ -125,19 +132,19 @@ def r_compare(b, depth):
         % (
             e(benefits["heading"]),
             _compare_items(benefits["items"], "✓"),
-            depth,
+            ctx["assets"],
             e(harms["heading"]),
             _compare_items(harms["items"], "⚠"),
         )
     )
 
 
-def r_equation(b, depth):
+def r_equation(b, ctx):
     def fig(side):
         return (
             '<figure><img src="%sassets/img/%s" alt="%s" loading="lazy">'
             "<figcaption>%s</figcaption></figure>"
-            % (depth, e(side["src"]), e(side["alt"]), e(side["label"]))
+            % (ctx["assets"], e(side["src"]), e(side["alt"]), e(side["label"]))
         )
 
     return (
@@ -148,7 +155,7 @@ def r_equation(b, depth):
     )
 
 
-def r_takeaways(b, _):
+def r_takeaways(b, _ctx):
     items = "".join(
         '<li><span class="star" aria-hidden="true">★</span>'
         "<span>%s</span></li>" % e(i)
@@ -157,7 +164,7 @@ def r_takeaways(b, _):
     return '<ul class="takeaways">%s</ul>' % items
 
 
-def r_cards(b, depth):
+def r_cards(b, ctx):
     """Captioned image cards, each optionally linking to the slide it names.
 
     The whole card is one link rather than the image and caption being two, so
@@ -169,30 +176,30 @@ def r_cards(b, depth):
         figure = (
             '<figure><img src="%sassets/img/%s" alt="%s" loading="lazy">'
             "<figcaption>%s</figcaption></figure>"
-            % (depth, e(i["src"]), e(i["alt"]), e(i["title"]))
+            % (ctx["assets"], e(i["src"]), e(i["alt"]), e(i["title"]))
         )
         if i.get("href"):
             figure = (
                 '<a class="cards__link" href="%s%s" aria-label="%s">%s</a>'
-                % (depth, e(i["href"]), e(i["title"]), figure)
+                % (ctx["assets"], e(i["href"]), e(i["title"]), figure)
             )
         items.append("<li>%s</li>" % figure)
     return '<ul class="cards">%s</ul>' % "".join(items)
 
 
-def r_steps(b, depth):
+def r_steps(b, ctx):
     items = []
     for step in b["items"]:
         bullets = "".join("<li>%s</li>" % e(x) for x in step["items"])
         items.append(
             '<li><h2>%s</h2><img src="%sassets/img/%s" alt="%s" loading="lazy">'
             "<ul>%s</ul></li>"
-            % (e(step["title"]), depth, e(step["src"]), e(step["alt"]), bullets)
+            % (e(step["title"]), ctx["assets"], e(step["src"]), e(step["alt"]), bullets)
         )
     return '<ol class="steps">%s</ol>' % "".join(items)
 
 
-def r_qablocks(b, _):
+def r_qablocks(b, _ctx):
     items = "".join(
         "<div><dt>%s</dt><dd>%s</dd></div>" % (e(i["q"]), e(i["a"]))
         for i in b["items"]
@@ -200,7 +207,7 @@ def r_qablocks(b, _):
     return '<dl class="qablocks">%s</dl>' % items
 
 
-def r_table(b, _):
+def r_table(b, _ctx):
     head = "".join("<th scope='col'>%s</th>" % e(h) for h in b["headers"])
     rows = []
     for row in b["rows"]:
@@ -214,7 +221,7 @@ def r_table(b, _):
     )
 
 
-def r_birads(b, _):
+def r_birads(b, _ctx):
     head = "".join("<th scope='col'>%s</th>" % e(h) for h in b["headers"])
     rows = []
     for row in b["rows"]:
@@ -235,7 +242,7 @@ def r_birads(b, _):
     )
 
 
-def r_answer(b, _):
+def r_answer(b, ctx):
     notes = "".join("<p>%s</p>" % e(n) for n in b["notes"])
     body = '<p class="answer__value">%s</p><div class="answer__notes">%s</div>' % (
         e(b["answer"]),
@@ -252,15 +259,16 @@ def r_answer(b, _):
     return (
         '<div class="answer"><details class="reveal">'
         '<summary class="reveal__toggle">'
-        '<span class="reveal__show">Click to reveal the answer</span>'
-        '<span class="reveal__hide">Hide the answer</span>'
+        '<span class="reveal__show">%s</span>'
+        '<span class="reveal__hide">%s</span>'
         "</summary>"
         '<div class="reveal__body">%s</div>'
-        "</details></div>" % body
+        "</details></div>"
+        % (e(ctx["ui"]["revealShow"]), e(ctx["ui"]["revealHide"]), body)
     )
 
 
-def r_twocol(b, _):
+def r_twocol(b, _ctx):
     cols = []
     for col in b["columns"]:
         sub = (
@@ -276,7 +284,19 @@ def r_twocol(b, _):
     return '<div class="twocol">%s</div>' % "".join(cols)
 
 
-def r_factcards(b, _):
+def r_schedule(b, _ctx):
+    """Recommendation columns with arrow bullets, one column per age group."""
+    cols = []
+    for col in b["columns"]:
+        title = "<h2>%s</h2>" % e(col["title"]) if col.get("title") else ""
+        items = "".join("<li>%s</li>" % e(i) for i in col["items"])
+        cols.append(
+            '<section class="schedule__col">%s<ul>%s</ul></section>' % (title, items)
+        )
+    return '<div class="schedule">%s</div>' % "".join(cols)
+
+
+def r_factcards(b, _ctx):
     items = []
     for i in b["items"]:
         title = "<strong>%s</strong>" % e(i["title"]) if i.get("title") else ""
@@ -284,7 +304,7 @@ def r_factcards(b, _):
     return '<ul class="factcards">%s</ul>' % "".join(items)
 
 
-def r_sliders(b, _):
+def r_sliders(b, ctx):
     cards = []
     for item in b["items"]:
         framings = "".join(
@@ -322,7 +342,11 @@ def r_sliders(b, _):
 
     ticks = "".join('<option value="%d"></option>' % n
                     for n in range(1, POSITIONS + 1))
-    return """<div class="sliders">
+    ui = ctx["ui"]
+    return """<div class="sliders"
+     data-copied="{s_copied}" data-copy-fail="{s_fail}"
+     data-copy-unsupported="{s_unsupported}" data-reset="{s_reset}"
+     data-clipboard-title="{s_title}" data-clipboard-footer="{s_footer}">
   <datalist id="slider-ticks">{ticks}</datalist>
   <p class="sliders__intro">{intro}</p>
   <p class="sliders__disclaimer">{disclaimer}</p>
@@ -340,6 +364,12 @@ def r_sliders(b, _):
   </section>
 </div>""".format(
         ticks=ticks,
+        s_copied=e(ui["sliderCopied"]),
+        s_fail=e(ui["sliderCopyFail"]),
+        s_unsupported=e(ui["sliderCopyUnsupported"]),
+        s_reset=e(ui["sliderReset"]),
+        s_title=e(ui["sliderClipboardTitle"]),
+        s_footer=e(ui["sliderClipboardFooter"]),
         intro=e(b["intro"]),
         disclaimer=e(b["disclaimer"]),
         cards="".join(cards),
@@ -364,17 +394,20 @@ RENDERERS = {
     "birads": r_birads,
     "answer": r_answer,
     "twocol": r_twocol,
+    "schedule": r_schedule,
     "factcards": r_factcards,
 }
 
 
-def render_blocks(blocks, depth):
+def render_blocks(blocks, ctx):
+    """ctx carries `assets` (prefix to the site root) and `ui` (localised
+    strings), since some blocks need one, some the other."""
     out = []
     for block in blocks:
         renderer = RENDERERS.get(block["type"])
         if renderer is None:
             raise SystemExit("Unknown block type: %s" % block["type"])
-        out.append(renderer(block, depth))
+        out.append(renderer(block, ctx))
     return "\n".join(out)
 
 
@@ -383,27 +416,38 @@ def render_blocks(blocks, depth):
 # ---------------------------------------------------------------------------
 
 
-def shell(title, depth, body_attrs, breadcrumb, main, description):
+def shell(ui, title, assets, links, toggle, body_attrs, breadcrumb, main,
+          description):
+    """One page.
+
+    `assets` steps up to the site root (stylesheet, fonts, images are shared
+    across languages); `links` steps up to the language root (every in-page
+    link stays inside its own language). `toggle` is the same page in the
+    other language.
+    """
     return """<!DOCTYPE html>
-<html lang="en">
+<html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{description}">
-<link rel="preload" href="{depth}assets/fonts/raleway-variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="{depth}assets/css/styles.css">
-<link rel="icon" href="{depth}assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="{assets}assets/fonts/raleway-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{assets}assets/css/styles.css">
+<link rel="icon" href="{assets}assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate" hreflang="{other_lang}" href="{toggle}">
 </head>
 <body {body_attrs}>
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">{skip}</a>
 <header class="site-header">
   <div class="site-header__inner">
-    <a class="logo" href="{depth}index.html">
+    <a class="logo" href="{links}index.html">
       {logo}<span><span class="logo__real">REAL</span>RISKS</span>
     </a>
     <nav class="site-nav" aria-label="Main">
-      <a href="{depth}index.html">Module home</a>
+      <a href="{links}index.html">{module_home}</a>
+      <a class="lang-toggle" href="{toggle}" lang="{other_lang}"
+         hreflang="{other_lang}">{switch_to}</a>
     </nav>
   </div>
 </header>
@@ -415,25 +459,32 @@ def shell(title, depth, body_attrs, breadcrumb, main, description):
 </div>
 <footer class="site-footer">
   <div>
-    <p><strong>This website is for education only.</strong> It does not give
-    medical advice and is not a substitute for talking with your own doctor
-    about your breast cancer risk and screening plan.</p>
-    <p>Your progress is saved only in this browser. Clearing your browser data
-    will reset it.</p>
+    <p><strong>{disclaimer}</strong>{disclaimer_rest}</p>
+    <p>{progress_note}</p>
   </div>
 </footer>
-<script src="{depth}assets/js/progress.js"></script>
-<script src="{depth}assets/js/sliders.js"></script>
+<script src="{assets}assets/js/progress.js"></script>
+<script src="{assets}assets/js/sliders.js"></script>
 </body>
 </html>
 """.format(
+        lang=e(ui["lang"]),
+        other_lang=e(ui["switchToLang"]),
         title=e(title),
         description=e(description),
-        depth=depth,
+        assets=assets,
+        links=links,
+        toggle=e(toggle),
         body_attrs=body_attrs,
         logo=LOGO,
+        skip=e(ui["skipToContent"]),
+        module_home=e(ui["moduleHome"]),
+        switch_to=e(ui["switchTo"]),
         breadcrumb=breadcrumb,
         main=main,
+        disclaimer=e(ui["footerDisclaimer"]),
+        disclaimer_rest=e(ui["footerDisclaimerRest"]),
+        progress_note=e(ui["footerProgress"]),
     )
 
 
@@ -491,16 +542,23 @@ def menu_entries(chapter):
     return entries
 
 
-def sidebar(module, total):
+def sidebar(ui, total):
     return """<aside class="sidebar">
-  <h2>Accomplishments</h2>
+  <h2>{heading}</h2>
   <div class="accomplishments">
     <div class="progress-track"><div class="progress-fill"></div></div>
     <p class="progress-count">0 / {total}</p>
-    <p>Work through each section to complete this module!</p>
-    <button type="button" class="reset-progress">Reset my progress</button>
+    <p>{hint}</p>
+    <button type="button" class="reset-progress"
+            data-confirm="{confirm}">{reset}</button>
   </div>
-</aside>""".format(total=total)
+</aside>""".format(
+        heading=e(ui["accomplishments"]),
+        total=total,
+        hint=e(ui["progressHint"]),
+        confirm=e(ui["resetConfirm"]),
+        reset=e(ui["resetProgress"]),
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -508,14 +566,30 @@ def sidebar(module, total):
 # ---------------------------------------------------------------------------
 
 
-def build():
-    with open(CONTENT, encoding="utf-8") as fh:
+def progress_attrs(ui):
+    """Localised strings progress.js needs, carried on <body>."""
+    return (
+        'data-i18n-completed="%s" data-i18n-not-completed="%s" '
+        'data-i18n-progress="%s"'
+        % (e(ui["completed"]), e(ui["notCompleted"]), e(ui["progressAria"]))
+    )
+
+
+def toggle_href(lang_root, inner, other_root):
+    """Relative link from a page to the same page in the other language."""
+    depth = "../" * (lang_root + inner).count("/")
+    return depth + other_root + inner
+
+
+def build_language(lang, other_root):
+    with open(os.path.join(ROOT, "content", lang["content"]), encoding="utf-8") as fh:
         data = json.load(fh)
 
+    ui = data["ui"]
     module = data["module"]
     chapters = data["chapters"]
+    lang_root = lang["root"]
 
-    # Flat, ordered list of every slide plus its neighbours.
     flat = []
     for chapter in chapters:
         for index, slide in enumerate(chapter["slides"], 1):
@@ -531,14 +605,21 @@ def build():
 
     total = len(flat)
     all_ids = ",".join(s["id"] for s in flat)
-    module_label = "Module %d: %s" % (module["number"], module["title"])
+    module_label = "%s %d: %s" % (
+        "Module" if ui["lang"] == "en" else "Módulo",
+        module["number"],
+        module["title"],
+    )
 
-    # --- Clean previously generated chapter directories -------------------
+    out_root = os.path.join(ROOT, *[p for p in lang_root.split("/") if p])
+    if lang_root and os.path.isdir(out_root):
+        shutil.rmtree(out_root)
     for chapter in chapters:
-        out_dir = os.path.join(ROOT, chapter["slug"])
-        if os.path.isdir(out_dir):
-            shutil.rmtree(out_dir)
-        os.makedirs(out_dir)
+        os.makedirs(os.path.join(out_root, chapter["slug"]), exist_ok=True)
+    for chapter in chapters:
+        out_dir = os.path.join(out_root, chapter["slug"])
+        for name in os.listdir(out_dir):
+            os.remove(os.path.join(out_dir, name))
 
     # --- Home page --------------------------------------------------------
     chapter_html = []
@@ -556,7 +637,6 @@ def build():
                     e(entry["label"]),
                 )
             )
-        icon = CHAPTER_ICONS[chapter["icon"]]
         chapter_html.append(
             """<li class="chapter" data-open="{open}">
   <h2>
@@ -566,7 +646,7 @@ def build():
            fill="none" stroke="currentColor" stroke-width="1.8"
            stroke-linecap="round" stroke-linejoin="round"
            aria-hidden="true">{icon}</svg>
-      <span class="chapter__title">Chapter {num}: {title}</span>
+      <span class="chapter__title">{chapter_word} {num}: {title}</span>
       <span class="check" data-check-all="{ids}"></span>
       {chevron}
     </button>
@@ -577,7 +657,8 @@ def build():
 </li>""".format(
                 open="true" if chapter["number"] == 1 else "false",
                 slug=chapter["slug"],
-                icon=icon,
+                icon=CHAPTER_ICONS[chapter["icon"]],
+                chapter_word=e(ui["chapter"]),
                 num=chapter["number"],
                 title=e(chapter["title"]),
                 ids=",".join(ids),
@@ -601,16 +682,20 @@ def build():
         label=e(module_label),
         intro=e(module["intro"]),
         chapters="\n".join(chapter_html),
-        sidebar=sidebar(module, total),
+        sidebar=sidebar(ui, total),
     )
 
-    with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as fh:
+    assets = "../" * lang_root.count("/")
+    with open(os.path.join(out_root, "index.html"), "w", encoding="utf-8") as fh:
         fh.write(
             shell(
+                ui,
                 title="%s | RealRisks" % module_label,
-                depth="",
-                body_attrs='data-total-slides="%d" data-all-slide-ids="%s"'
-                % (total, all_ids),
+                assets=assets,
+                links="",
+                toggle=toggle_href(lang_root, "index.html", other_root),
+                body_attrs='data-total-slides="%d" data-all-slide-ids="%s" %s'
+                % (total, all_ids, progress_attrs(ui)),
                 breadcrumb=crumbs("", [(module["title"], None)]),
                 main=home_main,
                 description=module["intro"],
@@ -621,9 +706,10 @@ def build():
     for position, entry in enumerate(flat):
         slide = entry["slide"]
         chapter = entry["chapter"]
-        depth = "../"
+        links = "../"
+        assets = "../" * (lang_root + entry["path"]).count("/")
 
-        blocks = render_blocks(slide["blocks"], depth)
+        blocks = render_blocks(slide["blocks"], {"assets": assets, "ui": ui})
         media = slide.get("media") or []
         if media:
             figures = []
@@ -635,7 +721,7 @@ def build():
                 )
                 figures.append(
                     '<figure><img src="%sassets/img/%s" alt="%s">%s</figure>'
-                    % (depth, e(m["src"]), e(m["alt"]), caption)
+                    % (assets, e(m["src"]), e(m["alt"]), caption)
                 )
             body = (
                 '<div class="slide__body is-split">'
@@ -656,17 +742,22 @@ def build():
         next_entry = flat[position + 1] if position < total - 1 else None
 
         prev_link = (
-            '<a class="btn" rel="prev" href="%s%s">Back</a>'
-            % (depth, prev_entry["path"])
+            '<a class="btn" rel="prev" href="%s%s">%s</a>'
+            % (links, prev_entry["path"], e(ui["back"]))
             if prev_entry
-            else '<a class="btn" rel="prev" href="%sindex.html">Back</a>' % depth
+            else '<a class="btn" rel="prev" href="%sindex.html">%s</a>'
+            % (links, e(ui["back"]))
         )
         next_link = (
-            '<a class="btn btn--next btn--primary" rel="next" href="%s%s">Next</a>'
-            % (depth, next_entry["path"])
+            '<a class="btn btn--next btn--primary" rel="next" href="%s%s">%s</a>'
+            % (links, next_entry["path"], e(ui["next"]))
             if next_entry
             else '<a class="btn btn--next btn--primary" rel="next" '
-            'href="%sindex.html">Finish module</a>' % depth
+            'href="%sindex.html">%s</a>' % (links, e(ui["finish"]))
+        )
+
+        count_text = ui["slideCount"].format(
+            n=entry["index"], total=len(chapter["slides"]), ch=chapter["number"]
         )
 
         slide_main = """<div class="slide">
@@ -674,7 +765,7 @@ def build():
   {body}
   <nav class="slide-nav" aria-label="Slide navigation">
     {prev}
-    <p class="slide-nav__count">Slide {n} of {count} in Chapter {cnum}</p>
+    <p class="slide-nav__count">{count_text}</p>
     {next}
   </nav>
 </div>""".format(
@@ -683,31 +774,73 @@ def build():
             body=body,
             prev=prev_link,
             next=next_link,
-            n=entry["index"],
-            count=len(chapter["slides"]),
-            cnum=chapter["number"],
+            count_text=e(count_text),
         )
 
         trail = [
-            ("Home", "index.html"),
+            (ui["home"], "index.html"),
             (module["title"], "index.html"),
-            ("Chapter %d: %s" % (chapter["number"], chapter["title"]), None),
+            ("%s %d: %s" % (ui["chapter"], chapter["number"], chapter["title"]), None),
         ]
 
-        with open(os.path.join(ROOT, entry["path"]), "w", encoding="utf-8") as fh:
+        with open(os.path.join(out_root, entry["path"]), "w", encoding="utf-8") as fh:
             fh.write(
                 shell(
+                    ui,
                     title="%s | %s | RealRisks" % (slide["title"], chapter["title"]),
-                    depth=depth,
+                    assets=assets,
+                    links=links,
+                    toggle=toggle_href(lang_root, entry["path"], other_root),
                     body_attrs='data-slide-id="%s" data-total-slides="%d" '
-                    'data-all-slide-ids="%s"' % (entry["id"], total, all_ids),
-                    breadcrumb=crumbs(depth, trail),
+                    'data-all-slide-ids="%s" %s'
+                    % (entry["id"], total, all_ids, progress_attrs(ui)),
+                    breadcrumb=crumbs(links, trail),
                     main=slide_main,
                     description="%s — %s" % (slide["title"], module_label),
                 )
             )
 
-    print("Built %d slide pages + index.html" % total)
+    return total
+
+
+def build():
+    # Every language must offer the same pages, or a toggle would 404.
+    shapes = {}
+    for lang in LANGUAGES:
+        with open(os.path.join(ROOT, "content", lang["content"]), encoding="utf-8") as fh:
+            data = json.load(fh)
+        shapes[lang["code"]] = [
+            (c["slug"], len(c["slides"])) for c in data["chapters"]
+        ]
+    reference = shapes[LANGUAGES[0]["code"]]
+    for code, shape in shapes.items():
+        if shape != reference:
+            raise SystemExit(
+                "Language %r has a different slide structure: %r vs %r"
+                % (code, shape, reference)
+            )
+
+    # The home-page menus must also line up, or one language quietly offers
+    # fewer entries than the other and some slides drop out of its menu.
+    menus = {}
+    for lang in LANGUAGES:
+        with open(os.path.join(ROOT, "content", lang["content"]), encoding="utf-8") as fh:
+            data = json.load(fh)
+        menus[lang["code"]] = [
+            (c["slug"], len(menu_entries(c))) for c in data["chapters"]
+        ]
+    reference_menu = menus[LANGUAGES[0]["code"]]
+    for code, shape in menus.items():
+        if shape != reference_menu:
+            raise SystemExit(
+                "Language %r has a different menu shape: %r vs %r"
+                % (code, shape, reference_menu)
+            )
+
+    for lang in LANGUAGES:
+        other = next(l for l in LANGUAGES if l["code"] != lang["code"])
+        total = build_language(lang, other["root"])
+        print("Built %s: %d slide pages + index.html" % (lang["code"], total))
 
 
 if __name__ == "__main__":

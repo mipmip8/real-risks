@@ -39,6 +39,11 @@
   /* ---- Slide pages: record the visit ---- */
 
   var body = document.body;
+
+  function str(name, fallback) {
+    return body.getAttribute("data-i18n-" + name) || fallback;
+  }
+
   var slideId = body.getAttribute("data-slide-id");
   if (slideId) {
     markVisited(slideId);
@@ -74,7 +79,9 @@
       track.setAttribute("aria-valuemax", String(total));
       track.setAttribute(
         "aria-valuetext",
-        done + " of " + total + " slides completed"
+        str("progress", "{done} of {total} slides completed")
+          .replace("{done}", String(done))
+          .replace("{total}", String(total))
       );
     }
     if (count) {
@@ -93,7 +100,10 @@
           return visited.indexOf(id) !== -1;
         });
       el.classList.toggle("is-done", complete);
-      el.setAttribute("aria-label", complete ? "Completed" : "Not completed yet");
+      el.setAttribute(
+        "aria-label",
+        complete ? str("completed", "Completed") : str("not-completed", "Not completed yet")
+      );
     }
   }
 
@@ -104,7 +114,9 @@
   var reset = document.querySelector(".reset-progress");
   if (reset) {
     reset.addEventListener("click", function () {
-      if (!window.confirm("Reset your progress through this module?")) {
+      var message = reset.getAttribute("data-confirm") ||
+        "Reset your progress through this module?";
+      if (!window.confirm(message)) {
         return;
       }
       write([]);

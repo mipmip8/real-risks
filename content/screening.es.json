@@ -1,0 +1,926 @@
+{
+  "ui": {
+    "lang": "es",
+    "switchTo": "English",
+    "switchToLang": "en",
+    "skipToContent": "Saltar al contenido",
+    "moduleHome": "Inicio del módulo",
+    "home": "Inicio",
+    "chapter": "Capítulo",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "finish": "Terminar el módulo",
+    "slideCount": "Diapositiva {n} de {total} del capítulo {ch}",
+    "accomplishments": "Logros",
+    "progressHint": "¡Complete cada sección para terminar este módulo!",
+    "resetProgress": "Reiniciar mi progreso",
+    "resetConfirm": "¿Reiniciar su progreso en este módulo?",
+    "footerDisclaimer": "Este sitio web es solo para fines educativos.",
+    "footerDisclaimerRest": " No ofrece asesoramiento médico ni sustituye una conversación con su propio médico sobre su riesgo de cáncer de seno y su plan de detección.",
+    "footerProgress": "Su progreso se guarda únicamente en este navegador. Si borra los datos de su navegador, se reiniciará.",
+    "revealShow": "Haga clic para ver la respuesta",
+    "revealHide": "Ocultar la respuesta",
+    "sliderCopied": "Copiado a su portapapeles.",
+    "sliderCopyFail": "No se pudo copiar. Puede seleccionar la lista y copiarla.",
+    "sliderCopyUnsupported": "Aquí no se puede copiar. Puede seleccionar la lista y copiarla.",
+    "sliderReset": "Controles reiniciados al centro.",
+    "sliderClipboardTitle": "Lo que más me importa sobre la detección del cáncer de seno",
+    "sliderClipboardFooter": "Creado con el módulo de detección de RealRisks. Esta es una lista de prioridades personales, no asesoramiento médico.",
+    "completed": "Completado",
+    "notCompleted": "Aún no completado",
+    "progressAria": "{done} de {total} diapositivas completadas"
+  },
+  "module": {
+    "number": 2,
+    "title": "Detección de Cáncer de Seno",
+    "intro": "En este módulo, aprenderá sobre los distintos métodos de detección del cáncer de seno."
+  },
+  "chapters": [
+    {
+      "slug": "chapter-1",
+      "number": 1,
+      "title": "Descripción General",
+      "icon": "lightbulb",
+      "slides": [
+        {
+          "title": "¿Por qué hacemos la detección del cáncer de seno?",
+          "layout": "media-right",
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "La detección se refiere a las pruebas de imagen utilizadas para detectar el cáncer de mama en personas que no presentan síntomas.",
+                "La detección del cáncer de seno utiliza pruebas de imagen como la mamografía, la resonancia magnética y la ecografía para buscar el cáncer en una etapa temprana",
+                "Detectar el cáncer a tiempo significa que es más pequeño y más fácil de tratar."
+              ]
+            },
+            {
+              "type": "callout",
+              "text": "¡Piense en ello como un detector de humo que le avisa de un incendio en etapa temprana!"
+            }
+          ],
+          "media": [
+            {
+              "src": "smoke-detector.jpg",
+              "alt": "Ilustración de un detector de humo en el techo con señales de alarma a su alrededor."
+            }
+          ]
+        },
+        {
+          "title": "Beneficios y Posibles Daños de la Detección",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "compare",
+              "benefits": {
+                "heading": "Beneficios",
+                "items": [
+                  {
+                    "title": "Encontrar el cáncer temprano",
+                    "text": "Las pruebas de detección precoz pueden detectar el cáncer de seno antes de que se pueda palpar un bulto o se desarrollen síntomas."
+                  },
+                  {
+                    "title": "Menos tratamiento",
+                    "text": "Cuando el cáncer se detecta a tiempo, suele ser más pequeño y más fácil de tratar. Esto puede permitir una cirugía menos invasiva y menos tratamientos."
+                  },
+                  {
+                    "title": "Mejores resultados",
+                    "text": "La detección precoz puede reducir el riesgo de morir de cáncer."
+                  }
+                ]
+              },
+              "harms": {
+                "heading": "Posibles Daños",
+                "items": [
+                  {
+                    "title": "Falsos positivos",
+                    "text": "Un falso positivo se produce cuando una prueba de detección muestra algo que parece cáncer, pero que en realidad no lo es. Imagínelo como una alarma de incendios averiada que se activa cuando no hay fuego."
+                  },
+                  {
+                    "title": "Pruebas extra",
+                    "text": "Si una prueba de detección detecta algo inusual, su médico podría recomendarle más pruebas de imagen o una biopsia. Estas pruebas a menudo no revelan la presencia de cáncer, pero el proceso puede causar preocupación e incomodidad."
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": "Falsos Positivos",
+          "layout": "media-right",
+          "blocks": [
+            {
+              "type": "text",
+              "text": "Un falso positivo se produce cuando una prueba muestra alguna anomalía, pero no se trata de cáncer. Aproximadamente 10 de cada 100 mamografías muestran alguna anomalía, pero la mayoría no resultan ser cáncer de seno."
+            },
+            {
+              "type": "callout",
+              "text": "¡Piénsalo como una alarma de incendios cuando no hay ningún incendio!"
+            },
+            {
+              "type": "factcards",
+              "items": [
+                {
+                  "text": "Pruebas adicionales = más preocupación, costo, incomodidad. Los beneficios a menudo superan los riesgos"
+                }
+              ]
+            }
+          ],
+          "media": [
+            {
+              "src": "burnt-cookies.jpg",
+              "alt": "Ilustración de una mujer abriendo un horno lleno de humo, con galletas quemadas dentro.",
+              "caption": "«¡No hay incendio, solo volví a quemar mis galletas!»"
+            }
+          ]
+        },
+        {
+          "title": "Exposición a la Radiación",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "equation",
+              "left": {
+                "label": "Mamografía",
+                "src": "mammogram-illustration.jpg",
+                "alt": "Ilustración de una mujer de pie frente a una máquina de mamografía."
+              },
+              "right": {
+                "label": "Un vuelo de Nueva York a California",
+                "src": "airplane.jpg",
+                "alt": "Ilustración de un avión volando entre nubes."
+              },
+              "caption": "¡Tienen la misma cantidad!"
+            },
+            {
+              "type": "bullets",
+              "items": [
+                "Las mamografías utilizan una pequeña cantidad de radiación, pero el riesgo de cáncer relacionado con la radiación es muy bajo.",
+                "Para la mayoría de las mujeres, los beneficios de las pruebas de detección superan este riesgo de exposición a la radiación."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conclusiones Clave y Acciones Recomendadas",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "takeaways",
+              "items": [
+                "El objetivo principal de la detección es detectar el cáncer de seno de forma temprana.",
+                "Las pruebas de detección precoz pueden detectar el cáncer antes de que se desarrollen los síntomas.",
+                "Los beneficios de la detección (detección temprana, menos tratamiento y mejores resultados) deben sopesar frente a los posibles perjuicios (resultados falsos positivos, biopsias y sobrediagnóstico)."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "chapter-2",
+      "number": 2,
+      "title": "Tipos de Pruebas de Detección",
+      "icon": "scan",
+      "slides": [
+        {
+          "title": "Tipos de Imágenes Mamarias",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "cards",
+              "items": [
+                {
+                  "title": "Mamografía digital en 2D, mamografía en 3D o tomosíntesis mamaria digital (DBT)",
+                  "src": "type-mammogram-3d.jpg",
+                  "alt": "Ilustración de una máquina de mamografía junto a un monitor.",
+                  "href": "chapter-2/slide-2.html"
+                },
+                {
+                  "title": "Ultrasonido de los Senos (US)",
+                  "src": "type-ultrasound.jpg",
+                  "alt": "Ilustración de un tecnólogo realizando un ultrasonido de seno a una paciente acostada en una camilla.",
+                  "href": "chapter-2/slide-4.html"
+                },
+                {
+                  "title": "Resonancia magnética de los senos (RM)",
+                  "src": "type-mri.jpg",
+                  "alt": "Ilustración de una paciente acostada boca abajo en una mesa que se desliza dentro de una máquina de resonancia magnética.",
+                  "href": "chapter-2/slide-5.html"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Mamografía",
+          "menu": "Mamografía",
+          "layout": "media-right",
+          "blocks": [
+            {
+              "type": "qablocks",
+              "items": [
+                {
+                  "q": "¿Qué es una mamografía?",
+                  "a": "Una mamografía es una radiografía de baja dosis de la seno que se utiliza para detectar el cáncer de forma temprana."
+                },
+                {
+                  "q": "¿Es doloroso?",
+                  "a": "Para muchas personas, las mamografías resultan incómodas más que verdaderamente dolorosas"
+                }
+              ]
+            }
+          ],
+          "media": [
+            {
+              "src": "mammogram-diagram.jpg",
+              "alt": "Diagrama médico de una mamografía, con la unidad de cámara arriba, el haz de rayos X atravesando la seno comprimida y la placa debajo."
+            }
+          ]
+        },
+        {
+          "title": "Mamografía",
+          "subtitle": "~15 min",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                {
+                  "title": "Preparación",
+                  "src": "mammo-step-preparation.jpg",
+                  "alt": "Ilustración de una bata de hospital estampada.",
+                  "items": [
+                    "No aplicar desodorante, perfume ni loción en el pecho ni en las axilas.",
+                    "Quítese las joyas.",
+                    "Cámbiese a una bata (desnuda de la cintura hacia arriba)."
+                  ]
+                },
+                {
+                  "title": "Posicionamiento",
+                  "src": "mammo-step-positioning.jpg",
+                  "alt": "Fotografía de una tecnóloga ayudando a colocar a una paciente en una máquina de mamografía.",
+                  "items": [
+                    "Usted se pondrá de pie frente a la máquina.",
+                    "Una seno se coloca sobre una placa plana",
+                    "El tecnólogo le ayudará a colocarse."
+                  ]
+                },
+                {
+                  "title": "Imágenes",
+                  "src": "mammo-step-imaging.jpg",
+                  "alt": "Ilustración de una paciente de pie en una máquina de mamografía mientras se toma una imagen.",
+                  "items": [
+                    "La seno se comprime suavemente entre dos placas para obtener imágenes desde diferentes ángulos.",
+                    "Se toman imágenes de rayos X",
+                    "Esto se repite en la otra seno."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Ultrasonido de Seno",
+          "menu": "Ultrasonido de Seno",
+          "subtitle": "15–30 min",
+          "layout": "media-right",
+          "blocks": [
+            {
+              "type": "qablocks",
+              "items": [
+                {
+                  "q": "¿Qué es una ultrasonido de seno?",
+                  "a": "El ultrasonido de los senos utiliza ondas sonoras para crear imágenes de la seno."
+                },
+                {
+                  "q": "¿Cuándo te haces una ultrasonido de seno?",
+                  "a": "A menudo se utiliza como complemento de la mamografía o como prueba de seguimiento tras un hallazgo anormal en una mamografía de detección, una resonancia magnética o un examen de seno."
+                }
+              ]
+            },
+            {
+              "type": "numbered",
+              "heading": "Qué esperar:",
+              "items": [
+                "Desvístete de la cintura para arriba.",
+                "Acuéstese en la camilla de examen.",
+                "Se aplica gel frío sobre la seno",
+                "El tecnólogo de ultrasonido moverá el transductor sobre la seno"
+              ]
+            }
+          ],
+          "media": [
+            {
+              "src": "ultrasound-exam.jpg",
+              "alt": "Fotografía de una mano enguantada moviendo un transductor de ultrasonido sobre el pecho de una paciente, con la pantalla del ultrasonido detrás."
+            }
+          ]
+        },
+        {
+          "title": "Resonancia Magnética de Seno",
+          "menu": "Resonancia Magnética de Seno",
+          "layout": "media-right",
+          "blocks": [
+            {
+              "type": "qablocks",
+              "items": [
+                {
+                  "q": "¿Qué es una RM de seno?",
+                  "a": "La resonancia magnética de los senos utiliza campos magnéticos para crear una imagen de la seno."
+                },
+                {
+                  "q": "¿Cuándo te haces una RM de seno?",
+                  "a": "La resonancia magnética de seno se utiliza para la detección del cáncer de seno en mujeres con alto riesgo."
+                }
+              ]
+            },
+            {
+              "type": "bullets",
+              "heading": "¿Por qué no todo el mundo se hace una RM?",
+              "items": [
+                "Requiere contraste intravenoso a la que algunas personas pueden ser alérgicas",
+                "Es más probable que una mamografía dé resultados falsos positivos.",
+                "La máquina puede resultar ruidosa, estrecha o incómoda para algunas personas.",
+                "No siempre está cubierto por el seguro",
+                "No puede realizarse durante el embarazo ni si tienen ciertos tipos de metal en el cuerpo"
+              ]
+            }
+          ],
+          "media": [
+            {
+              "src": "mri-diagram.jpg",
+              "alt": "Diagrama médico de una paciente acostada boca abajo en una mesa que se desliza dentro del túnel de una máquina de resonancia magnética."
+            }
+          ]
+        },
+        {
+          "title": "RM de los Senos",
+          "subtitle": "15–20 min",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                {
+                  "title": "Preparación",
+                  "src": "mri-step-preparation.jpg",
+                  "alt": "Ilustración de una vía intravenosa conectada al brazo de una persona.",
+                  "items": [
+                    "Quítese las joyas",
+                    "Póngase la bata",
+                    "Se le colocará una pequeña vía intravenosa en el brazo para proporcionar contraste"
+                  ]
+                },
+                {
+                  "title": "Posicionamiento",
+                  "src": "mri-step-positioning.jpg",
+                  "alt": "Fotografía del personal colocando a una paciente boca abajo en la mesa de resonancia magnética, con un primer plano de las aberturas acolchadas.",
+                  "items": [
+                    "Se acostara boca abajo en una mesa especial.",
+                    "Las senos se colocan en aberturas acolchadas."
+                  ]
+                },
+                {
+                  "title": "Imágenes",
+                  "src": "mri-step-imaging.jpg",
+                  "alt": "Fotografía de una mesa de resonancia magnética introduciendo a una paciente en la máquina.",
+                  "items": [
+                    "La mesa se desliza dentro de la máquina de RM.",
+                    "Se da contraste",
+                    "Escuchará ruidos fuertes de tipo golpeteo."
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "text": "Tiempo dentro del túnel de la RM 15-20 minutes"
+            }
+          ]
+        },
+        {
+          "title": "Comparación de los Diferentes Métodos de Detección",
+          "menu": "Comparación de los Diferentes Métodos de Detección",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "table",
+              "headers": [
+                "Tipo de Imagen",
+                "Mamografía",
+                "Ultrasonido de Seno",
+                "RM de seno",
+                "Mamografía con Contraste"
+              ],
+              "rows": [
+                [
+                  "El uso",
+                  "Detección de Rutina",
+                  "Detección adicional",
+                  "Detección de alto riesgo",
+                  "Detección de alto riesgo"
+                ],
+                [
+                  "Exposición a la Radiación",
+                  "Sí (dosis baja)",
+                  "No",
+                  "No",
+                  "Sí (dosis baja, igual que la mamografía)"
+                ],
+                [
+                  "Tiempo",
+                  "~15 min",
+                  "15-30 min",
+                  "15-20 min",
+                  "15 min prep + 15-20 min en la máquina"
+                ],
+                [
+                  "Precio",
+                  "$",
+                  "$$",
+                  "$$$$",
+                  "$$$"
+                ],
+                [
+                  "Contraste Intravenoso",
+                  "No",
+                  "No",
+                  "Sí",
+                  "Sí"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "title": "¿Cómo se informan los resultados?",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "text",
+              "text": "La mayoría de los centros de mamografía utilizan el Sistema de Informes y Datos de Imágenes Mamarias (BI-RADS®) para clasificar los hallazgos de manera estandarizada. Es posible que vea esta clasificación en un informe radiológico."
+            },
+            {
+              "type": "birads",
+              "headers": [
+                "BI-RADS Categoría",
+                "Lo que Significa"
+              ],
+              "rows": [
+                {
+                  "tone": "ok",
+                  "mark": "✓",
+                  "category": "1: Negativo",
+                  "meaning": "Detección de Rutina",
+                  "span": 2
+                },
+                {
+                  "tone": "ok",
+                  "mark": "✓",
+                  "category": "2: Hallazgos Benignos"
+                },
+                {
+                  "tone": "watch",
+                  "mark": "?",
+                  "category": "3: Probablemente Benigno",
+                  "meaning": "Se recomienda realizar estudios de imagen de seguimiento a corto plazo en 6 meses.",
+                  "span": 1
+                },
+                {
+                  "tone": "alert",
+                  "mark": "⚠",
+                  "category": "4: Anomalía sospechosa",
+                  "meaning": "Se recomienda realizar una biopsia para confirmar o descartar el cáncer.",
+                  "span": 2
+                },
+                {
+                  "tone": "alert",
+                  "mark": "⚠",
+                  "category": "5: Altamente sospechoso"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Biopsia de Seno",
+          "menu": "Biopsia de Seno",
+          "subtitle": "30–60 min",
+          "layout": "media-right",
+          "blocks": [
+            {
+              "type": "qablocks",
+              "items": [
+                {
+                  "q": "¿Qué es una biopsia de seno?",
+                  "a": "Una biopsia de seno utiliza una aguja para obtener una muestra de tejido mamario y analizar si hay cáncer. Es la única prueba que puede confirmar si algo es cancerosa."
+                },
+                {
+                  "q": "¿Por qué te haces una biopsia de seno?",
+                  "a": "Si un bulto, un cambio en la seno o una prueba de imagen (como una mamografía o un ultrasonido) muestra un hallazgo anormal, su médico puede recomendar una biopsia de seno para determinar si se trata de cáncer."
+                },
+                {
+                  "q": "¿Duele?",
+                  "a": "Como la zona estará entumecida, la mayoría de las pacientes lo describen como una sensación de presión más que de dolor. Puede haber algunos moretones y sensibilidad en los días posteriores"
+                }
+              ]
+            }
+          ],
+          "media": [
+            {
+              "src": "biopsy-diagram.jpg",
+              "alt": "Diagrama médico de una biopsia de seno guiada por ultrasonido, con una aguja dirigida hacia una masa mientras se sostiene el transductor sobre la piel."
+            }
+          ]
+        },
+        {
+          "title": "Biopsia de Seno",
+          "subtitle": "30–60 min",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "numbered",
+              "heading": "Qué esperar:",
+              "items": [
+                {
+                  "text": "Se limpia la zona y se aplica anestesia local (la sensación es similar a cuando vas al dentista y te ponen anestesia).",
+                  "sub": [
+                    "Para los bultos que se pueden ver con ultrasonido, bajo guía ultrasonido, se inserta una aguja hueca para extraer pequeñas muestras de tejido",
+                    "Para los hallazgos que solo se pueden ver con mamografía o mamografía con contraste, bajo guía de rayos X se inserta una aguja hueca para extraer pequeñas muestras de tejido",
+                    "Para los hallazgos que solo pueden verse en una resonancia magnética de seno, bajo guía por resonancia magnética se inserta una aguja hueca para extraer pequeñas muestras de tejido"
+                  ]
+                },
+                {
+                  "text": "Las muestras se envían al laboratorio para ser examinadas bajo el microscopio por un patólogo."
+                },
+                {
+                  "text": "Los resultados pueden tardar 5-10 días o más"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conclusiones Clave y Acciones Recomendadas",
+          "menu": "Conclusiones Clave y Acciones Recomendadas",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "takeaways",
+              "items": [
+                "Las mamografías son la base de la detección temprana del cáncer de seno.",
+                "Para las mujeres con alto riesgo de cáncer de seno, la resonancia magnética de seno debe utilizarse como prueba complementaria de detección.",
+                "Para las mujeres con senos densas, el ultrasonido de los senos o la mamografía con contraste pueden utilizarse como pruebas complementarias de detección.",
+                "Después de una prueba de detección anormal, puede ser necesaria una biopsia para confirmar si hay cáncer de seno."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "chapter-3",
+      "number": 3,
+      "title": "Recomendaciones de Detección",
+      "icon": "calendar",
+      "slides": [
+        {
+          "title": "¿A qué edad debería la mayoría de las personas comenzar la detección del cáncer de seno?",
+          "menu": "Preguntas frecuentes",
+          "layout": "answer",
+          "blocks": [
+            {
+              "type": "answer",
+              "answer": "40 años",
+              "reveal": true,
+              "notes": [
+                "La detección no es igual para todas las personas.",
+                "Algunas mujeres pueden necesitar comenzar la detección del cáncer de seno antes de los 40 años, según sus antecedentes familiares o los resultados de pruebas genéticas. Todas las mujeres deben reportar nuevos bultos a los doctores"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "¿Con qué frecuencia deben las personas someterse a pruebas de detección de cáncer de seno?",
+          "layout": "answer",
+          "blocks": [
+            {
+              "type": "answer",
+              "answer": "Cada 1 o 2 años",
+              "reveal": true,
+              "notes": [
+                "Aunque existen diferentes guías sobre la detección del cáncer de seno, la mayoría de las mujeres con alto riesgo deben realizarse una evaluación anual.",
+                "Las mujeres con riesgo promedio pueden hacerse la prueba cada 1-2 años."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "¿Puede una resonancia magnética de seno sustituir a la mamografía?",
+          "layout": "answer",
+          "blocks": [
+            {
+              "type": "answer",
+              "answer": "No",
+              "reveal": true,
+              "notes": [
+                "Si se utiliza una resonancia magnética, esta debe realizarse como complemento de la mamografía de detección, y no en su lugar.",
+                "Aunque es más probable que una resonancia magnética detecte cáncer que una mamografía, es posible que pase por alto algunos cánceres que una mamografía sí detectaría; por ello, los médicos recomiendan tanto la resonancia magnética mamaria como la mamografía a las mujeres con alto riesgo."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Categorías de Riesgo de Cáncer de Seno",
+          "menu": "Categorías de Riesgo de Cáncer de Seno",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "twocol",
+              "columns": [
+                {
+                  "tone": "calm",
+                  "title": "Mujeres de Riesgo Promedio",
+                  "subtitle": "Todo debe ser cierto:",
+                  "items": [
+                    "Sin antecedentes personales de cáncer de seno",
+                    "No ser portador de una mutación genética de alto riesgo (como BRCA1 o BRCA2).",
+                    "No hay antecedentes familiares importantes de cáncer de seno u ovario."
+                  ]
+                },
+                {
+                  "tone": "alert",
+                  "title": "Mujeres de Alto Riesgo",
+                  "subtitle": "Si alguno es cierto",
+                  "items": [
+                    "Ser portadora de una mutación genética en un gen asociado al riesgo de cáncer de seno o tener antecedentes familiares de cáncer de seno.",
+                    "Resultados de biopsias mamarias benignas de alto riesgo",
+                    "Riesgo de cáncer de seno a lo largo de la vida mayor a 20 de cada 100 personas.",
+                    "Radioterapia por el cáncer en el tórax antes de los 30 años de edad"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Riesgo Promedio",
+          "menu": "Riesgo Promedio",
+          "subtitle": "De 40 a 74 años",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "schedule",
+              "columns": [
+                {
+                  "items": [
+                    "Cita con el médico cada año",
+                    "Mamografía de detección cada 1-2 años"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Alto Riesgo",
+          "menu": "Alto Riesgo",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "schedule",
+              "columns": [
+                {
+                  "title": "Menores de 40 años",
+                  "items": [
+                    "En la consulta inicial, determinar cuándo iniciar la detección.",
+                    "La detección puede comenzar entre 5 y 10 años antes de la edad más temprana de diagnóstico de cáncer de seno en un familiar o en función de un resultado positivo en una prueba genética de un gen de riesgo de cáncer de seno."
+                  ]
+                },
+                {
+                  "title": "Edad de 40 años o más",
+                  "items": [
+                    "Cita médica anual",
+                    "Mamografía de detección anual alternando cada 6 meses con resonancia magnética de los senos anual."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Pago por Pruebas de Detección",
+          "menu": "Pago por Pruebas de Detección",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "factcards",
+              "items": [
+                {
+                  "title": "El seguro médico suele cubrir las pruebas de detección.",
+                  "text": "Muchos planes de salud cubren las mamografías de rutina sin costo alguno para usted; consulte con su proveedor para asegurarse."
+                },
+                {
+                  "title": "Los costos de las pruebas de seguimiento pueden variar.",
+                  "text": "Si se necesitan estudios de imagen o pruebas adicionales, es posible que tenga que pagar gastos de su bolsillo, como copagos o deducibles"
+                },
+                {
+                  "title": "Llame a su compañía de seguros para confirmar la cobertura.",
+                  "text": "Pregunte qué está cubierto, qué centros o instalaciones están dentro de la red y si necesita una remisión."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Conclusiones Clave y Acciones Recomendadas",
+          "menu": "Conclusiones Clave y Acciones Recomendadas",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "takeaways",
+              "items": [
+                "Las recomendaciones para las pruebas de detección pueden variar entre las personas según su riesgo de padecer cáncer de seno.",
+                "En comparación con las personas con riesgo promedio, aquellas con alto riesgo de cáncer de seno pueden necesitar comenzar a realizarse pruebas de detección a una edad más temprana, con mayor frecuencia y con pruebas complementarias, como la resonancia magnética de seno, y también la mamografía.",
+                "Conocer su riesgo de padecer cáncer de seno puede ayudarle a personalizar las recomendaciones para las pruebas de detección (consulte el Módulo 1 sobre el riesgo de cáncer de seno)."
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Preguntas para hacerle a su médico",
+          "menu": "Preguntas para hacerle a su médico",
+          "translated": true,
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "bullets",
+              "items": [
+                "¿Cumplo los criterios de alto riesgo para las pruebas de detección?",
+                "¿Soy elegible para pruebas de detección adicionales con ultrasonido o resonancia magnética?"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "¿Qué es lo más importante para usted?",
+          "menu": "¿Qué es lo más importante para usted?",
+          "translated": true,
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "sliders",
+              "intro": "La detección implica contrapartidas, y cada persona las pesa de forma distinta. Mueva cada control hasta donde usted se sitúe y después lleve el resumen a su médico.",
+              "disclaimer": "Esta herramienta no recomienda un plan de detección ni ofrece asesoramiento médico. Le ayuda a poner en palabras lo que le importa para poder comentarlo con su médico, que conoce su riesgo.",
+              "summaryHeading": "Qué llevar a su médico",
+              "summaryIntro": "Según donde colocó los controles:",
+              "items": [
+                {
+                  "id": "false-alarms",
+                  "title": "Falsas alarmas frente a un cáncer no detectado",
+                  "left": "Lo que más me preocupa es una falsa alarma",
+                  "right": "Lo que más me preocupa es que algo pase desapercibido",
+                  "framings": [
+                    "Que la llamen de vuelta por un susto es lo que más le pesa. Dígaselo a su médico y pregunte en qué consiste el seguimiento y cuánto tarda en llegar una respuesta.",
+                    "Una llamada de vuelta le pesaría mucho. Pregunte con qué frecuencia las pruebas de seguimiento resultan benignas y qué apoyo hay mientras espera.",
+                    "Sentiría una falsa alarma más que la mayoría de las personas. Pregunte qué ocurre entre un resultado anormal y una respuesta definitiva.",
+                    "Se inclina algo hacia la preocupación por las falsas alarmas. Pregunte a su médico con qué frecuencia una llamada de vuelta no acaba en nada.",
+                    "Pesa ambas cosas por igual. Pida a su médico que le explique lo que significaría una llamada de vuelta, junto con lo que significaría un hallazgo no detectado.",
+                    "Se inclina algo hacia la preocupación por un hallazgo no detectado. Pregunte si algo en su historial hace más probable que algo pase desapercibido.",
+                    "Aceptaría algunas falsas alarmas para reducir la posibilidad de que algo pase desapercibido. Pregunte qué pruebas son más sensibles para su nivel de riesgo.",
+                    "Toleraría bastante seguimiento para detectar algo a tiempo. Pregunte qué implicarían para usted las pruebas de detección adicionales.",
+                    "Lo que más le importa es que nada pase desapercibido, incluso con muchas llamadas de vuelta. Dígale a su médico que preferiría investigar un hallazgo antes que dejarlo, y pregunte cómo sería eso en la práctica."
+                  ],
+                  "summary": [
+                    "Las falsas alarmas me preocupan mucho más que un cáncer no detectado.",
+                    "Las falsas alarmas me preocupan bastante más que un cáncer no detectado.",
+                    "Las falsas alarmas me preocupan más que un cáncer no detectado.",
+                    "Me inclino algo hacia la preocupación por las falsas alarmas.",
+                    "Peso las falsas alarmas y los hallazgos no detectados por igual.",
+                    "Me inclino algo hacia la preocupación por un hallazgo no detectado.",
+                    "Que algo pase desapercibido me preocupa más que una falsa alarma.",
+                    "Que algo pase desapercibido me preocupa bastante más que una falsa alarma.",
+                    "Que algo pase desapercibido me preocupa mucho más que una falsa alarma."
+                  ]
+                },
+                {
+                  "id": "radiation",
+                  "title": "Exposición a la radiación",
+                  "left": "La radiación me preocupa",
+                  "right": "Para mí no es un problema",
+                  "framings": [
+                    "La radiación es una preocupación importante para usted. Menciónelo primero y pregunte por el ultrasonido de seno y la resonancia magnética, que no utilizan radiación.",
+                    "La radiación le preocupa de verdad. Pregunte a su médico si alguna parte de su plan de detección podría usar una prueba sin radiación.",
+                    "Preferiría limitar la radiación cuando sea razonable. Pregunte cuántas mamografías implicaría su plan en los próximos diez años.",
+                    "La radiación es una preocupación leve para usted. Pregunte cómo sería su exposición acumulada.",
+                    "No está especialmente preocupada ni le resulta indiferente. Pregunte cómo sería su exposición total con el plan que está considerando.",
+                    "La radiación es un factor pequeño para usted. Quizá prefiera dedicar la conversación a qué prueba es más precisa en su caso.",
+                    "La radiación es una consideración menor. Céntrese en qué prueba detecta el cáncer de forma más fiable según su nivel de riesgo.",
+                    "La radiación apenas cuenta para usted. Decirlo permite dedicar la conversación a otra cosa.",
+                    "La radiación no es algo que usted considere. Eso libera la conversación para centrarse en lo que más le importa."
+                  ],
+                  "summary": [
+                    "La exposición a la radiación es una preocupación importante para mí.",
+                    "La exposición a la radiación me preocupa de verdad.",
+                    "Me gustaría limitar la radiación cuando sea posible.",
+                    "La radiación es una preocupación leve para mí.",
+                    "No tengo una opinión firme sobre la radiación.",
+                    "La radiación es un factor pequeño para mí.",
+                    "La radiación es una consideración menor para mí.",
+                    "La radiación apenas cuenta para mí.",
+                    "La radiación no es una preocupación para mí."
+                  ]
+                },
+                {
+                  "id": "waiting",
+                  "title": "La espera de los resultados",
+                  "left": "Lo más difícil es la espera",
+                  "right": "Preferiría esperar más por una lectura minuciosa",
+                  "framings": [
+                    "La espera es lo peor para usted. Pregunte quién la llamará, cuándo exactamente, y si los resultados pueden llegar antes.",
+                    "La espera le resulta muy difícil. Pregunte cuál es el plazo habitual donde la atenderían y cómo se le comunicará.",
+                    "La espera le resulta estresante. Pregunte cómo suele ser el plazo para que no haya sorpresas.",
+                    "Preferiría no esperar mucho. Pregunte cuándo debería recibir noticias y a quién llamar si no las recibe.",
+                    "Puede tolerar la espera siempre que sepa qué esperar. Pida un plazo realista desde el principio.",
+                    "Puede sobrellevar una espera si eso implica una lectura cuidadosa. Pregunte en qué consiste el proceso de lectura.",
+                    "Preferiría que la lectura no fuera apresurada. Pregunte si una segunda lectura es habitual y cuánto añade al plazo.",
+                    "Esperaría con gusto más tiempo por una revisión más cuidadosa. Pregunte en qué consiste una lectura minuciosa y quién la realiza.",
+                    "Una lectura cuidadosa le importa mucho más que una rápida. Dígale a su médico que preferiría esperar antes que que algo se haga con prisa."
+                  ],
+                  "summary": [
+                    "La espera de los resultados es lo peor para mí.",
+                    "La espera de los resultados me resulta muy difícil.",
+                    "La espera de los resultados me resulta estresante.",
+                    "Preferiría no esperar mucho por los resultados.",
+                    "Puedo sobrellevar la espera si conozco el plazo.",
+                    "Puedo sobrellevar una espera si la lectura es cuidadosa.",
+                    "Aceptaría una espera más larga por una lectura cuidadosa.",
+                    "Esperaría con gusto más tiempo por una lectura minuciosa.",
+                    "Una lectura cuidadosa me importa mucho más que una rápida."
+                  ]
+                },
+                {
+                  "id": "frequency",
+                  "title": "La frecuencia de las pruebas de detección",
+                  "left": "Que me hagan pruebas más a menudo, aunque haya más llamadas de vuelta",
+                  "right": "Espaciarlas más, aunque algo se detecte un poco más tarde",
+                  "framings": [
+                    "Se inclina por hacerse pruebas con la mayor frecuencia que permita su nivel de riesgo. Pregunte cuál sería el plan más frecuente apropiado para usted.",
+                    "Se inclina claramente por pruebas frecuentes. Pregunte si se recomienda la detección anual en su nivel de riesgo.",
+                    "Preferiría el intervalo más corto. Pregunte qué sugiere su categoría de riesgo.",
+                    "Se inclina algo por hacerse pruebas más a menudo. Pregunte qué significa para usted la diferencia entre los intervalos.",
+                    "Le parecen bien ambos intervalos. Pregunte a su médico hacia cuál apunta su nivel de riesgo, y por qué.",
+                    "Se inclina algo por espaciar las pruebas. Pregunte qué implicaría el intervalo más largo en su nivel de riesgo.",
+                    "Preferiría el intervalo más largo si es razonable para usted. Pregunte qué espaciamiento es seguro dado su riesgo.",
+                    "Preferiría hacerse pruebas con menos frecuencia. Pregunte a su médico cuál es el intervalo seguro más largo para usted.",
+                    "Quiere espaciar las pruebas tanto como sea seguro. Pregunte cuál es el intervalo seguro más largo en su nivel de riesgo, y cuál es la contrapartida."
+                  ],
+                  "summary": [
+                    "Quiero hacerme pruebas con la mayor frecuencia que permita mi riesgo.",
+                    "Me inclino claramente por hacerme pruebas más a menudo.",
+                    "Preferiría el intervalo más corto entre pruebas.",
+                    "Me inclino algo por hacerme pruebas más a menudo.",
+                    "Me parecen bien ambos intervalos entre pruebas.",
+                    "Me inclino algo por espaciar las pruebas.",
+                    "Preferiría el intervalo más largo entre pruebas.",
+                    "Preferiría hacerme pruebas con menos frecuencia.",
+                    "Quiero espaciar las pruebas tanto como sea seguro."
+                  ]
+                },
+                {
+                  "id": "cost",
+                  "title": "El costo y el acceso",
+                  "left": "Quiero la opción más completa sin importar el costo",
+                  "right": "El costo y la cobertura importan mucho en mi decisión",
+                  "framings": [
+                    "El costo no es una limitación para usted. Dedique la conversación a qué prueba es más precisa según su nivel de riesgo.",
+                    "Pagaría por la opción más completa. Aun así, conviene confirmar qué está cubierto para que no haya sorpresas.",
+                    "Se inclina por lo más completo antes que por el costo. Pregunte cuál sería realmente la diferencia de gastos de su bolsillo.",
+                    "El costo es un factor menor para usted. Pida una estimación antes de programar la cita.",
+                    "Está sopesando lo completo frente al costo. Pida una estimación de gastos de su bolsillo para cada opción que esté considerando.",
+                    "El costo le importa. Pregunte cuáles de las opciones cubre su plan.",
+                    "El costo es un factor real. Pregunte qué centros están dentro de la red y si necesita una remisión.",
+                    "El costo influirá mucho en lo que elija. Llame a su seguro antes de programar la cita para confirmar la cobertura.",
+                    "El costo y la cobertura decidirán esto para usted. Llame primero a su seguro y pregunte qué está cubierto, qué centros están dentro de la red y si necesita una remisión."
+                  ],
+                  "summary": [
+                    "Quiero la opción más completa sin importar el costo.",
+                    "Pagaría por la opción más completa.",
+                    "Me inclino por lo más completo antes que por el costo.",
+                    "El costo es un factor menor para mí.",
+                    "Estoy sopesando lo completo frente al costo.",
+                    "El costo me importa.",
+                    "El costo es un factor real para mí.",
+                    "El costo influirá mucho en lo que elija.",
+                    "El costo y la cobertura decidirán esto para mí."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
