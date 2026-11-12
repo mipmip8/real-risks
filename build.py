@@ -64,6 +64,12 @@ MRI_SCENE = """<svg class="mri-scene" viewBox="0 0 760 320" aria-hidden="true">
     <rect class="limb" x="152" y="204" width="10" height="48" rx="5"/>
     <circle class="necklace" cx="150" cy="141" r="6"/>
   </g>
+  <g class="tech">
+    <circle class="head" cx="104" cy="122" r="16"/>
+    <rect class="torso" x="90" y="142" width="28" height="60" rx="13"/>
+    <rect class="limb" x="93" y="200" width="9" height="52" rx="4"/>
+    <rect class="limb" x="106" y="200" width="9" height="52" rx="4"/>
+  </g>
   <!-- Drawn before the machine so sliding in reads as going inside it. The IV
        pole travels with the bed, the way it is wheeled alongside, so the line
        stays attached to the patient instead of dangling. -->
@@ -346,50 +352,69 @@ def r_schedule(b, _ctx):
 def r_walkthrough(b, ctx):
     """An interactive run-through of an MRI appointment.
 
+    The reader acts on the scene itself — the necklace, the table, the machine
+    — rather than a generic button, so each step is a small piece of direct
+    manipulation. Hotspots are real HTML buttons positioned over the SVG from
+    its viewBox coordinates, which keeps keyboard and screen-reader behaviour
+    for free while still pointing at a spot in the picture.
+
     Both forms are rendered: a plain ordered list that reads fine on its own,
-    and the step-by-step game, which walkthrough.js swaps in. Without
-    JavaScript the reader still gets every step and every explanation instead
-    of buttons that do nothing.
+    and the interactive version walkthrough.js swaps in. Without JavaScript the
+    reader still gets every step and explanation instead of dead controls.
     """
-    ui = ctx["ui"]
+    total = len(b["steps"])
+    vb_w, vb_h = 760.0, 320.0
 
     static = "".join(
         "<li><strong>%s</strong> %s</li>" % (e(s["title"]), e(s["result"]))
         for s in b["steps"]
     )
 
+    hotspots = []
     cards = []
     for i, step in enumerate(b["steps"], 1):
+        spot = step["hotspot"]
+        hotspots.append(
+            '<button type="button" class="wt-hotspot" data-for="%d" hidden'
+            ' style="left:%.3f%%;top:%.3f%%">'
+            '<span class="visually-hidden">%s</span></button>'
+            % (i, spot["x"] / vb_w * 100, spot["y"] / vb_h * 100, e(spot["label"]))
+        )
         cards.append(
             """<li class="wt-step" data-step="{n}" hidden>
   <p class="wt-step__count">{counter}</p>
   <h3 class="wt-step__title">{title}</h3>
   <p class="wt-step__prompt">{prompt}</p>
   <p class="wt-step__result" hidden>{result}</p>
-  <button type="button" class="btn btn--primary wt-step__action"
-          data-action-label="{action}" data-next-label="{next}">{action}</button>
+  <div class="wt-controls">
+    <button type="button" class="wt-back">{back}</button>
+    <button type="button" class="btn btn--primary wt-next" hidden>{next}</button>
+  </div>
 </li>""".format(
                 n=i,
-                counter=e(b["stepLabel"].format(n=i, total=len(b["steps"]))),
+                counter=e(b["stepLabel"].format(n=i, total=total)),
                 title=e(step["title"]),
                 prompt=e(step["prompt"]),
-                action=e(step["action"]),
-                next=e(b["nextLabel"]),
                 result=e(step["result"]),
+                next=e(b["nextLabel"]),
+                back=e(b["backLabel"]),
             )
         )
 
     dots = "".join(
         '<li class="wt-dot" data-dot="%d"><span class="visually-hidden">%s</span></li>'
-        % (i, e(b["stepLabel"].format(n=i, total=len(b["steps"]))))
-        for i in range(1, len(b["steps"]) + 1)
+        % (i, e(b["stepLabel"].format(n=i, total=total)))
+        for i in range(1, total + 1)
     )
 
     return """<div class="walkthrough">
   <p class="walkthrough__intro">{intro}</p>
   <ol class="walkthrough__static">{static}</ol>
   <div class="walkthrough__game" hidden data-step="0">
-    {scene}
+    <div class="wt-scene">
+      {scene}
+      {hotspots}
+    </div>
     <ol class="wt-dots" aria-hidden="true">{dots}</ol>
     <div class="wt-stage" aria-live="polite">
       <div class="wt-intro">
@@ -399,6 +424,9 @@ def r_walkthrough(b, ctx):
       <div class="wt-done" hidden>
         <h3>{done_title}</h3>
         <p>{done_text}</p>
+        <div class="wt-controls">
+          <button type="button" class="wt-back">{back}</button>
+        </div>
       </div>
     </div>
     <button type="button" class="btn wt-restart" hidden>{restart}</button>
@@ -407,11 +435,13 @@ def r_walkthrough(b, ctx):
         intro=e(b["intro"]),
         static=static,
         scene=MRI_SCENE,
+        hotspots="".join(hotspots),
         dots=dots,
         start=e(b["startLabel"]),
         cards="".join(cards),
         done_title=e(b["completeTitle"]),
         done_text=e(b["completeText"]),
+        back=e(b["backLabel"]),
         restart=e(b["restartLabel"]),
     )
 

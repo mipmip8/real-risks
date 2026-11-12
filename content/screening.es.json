@@ -931,6 +931,7 @@
               "intro": "Una resonancia magnética de seno tiene más pasos que la mayoría de los estudios, y no conocerlos es parte de lo que la hace intimidante. Recorra aquí una cita, paso a paso.",
               "startLabel": "Comenzar el recorrido",
               "nextLabel": "Siguiente paso",
+              "backLabel": "← Un paso atrás",
               "restartLabel": "Empezar de nuevo",
               "stepLabel": "Paso {n} de {total}",
               "completeTitle": "Esa es toda la cita",
@@ -939,58 +940,90 @@
                 {
                   "id": "jewelry",
                   "title": "Quítese las joyas",
-                  "prompt": "Los aretes, los collares y los anillos se quitan antes de acercarse a la máquina.",
-                  "action": "Quitarse las joyas",
-                  "result": "Listo. La resonancia magnética funciona con campos magnéticos y no puede realizarse si tienen ciertos tipos de metal en el cuerpo, así que el metal se queda fuera."
+                  "prompt": "Haga clic en el collar para quitárselo.",
+                  "result": "Listo. La resonancia magnética funciona con campos magnéticos y no puede realizarse si tienen ciertos tipos de metal en el cuerpo, así que el metal se queda fuera.",
+                  "hotspot": {
+                    "x": 150,
+                    "y": 141,
+                    "label": "Quitarse el collar"
+                  }
                 },
                 {
                   "id": "gown",
                   "title": "Póngase la bata",
-                  "prompt": "Se desviste de la cintura hacia arriba y se pone una bata de hospital.",
-                  "action": "Ponerse la bata",
-                  "result": "Cambiada. Su ropa se queda en el vestidor."
+                  "prompt": "Haga clic sobre usted misma para ponerse la bata de hospital.",
+                  "result": "Cambiada. Su ropa se queda en el vestidor.",
+                  "hotspot": {
+                    "x": 150,
+                    "y": 173,
+                    "label": "Ponerse la bata"
+                  }
                 },
                 {
                   "id": "iv",
                   "title": "Colocación de la vía intravenosa",
-                  "prompt": "Se le coloca una pequeña vía intravenosa en una vena del brazo. Por ahí llegará después el contraste.",
-                  "action": "Colocar la vía intravenosa",
-                  "result": "La vía está puesta. Algunas personas son alérgicas al contraste, así que dígale a su médico si ha tenido una reacción antes."
+                  "prompt": "Haga clic en su brazo. Un tecnólogo le coloca una pequeña vía intravenosa en una vena.",
+                  "result": "La vía está puesta, colocada por el tecnólogo. Algunas personas son alérgicas al contraste, así que dígale a su médico si ha tenido una reacción antes.",
+                  "hotspot": {
+                    "x": 168,
+                    "y": 152,
+                    "label": "Colocar la vía intravenosa en el brazo"
+                  }
                 },
                 {
                   "id": "lie-down",
                   "title": "Acuéstese boca abajo",
-                  "prompt": "La mesa está acolchada. Se acuesta boca abajo, no de espaldas.",
-                  "action": "Acostarse en la mesa",
-                  "result": "Ya está en la mesa. La resonancia magnética de seno se hace boca abajo."
+                  "prompt": "Haga clic en la mesa para acostarse boca abajo.",
+                  "result": "Ya está en la mesa. La resonancia magnética de seno se hace boca abajo, y el tecnólogo permanece en la sala para ayudarle a acomodarse.",
+                  "hotspot": {
+                    "x": 315,
+                    "y": 177,
+                    "label": "Acostarse en la mesa"
+                  }
                 },
                 {
                   "id": "openings",
                   "title": "Acomódese en las aberturas acolchadas",
-                  "prompt": "La mesa tiene dos aberturas acolchadas donde se colocan los senos.",
-                  "action": "Acomodarse en las aberturas",
-                  "result": "En posición. A continuación le dan algo para sostener."
+                  "prompt": "Haga clic en las aberturas acolchadas para acomodarse.",
+                  "result": "En posición. El tecnólogo sigue con usted. A continuación le dan algo para sostener.",
+                  "hotspot": {
+                    "x": 330,
+                    "y": 177,
+                    "label": "Acomodarse en las aberturas acolchadas"
+                  }
                 },
                 {
                   "id": "safety",
                   "title": "Tome el botón de seguridad",
-                  "prompt": "Le dan un botón para sostener durante el estudio.",
-                  "action": "Tomar el botón",
-                  "result": "Ya lo tiene. Puede presionarlo en cualquier momento si necesita al personal."
+                  "prompt": "Haga clic en el botón de seguridad para tomarlo.",
+                  "result": "Ya lo tiene. Puede presionarlo en cualquier momento si necesita al personal.",
+                  "hotspot": {
+                    "x": 469,
+                    "y": 152,
+                    "label": "Tomar el botón de seguridad"
+                  }
                 },
                 {
                   "id": "slide-in",
                   "title": "Entre en la máquina",
-                  "prompt": "La mesa se desliza dentro de la abertura de la máquina de resonancia magnética.",
-                  "action": "Deslizar la mesa",
-                  "result": "Ya está dentro. La máquina puede resultar ruidosa, estrecha o incómoda para algunas personas; conviene decirlo antes si cree que puede ser su caso."
+                  "prompt": "Haga clic en la máquina para deslizar la mesa hacia dentro.",
+                  "result": "Ya está dentro, y el tecnólogo sale de la sala antes de que comience el estudio. La máquina puede resultar ruidosa, estrecha o incómoda para algunas personas; conviene decirlo antes si cree que puede ser su caso.",
+                  "hotspot": {
+                    "x": 620,
+                    "y": 149,
+                    "label": "Deslizar la mesa dentro de la máquina"
+                  }
                 },
                 {
                   "id": "scan",
                   "title": "El estudio",
-                  "prompt": "Se administra el contraste por la vía intravenosa y la máquina se pone en marcha.",
-                  "action": "Comenzar el estudio",
-                  "result": "Escuchará ruidos fuertes de tipo golpeteo. Estará dentro del túnel entre 15 y 20 minutos."
+                  "prompt": "Haga clic en la máquina para comenzar el estudio.",
+                  "result": "Escuchará ruidos fuertes de tipo golpeteo. Estará dentro del túnel entre 15 y 20 minutos.",
+                  "hotspot": {
+                    "x": 620,
+                    "y": 149,
+                    "label": "Comenzar el estudio"
+                  }
                 }
               ]
             }

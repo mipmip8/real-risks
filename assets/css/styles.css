@@ -54,6 +54,12 @@
   box-sizing: border-box;
 }
 
+/* Author rules that set `display` (e.g. .btn) otherwise beat the user-agent
+   `[hidden] { display: none }`, leaving hidden controls on screen. */
+[hidden] {
+  display: none !important;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
 }
@@ -1712,6 +1718,101 @@ a {
   transition: opacity 0.3s ease, fill 0.3s ease;
 }
 
+/* ---- Clickable scene ---- */
+
+.wt-scene {
+  position: relative;
+  max-width: 620px;
+  margin: 0 auto 10px;
+}
+
+.wt-scene .mri-scene {
+  margin: 0;
+  max-width: none;
+}
+
+/* Hotspots are HTML buttons placed over the SVG from its viewBox
+   coordinates, so they keep real keyboard and screen-reader behaviour while
+   still pointing at a spot in the picture. */
+.wt-hotspot {
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  margin: -29px 0 0 -29px;
+  padding: 0;
+  border: 3px solid var(--teal-active);
+  border-radius: 50%;
+  background: rgba(15, 135, 171, 0.12);
+  cursor: pointer;
+  animation: wt-beacon 1.6s ease-out infinite;
+}
+
+.wt-hotspot::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 3px solid var(--teal-active);
+  opacity: 0;
+  animation: wt-ring 1.6s ease-out infinite;
+}
+
+.wt-hotspot:hover {
+  background: rgba(15, 135, 171, 0.26);
+}
+
+@keyframes wt-beacon {
+  50% {
+    background: rgba(15, 135, 171, 0.3);
+  }
+}
+
+@keyframes wt-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+/* ---- The technologist ---- */
+
+.mri-scene .tech {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mri-scene .tech .torso {
+  fill: #5aa0b5;
+}
+
+.mri-scene .tech .limb {
+  fill: #4a8ca0;
+}
+
+/* data-step counts the steps already finished, so these are the states in
+   which the *pending* step is the IV or getting settled. The technologist is
+   there for those, and has left the room by the time the scan starts — which
+   is what step 7's explanation says happens. */
+.walkthrough__game[data-step="2"] .mri-scene .tech,
+.walkthrough__game[data-step="3"] .mri-scene .tech,
+.walkthrough__game[data-step="4"] .mri-scene .tech,
+.walkthrough__game[data-step="5"] .mri-scene .tech,
+.walkthrough__game[data-step="6"] .mri-scene .tech {
+  opacity: 1;
+}
+
+@media (max-width: 560px) {
+  .wt-hotspot {
+    width: 46px;
+    height: 46px;
+    margin: -23px 0 0 -23px;
+  }
+}
+
 /* ---- Progress dots ---- */
 
 .wt-dots {
@@ -1772,7 +1873,32 @@ a {
   max-width: 560px;
 }
 
-.wt-step__action {
+.wt-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.wt-back {
+  border: 0;
+  background: none;
+  padding: 6px 10px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--teal);
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.wt-back:hover {
+  color: var(--teal-dark);
+  text-decoration: underline;
+}
+
+.wt-next {
   cursor: pointer;
   font-size: 18px;
   padding: 14px 30px;
@@ -1815,7 +1941,9 @@ a {
   }
 
   .walkthrough__game[data-step="8"] .mri-scene .waves path,
-  .walkthrough__game[data-step="9"] .mri-scene .waves path {
+  .walkthrough__game[data-step="9"] .mri-scene .waves path,
+  .wt-hotspot,
+  .wt-hotspot::after {
     animation: none;
   }
 }

@@ -31,9 +31,10 @@
   <h1 class="slide__title">What happens at an MRI appointment</h1>
   <div class="slide__body"><div class="walkthrough">
   <p class="walkthrough__intro">A breast MRI has more steps than most scans, and not knowing them is part of what makes it daunting. Walk through an appointment here, one step at a time.</p>
-  <ol class="walkthrough__static"><li><strong>Remove your jewellery</strong> Done. An MRI works with magnetic fields, and it cannot be performed if you have certain types of metal in your body — so metal stays outside.</li><li><strong>Change into a gown</strong> Changed. Your own clothes stay in the changing room.</li><li><strong>Place the IV</strong> The IV is in. Some people are allergic to contrast dye, so tell your doctor if you have reacted to it before.</li><li><strong>Lie face down</strong> You are on the table. A breast MRI is done lying face down.</li><li><strong>Settle into the cushioned openings</strong> In position. Next you are given something to hold.</li><li><strong>Take the safety button</strong> You have it. You can press it at any point if you need the staff.</li><li><strong>Slide into the machine</strong> You are inside. The machine can feel loud, narrow or uncomfortable for some people — worth saying beforehand if you think it might for you.</li><li><strong>The scan</strong> You will hear loud tapping noises. You are inside the tunnel for about 15 to 20 minutes.</li></ol>
+  <ol class="walkthrough__static"><li><strong>Remove your jewellery</strong> Done. An MRI works with magnetic fields, and it cannot be performed if you have certain types of metal in your body — so metal stays outside.</li><li><strong>Change into a gown</strong> Changed. Your own clothes stay in the changing room.</li><li><strong>Place the IV</strong> The IV is in, placed by the technologist. Some people are allergic to contrast dye, so tell your doctor if you have reacted to it before.</li><li><strong>Lie face down</strong> You are on the table. A breast MRI is done lying face down, and the technologist stays in the room to help you get settled.</li><li><strong>Settle into the cushioned openings</strong> In position. The technologist is still with you. Next you are given something to hold.</li><li><strong>Take the safety button</strong> You have it. You can press it at any point if you need the staff.</li><li><strong>Slide into the machine</strong> You are inside, and the technologist steps out of the room before the scan begins. The machine can feel loud, narrow or uncomfortable for some people — worth saying beforehand if you think it might for you.</li><li><strong>The scan</strong> You will hear loud tapping noises. You are inside the tunnel for about 15 to 20 minutes.</li></ol>
   <div class="walkthrough__game" hidden data-step="0">
-    <svg class="mri-scene" viewBox="0 0 760 320" aria-hidden="true">
+    <div class="wt-scene">
+      <svg class="mri-scene" viewBox="0 0 760 320" aria-hidden="true">
   <rect class="floor" y="252" width="760" height="4"/>
   <g class="patient-standing">
     <circle class="head" cx="150" cy="118" r="19"/>
@@ -41,6 +42,12 @@
     <rect class="limb" x="138" y="204" width="10" height="48" rx="5"/>
     <rect class="limb" x="152" y="204" width="10" height="48" rx="5"/>
     <circle class="necklace" cx="150" cy="141" r="6"/>
+  </g>
+  <g class="tech">
+    <circle class="head" cx="104" cy="122" r="16"/>
+    <rect class="torso" x="90" y="142" width="28" height="60" rx="13"/>
+    <rect class="limb" x="93" y="200" width="9" height="52" rx="4"/>
+    <rect class="limb" x="106" y="200" width="9" height="52" rx="4"/>
   </g>
   <!-- Drawn before the machine so sliding in reads as going inside it. The IV
        pole travels with the bed, the way it is wheeled alongside, so the line
@@ -75,6 +82,8 @@
     <path d="M418 92 q-42 57 0 114"/>
   </g>
 </svg>
+      <button type="button" class="wt-hotspot" data-for="1" hidden style="left:19.737%;top:44.062%"><span class="visually-hidden">Take the necklace off</span></button><button type="button" class="wt-hotspot" data-for="2" hidden style="left:19.737%;top:54.062%"><span class="visually-hidden">Put the gown on</span></button><button type="button" class="wt-hotspot" data-for="3" hidden style="left:22.105%;top:47.500%"><span class="visually-hidden">Place the IV in the arm</span></button><button type="button" class="wt-hotspot" data-for="4" hidden style="left:41.447%;top:55.312%"><span class="visually-hidden">Lie down on the table</span></button><button type="button" class="wt-hotspot" data-for="5" hidden style="left:43.421%;top:55.312%"><span class="visually-hidden">Settle into the cushioned openings</span></button><button type="button" class="wt-hotspot" data-for="6" hidden style="left:61.711%;top:47.500%"><span class="visually-hidden">Take the safety button</span></button><button type="button" class="wt-hotspot" data-for="7" hidden style="left:81.579%;top:46.562%"><span class="visually-hidden">Slide the table into the machine</span></button><button type="button" class="wt-hotspot" data-for="8" hidden style="left:81.579%;top:46.562%"><span class="visually-hidden">Start the scan</span></button>
+    </div>
     <ol class="wt-dots" aria-hidden="true"><li class="wt-dot" data-dot="1"><span class="visually-hidden">Step 1 of 8</span></li><li class="wt-dot" data-dot="2"><span class="visually-hidden">Step 2 of 8</span></li><li class="wt-dot" data-dot="3"><span class="visually-hidden">Step 3 of 8</span></li><li class="wt-dot" data-dot="4"><span class="visually-hidden">Step 4 of 8</span></li><li class="wt-dot" data-dot="5"><span class="visually-hidden">Step 5 of 8</span></li><li class="wt-dot" data-dot="6"><span class="visually-hidden">Step 6 of 8</span></li><li class="wt-dot" data-dot="7"><span class="visually-hidden">Step 7 of 8</span></li><li class="wt-dot" data-dot="8"><span class="visually-hidden">Step 8 of 8</span></li></ol>
     <div class="wt-stage" aria-live="polite">
       <div class="wt-intro">
@@ -83,63 +92,82 @@
       <ol class="wt-steps"><li class="wt-step" data-step="1" hidden>
   <p class="wt-step__count">Step 1 of 8</p>
   <h3 class="wt-step__title">Remove your jewellery</h3>
-  <p class="wt-step__prompt">Earrings, necklaces and rings all come off before you go near the machine.</p>
+  <p class="wt-step__prompt">Click the necklace to take it off.</p>
   <p class="wt-step__result" hidden>Done. An MRI works with magnetic fields, and it cannot be performed if you have certain types of metal in your body — so metal stays outside.</p>
-  <button type="button" class="btn btn--primary wt-step__action"
-          data-action-label="Take the jewellery off" data-next-label="Next step">Take the jewellery off</button>
+  <div class="wt-controls">
+    <button type="button" class="wt-back">← Back a step</button>
+    <button type="button" class="btn btn--primary wt-next" hidden>Next step</button>
+  </div>
 </li><li class="wt-step" data-step="2" hidden>
   <p class="wt-step__count">Step 2 of 8</p>
   <h3 class="wt-step__title">Change into a gown</h3>
-  <p class="wt-step__prompt">You undress from the waist up and put on a hospital gown.</p>
+  <p class="wt-step__prompt">Click yourself to change into a hospital gown.</p>
   <p class="wt-step__result" hidden>Changed. Your own clothes stay in the changing room.</p>
-  <button type="button" class="btn btn--primary wt-step__action"
-          data-action-label="Put the gown on" data-next-label="Next step">Put the gown on</button>
+  <div class="wt-controls">
+    <button type="button" class="wt-back">← Back a step</button>
+    <button type="button" class="btn btn--primary wt-next" hidden>Next step</button>
+  </div>
 </li><li class="wt-step" data-step="3" hidden>
   <p class="wt-step__count">Step 3 of 8</p>
   <h3 class="wt-step__title">Place the IV</h3>
-  <p class="wt-step__prompt">A small IV goes into a vein in your arm. This is how the contrast dye will reach you later.</p>
-  <p class="wt-step__result" hidden>The IV is in. Some people are allergic to contrast dye, so tell your doctor if you have reacted to it before.</p>
-  <button type="button" class="btn btn--primary wt-step__action"
-          data-action-label="Place the IV" data-next-label="Next step">Place the IV</button>
+  <p class="wt-step__prompt">Click your arm. A technologist places a small IV in a vein there.</p>
+  <p class="wt-step__result" hidden>The IV is in, placed by the technologist. Some people are allergic to contrast dye, so tell your doctor if you have reacted to it before.</p>
+  <div class="wt-controls">
+    <button type="button" class="wt-back">← Back a step</button>
+    <button type="button" class="btn btn--primary wt-next" hidden>Next step</button>
+  </div>
 </li><li class="wt-step" data-step="4" hidden>
   <p class="wt-step__count">Step 4 of 8</p>
   <h3 class="wt-step__title">Lie face down</h3>
-  <p class="wt-step__prompt">The table is padded. You lie on your stomach rather than your back.</p>
-  <p class="wt-step__result" hidden>You are on the table. A breast MRI is done lying face down.</p>
-  <button type="button" class="btn btn--primary wt-step__action"
-          data-action-label="Lie down on the table" data-next-label="Next step">Lie down on the table</button>
+  <p class="wt-step__prompt">Click the table to lie face down on it.</p>
+  <p class="wt-step__result" hidden>You are on the table. A breast MRI is done lying face down, and the technologist stays in the room to help you get settled.</p>
+  <div class="wt-controls">
+    <button type="button" class="wt-back">← Back a step</button>
+    <button type="button" class="btn btn--primary wt-next" hidden>Next step</button>
+  </div>
 </li><li class="wt-step" data-step="5" hidden>
   <p class="wt-step__count">Step 5 of 8</p>
   <h3 class="wt-step__title">Settle into the cushioned openings</h3>
-  <p class="wt-step__prompt">There are two cushioned openings in the table for your breasts to rest in.</p>
-  <p class="wt-step__result" hidden>In position. Next you are given something to hold.</p>
-  <button type="button" class="btn btn--primary wt-step__action"
-          data-action-label="Settle into the openings" data-next-label="Next step">Settle into the openings</button>
+  <p class="wt-step__prompt">Click the cushioned openings to settle into them.</p>
+  <p class="wt-step__result" hidden>In position. The technologist is still with you. Next you are given something to hold.</p>
+  <div class="wt-controls">
+    <button type="button" class="wt-back">← Back a step</button>
+    <button type="button" class="btn btn--primary wt-next" hidden>Next step</button>
+  </div>
 </li><li class="wt-step" data-step="6" hidden>
   <p class="wt-step__count">Step 6 of 8</p>
   <h3 class="wt-step__title">Take the safety button</h3>
-  <p class="wt-step__prompt">You are given a button to hold during the scan.</p>
+  <p class="wt-step__prompt">Click the safety button to take it.</p>
   <p class="wt-step__result" hidden>You have it. You can press it at any point if you need the staff.</p>
-  <button type="button" class="btn btn--primary wt-step__action"
-          data-action-label="Take the button" data-next-label="Next step">Take the button</button>
+  <div class="wt-controls">
+    <button type="button" class="wt-back">← Back a step</button>
+    <button type="button" class="btn btn--primary wt-next" hidden>Next step</button>
+  </div>
 </li><li class="wt-step" data-step="7" hidden>
   <p class="wt-step__count">Step 7 of 8</p>
   <h3 class="wt-step__title">Slide into the machine</h3>
-  <p class="wt-step__prompt">The table slides into the opening of the MRI machine.</p>
-  <p class="wt-step__result" hidden>You are inside. The machine can feel loud, narrow or uncomfortable for some people — worth saying beforehand if you think it might for you.</p>
-  <button type="button" class="btn btn--primary wt-step__action"
-          data-action-label="Slide the table in" data-next-label="Next step">Slide the table in</button>
+  <p class="wt-step__prompt">Click the machine to slide the table in.</p>
+  <p class="wt-step__result" hidden>You are inside, and the technologist steps out of the room before the scan begins. The machine can feel loud, narrow or uncomfortable for some people — worth saying beforehand if you think it might for you.</p>
+  <div class="wt-controls">
+    <button type="button" class="wt-back">← Back a step</button>
+    <button type="button" class="btn btn--primary wt-next" hidden>Next step</button>
+  </div>
 </li><li class="wt-step" data-step="8" hidden>
   <p class="wt-step__count">Step 8 of 8</p>
   <h3 class="wt-step__title">The scan</h3>
-  <p class="wt-step__prompt">The contrast is given through your IV and the machine starts up.</p>
+  <p class="wt-step__prompt">Click the machine to start the scan.</p>
   <p class="wt-step__result" hidden>You will hear loud tapping noises. You are inside the tunnel for about 15 to 20 minutes.</p>
-  <button type="button" class="btn btn--primary wt-step__action"
-          data-action-label="Start the scan" data-next-label="Next step">Start the scan</button>
+  <div class="wt-controls">
+    <button type="button" class="wt-back">← Back a step</button>
+    <button type="button" class="btn btn--primary wt-next" hidden>Next step</button>
+  </div>
 </li></ol>
       <div class="wt-done" hidden>
         <h3>That is the whole appointment</h3>
         <p>About 15 minutes of preparation, then 15 to 20 minutes inside the machine. If any part of this would be hard for you, it is worth raising with your doctor before the appointment.</p>
+        <div class="wt-controls">
+          <button type="button" class="wt-back">← Back a step</button>
+        </div>
       </div>
     </div>
     <button type="button" class="btn wt-restart" hidden>Start over</button>

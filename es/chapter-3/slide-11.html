@@ -31,9 +31,10 @@
   <h1 class="slide__title">Qué pasa en una cita de resonancia magnética</h1>
   <div class="slide__body"><div class="walkthrough">
   <p class="walkthrough__intro">Una resonancia magnética de seno tiene más pasos que la mayoría de los estudios, y no conocerlos es parte de lo que la hace intimidante. Recorra aquí una cita, paso a paso.</p>
-  <ol class="walkthrough__static"><li><strong>Quítese las joyas</strong> Listo. La resonancia magnética funciona con campos magnéticos y no puede realizarse si tienen ciertos tipos de metal en el cuerpo, así que el metal se queda fuera.</li><li><strong>Póngase la bata</strong> Cambiada. Su ropa se queda en el vestidor.</li><li><strong>Colocación de la vía intravenosa</strong> La vía está puesta. Algunas personas son alérgicas al contraste, así que dígale a su médico si ha tenido una reacción antes.</li><li><strong>Acuéstese boca abajo</strong> Ya está en la mesa. La resonancia magnética de seno se hace boca abajo.</li><li><strong>Acomódese en las aberturas acolchadas</strong> En posición. A continuación le dan algo para sostener.</li><li><strong>Tome el botón de seguridad</strong> Ya lo tiene. Puede presionarlo en cualquier momento si necesita al personal.</li><li><strong>Entre en la máquina</strong> Ya está dentro. La máquina puede resultar ruidosa, estrecha o incómoda para algunas personas; conviene decirlo antes si cree que puede ser su caso.</li><li><strong>El estudio</strong> Escuchará ruidos fuertes de tipo golpeteo. Estará dentro del túnel entre 15 y 20 minutos.</li></ol>
+  <ol class="walkthrough__static"><li><strong>Quítese las joyas</strong> Listo. La resonancia magnética funciona con campos magnéticos y no puede realizarse si tienen ciertos tipos de metal en el cuerpo, así que el metal se queda fuera.</li><li><strong>Póngase la bata</strong> Cambiada. Su ropa se queda en el vestidor.</li><li><strong>Colocación de la vía intravenosa</strong> La vía está puesta, colocada por el tecnólogo. Algunas personas son alérgicas al contraste, así que dígale a su médico si ha tenido una reacción antes.</li><li><strong>Acuéstese boca abajo</strong> Ya está en la mesa. La resonancia magnética de seno se hace boca abajo, y el tecnólogo permanece en la sala para ayudarle a acomodarse.</li><li><strong>Acomódese en las aberturas acolchadas</strong> En posición. El tecnólogo sigue con usted. A continuación le dan algo para sostener.</li><li><strong>Tome el botón de seguridad</strong> Ya lo tiene. Puede presionarlo en cualquier momento si necesita al personal.</li><li><strong>Entre en la máquina</strong> Ya está dentro, y el tecnólogo sale de la sala antes de que comience el estudio. La máquina puede resultar ruidosa, estrecha o incómoda para algunas personas; conviene decirlo antes si cree que puede ser su caso.</li><li><strong>El estudio</strong> Escuchará ruidos fuertes de tipo golpeteo. Estará dentro del túnel entre 15 y 20 minutos.</li></ol>
   <div class="walkthrough__game" hidden data-step="0">
-    <svg class="mri-scene" viewBox="0 0 760 320" aria-hidden="true">
+    <div class="wt-scene">
+      <svg class="mri-scene" viewBox="0 0 760 320" aria-hidden="true">
   <rect class="floor" y="252" width="760" height="4"/>
   <g class="patient-standing">
     <circle class="head" cx="150" cy="118" r="19"/>
@@ -41,6 +42,12 @@
     <rect class="limb" x="138" y="204" width="10" height="48" rx="5"/>
     <rect class="limb" x="152" y="204" width="10" height="48" rx="5"/>
     <circle class="necklace" cx="150" cy="141" r="6"/>
+  </g>
+  <g class="tech">
+    <circle class="head" cx="104" cy="122" r="16"/>
+    <rect class="torso" x="90" y="142" width="28" height="60" rx="13"/>
+    <rect class="limb" x="93" y="200" width="9" height="52" rx="4"/>
+    <rect class="limb" x="106" y="200" width="9" height="52" rx="4"/>
   </g>
   <!-- Drawn before the machine so sliding in reads as going inside it. The IV
        pole travels with the bed, the way it is wheeled alongside, so the line
@@ -75,6 +82,8 @@
     <path d="M418 92 q-42 57 0 114"/>
   </g>
 </svg>
+      <button type="button" class="wt-hotspot" data-for="1" hidden style="left:19.737%;top:44.062%"><span class="visually-hidden">Quitarse el collar</span></button><button type="button" class="wt-hotspot" data-for="2" hidden style="left:19.737%;top:54.062%"><span class="visually-hidden">Ponerse la bata</span></button><button type="button" class="wt-hotspot" data-for="3" hidden style="left:22.105%;top:47.500%"><span class="visually-hidden">Colocar la vía intravenosa en el brazo</span></button><button type="button" class="wt-hotspot" data-for="4" hidden style="left:41.447%;top:55.312%"><span class="visually-hidden">Acostarse en la mesa</span></button><button type="button" class="wt-hotspot" data-for="5" hidden style="left:43.421%;top:55.312%"><span class="visually-hidden">Acomodarse en las aberturas acolchadas</span></button><button type="button" class="wt-hotspot" data-for="6" hidden style="left:61.711%;top:47.500%"><span class="visually-hidden">Tomar el botón de seguridad</span></button><button type="button" class="wt-hotspot" data-for="7" hidden style="left:81.579%;top:46.562%"><span class="visually-hidden">Deslizar la mesa dentro de la máquina</span></button><button type="button" class="wt-hotspot" data-for="8" hidden style="left:81.579%;top:46.562%"><span class="visually-hidden">Comenzar el estudio</span></button>
+    </div>
     <ol class="wt-dots" aria-hidden="true"><li class="wt-dot" data-dot="1"><span class="visually-hidden">Paso 1 de 8</span></li><li class="wt-dot" data-dot="2"><span class="visually-hidden">Paso 2 de 8</span></li><li class="wt-dot" data-dot="3"><span class="visually-hidden">Paso 3 de 8</span></li><li class="wt-dot" data-dot="4"><span class="visually-hidden">Paso 4 de 8</span></li><li class="wt-dot" data-dot="5"><span class="visually-hidden">Paso 5 de 8</span></li><li class="wt-dot" data-dot="6"><span class="visually-hidden">Paso 6 de 8</span></li><li class="wt-dot" data-dot="7"><span class="visually-hidden">Paso 7 de 8</span></li><li class="wt-dot" data-dot="8"><span class="visually-hidden">Paso 8 de 8</span></li></ol>
     <div class="wt-stage" aria-live="polite">
       <div class="wt-intro">
@@ -83,63 +92,82 @@
       <ol class="wt-steps"><li class="wt-step" data-step="1" hidden>
   <p class="wt-step__count">Paso 1 de 8</p>
   <h3 class="wt-step__title">Quítese las joyas</h3>
-  <p class="wt-step__prompt">Los aretes, los collares y los anillos se quitan antes de acercarse a la máquina.</p>
+  <p class="wt-step__prompt">Haga clic en el collar para quitárselo.</p>
   <p class="wt-step__result" hidden>Listo. La resonancia magnética funciona con campos magnéticos y no puede realizarse si tienen ciertos tipos de metal en el cuerpo, así que el metal se queda fuera.</p>
-  <button type="button" class="btn btn--primary wt-step__action"
-          data-action-label="Quitarse las joyas" data-next-label="Siguiente paso">Quitarse las joyas</button>
+  <div class="wt-controls">
+    <button type="button" class="wt-back">← Un paso atrás</button>
+    <button type="button" class="btn btn--primary wt-next" hidden>Siguiente paso</button>
+  </div>
 </li><li class="wt-step" data-step="2" hidden>
   <p class="wt-step__count">Paso 2 de 8</p>
   <h3 class="wt-step__title">Póngase la bata</h3>
-  <p class="wt-step__prompt">Se desviste de la cintura hacia arriba y se pone una bata de hospital.</p>
+  <p class="wt-step__prompt">Haga clic sobre usted misma para ponerse la bata de hospital.</p>
   <p class="wt-step__result" hidden>Cambiada. Su ropa se queda en el vestidor.</p>
-  <button type="button" class="btn btn--primary wt-step__action"
-          data-action-label="Ponerse la bata" data-next-label="Siguiente paso">Ponerse la bata</button>
+  <div class="wt-controls">
+    <button type="button" class="wt-back">← Un paso atrás</button>
+    <button type="button" class="btn btn--primary wt-next" hidden>Siguiente paso</button>
+  </div>
 </li><li class="wt-step" data-step="3" hidden>
   <p class="wt-step__count">Paso 3 de 8</p>
   <h3 class="wt-step__title">Colocación de la vía intravenosa</h3>
-  <p class="wt-step__prompt">Se le coloca una pequeña vía intravenosa en una vena del brazo. Por ahí llegará después el contraste.</p>
-  <p class="wt-step__result" hidden>La vía está puesta. Algunas personas son alérgicas al contraste, así que dígale a su médico si ha tenido una reacción antes.</p>
-  <button type="button" class="btn btn--primary wt-step__action"
-          data-action-label="Colocar la vía intravenosa" data-next-label="Siguiente paso">Colocar la vía intravenosa</button>
+  <p class="wt-step__prompt">Haga clic en su brazo. Un tecnólogo le coloca una pequeña vía intravenosa en una vena.</p>
+  <p class="wt-step__result" hidden>La vía está puesta, colocada por el tecnólogo. Algunas personas son alérgicas al contraste, así que dígale a su médico si ha tenido una reacción antes.</p>
+  <div class="wt-controls">
+    <button type="button" class="wt-back">← Un paso atrás</button>
+    <button type="button" class="btn btn--primary wt-next" hidden>Siguiente paso</button>
+  </div>
 </li><li class="wt-step" data-step="4" hidden>
   <p class="wt-step__count">Paso 4 de 8</p>
   <h3 class="wt-step__title">Acuéstese boca abajo</h3>
-  <p class="wt-step__prompt">La mesa está acolchada. Se acuesta boca abajo, no de espaldas.</p>
-  <p class="wt-step__result" hidden>Ya está en la mesa. La resonancia magnética de seno se hace boca abajo.</p>
-  <button type="button" class="btn btn--primary wt-step__action"
-          data-action-label="Acostarse en la mesa" data-next-label="Siguiente paso">Acostarse en la mesa</button>
+  <p class="wt-step__prompt">Haga clic en la mesa para acostarse boca abajo.</p>
+  <p class="wt-step__result" hidden>Ya está en la mesa. La resonancia magnética de seno se hace boca abajo, y el tecnólogo permanece en la sala para ayudarle a acomodarse.</p>
+  <div class="wt-controls">
+    <button type="button" class="wt-back">← Un paso atrás</button>
+    <button type="button" class="btn btn--primary wt-next" hidden>Siguiente paso</button>
+  </div>
 </li><li class="wt-step" data-step="5" hidden>
   <p class="wt-step__count">Paso 5 de 8</p>
   <h3 class="wt-step__title">Acomódese en las aberturas acolchadas</h3>
-  <p class="wt-step__prompt">La mesa tiene dos aberturas acolchadas donde se colocan los senos.</p>
-  <p class="wt-step__result" hidden>En posición. A continuación le dan algo para sostener.</p>
-  <button type="button" class="btn btn--primary wt-step__action"
-          data-action-label="Acomodarse en las aberturas" data-next-label="Siguiente paso">Acomodarse en las aberturas</button>
+  <p class="wt-step__prompt">Haga clic en las aberturas acolchadas para acomodarse.</p>
+  <p class="wt-step__result" hidden>En posición. El tecnólogo sigue con usted. A continuación le dan algo para sostener.</p>
+  <div class="wt-controls">
+    <button type="button" class="wt-back">← Un paso atrás</button>
+    <button type="button" class="btn btn--primary wt-next" hidden>Siguiente paso</button>
+  </div>
 </li><li class="wt-step" data-step="6" hidden>
   <p class="wt-step__count">Paso 6 de 8</p>
   <h3 class="wt-step__title">Tome el botón de seguridad</h3>
-  <p class="wt-step__prompt">Le dan un botón para sostener durante el estudio.</p>
+  <p class="wt-step__prompt">Haga clic en el botón de seguridad para tomarlo.</p>
   <p class="wt-step__result" hidden>Ya lo tiene. Puede presionarlo en cualquier momento si necesita al personal.</p>
-  <button type="button" class="btn btn--primary wt-step__action"
-          data-action-label="Tomar el botón" data-next-label="Siguiente paso">Tomar el botón</button>
+  <div class="wt-controls">
+    <button type="button" class="wt-back">← Un paso atrás</button>
+    <button type="button" class="btn btn--primary wt-next" hidden>Siguiente paso</button>
+  </div>
 </li><li class="wt-step" data-step="7" hidden>
   <p class="wt-step__count">Paso 7 de 8</p>
   <h3 class="wt-step__title">Entre en la máquina</h3>
-  <p class="wt-step__prompt">La mesa se desliza dentro de la abertura de la máquina de resonancia magnética.</p>
-  <p class="wt-step__result" hidden>Ya está dentro. La máquina puede resultar ruidosa, estrecha o incómoda para algunas personas; conviene decirlo antes si cree que puede ser su caso.</p>
-  <button type="button" class="btn btn--primary wt-step__action"
-          data-action-label="Deslizar la mesa" data-next-label="Siguiente paso">Deslizar la mesa</button>
+  <p class="wt-step__prompt">Haga clic en la máquina para deslizar la mesa hacia dentro.</p>
+  <p class="wt-step__result" hidden>Ya está dentro, y el tecnólogo sale de la sala antes de que comience el estudio. La máquina puede resultar ruidosa, estrecha o incómoda para algunas personas; conviene decirlo antes si cree que puede ser su caso.</p>
+  <div class="wt-controls">
+    <button type="button" class="wt-back">← Un paso atrás</button>
+    <button type="button" class="btn btn--primary wt-next" hidden>Siguiente paso</button>
+  </div>
 </li><li class="wt-step" data-step="8" hidden>
   <p class="wt-step__count">Paso 8 de 8</p>
   <h3 class="wt-step__title">El estudio</h3>
-  <p class="wt-step__prompt">Se administra el contraste por la vía intravenosa y la máquina se pone en marcha.</p>
+  <p class="wt-step__prompt">Haga clic en la máquina para comenzar el estudio.</p>
   <p class="wt-step__result" hidden>Escuchará ruidos fuertes de tipo golpeteo. Estará dentro del túnel entre 15 y 20 minutos.</p>
-  <button type="button" class="btn btn--primary wt-step__action"
-          data-action-label="Comenzar el estudio" data-next-label="Siguiente paso">Comenzar el estudio</button>
+  <div class="wt-controls">
+    <button type="button" class="wt-back">← Un paso atrás</button>
+    <button type="button" class="btn btn--primary wt-next" hidden>Siguiente paso</button>
+  </div>
 </li></ol>
       <div class="wt-done" hidden>
         <h3>Esa es toda la cita</h3>
         <p>Unos 15 minutos de preparación y luego entre 15 y 20 minutos dentro de la máquina. Si alguna parte de esto le resultaría difícil, conviene comentarlo con su médico antes de la cita.</p>
+        <div class="wt-controls">
+          <button type="button" class="wt-back">← Un paso atrás</button>
+        </div>
       </div>
     </div>
     <button type="button" class="btn wt-restart" hidden>Empezar de nuevo</button>

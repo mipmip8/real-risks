@@ -1,12 +1,19 @@
 /* Interactive MRI walk-through.
  *
- * The page ships a plain ordered list of the steps and a hidden step-by-step
+ * The page ships a plain ordered list of the steps and a hidden interactive
  * version. This script swaps them, so a reader without JavaScript gets the
- * whole thing as prose rather than buttons that do nothing.
+ * whole thing as prose rather than controls that do nothing.
  *
- * Each step reveals its explanation on click, then offers the next one. The
- * scene's data-step drives the illustration from CSS; no state lives here
- * beyond the current index.
+ * Each step asks the reader to act on the scene — click the necklace, the
+ * table, the machine — and only then explains what happened and offers the
+ * next step.
+ *
+ * Two indices, deliberately separate:
+ *   current  which step card is on screen (0 = intro, steps.length + 1 = done)
+ *   revealed whether the reader has acted on that step yet
+ * The illustration is driven by how many steps are actually complete, so the
+ * picture changes *because* of the click rather than ahead of it. Going back
+ * rewinds both the card and the picture, so a step can be replayed.
  */
 (function () {
   "use strict";
@@ -24,57 +31,85 @@
   var done = root.querySelector(".wt-done");
   var steps = Array.prototype.slice.call(root.querySelectorAll(".wt-step"));
   var dots = Array.prototype.slice.call(root.querySelectorAll(".wt-dot"));
+  var hotspots = Array.prototype.slice.call(root.querySelectorAll(".wt-hotspot"));
 
   if (!game || !steps.length) {
     return;
   }
 
-  // Enhance: hide the prose version, show the interactive one.
   staticList.hidden = true;
   game.hidden = false;
 
-  var current = 0; // 0 = not started
+  var current = 0;
+  var revealed = false;
 
-  function show(el, visible) {
-    el.hidden = !visible;
+  function completed() {
+    // Steps finished so far — what the illustration should show.
+    if (current === 0) {
+      return 0;
+    }
+    if (current > steps.length) {
+      return steps.length;
+    }
+    return revealed ? current : current - 1;
   }
 
   function paint() {
-    game.setAttribute("data-step", String(current));
+    var scene = completed();
+    game.setAttribute("data-step", String(scene));
     dots.forEach(function (dot, i) {
-      dot.classList.toggle("is-done", i + 1 <= current);
-      dot.classList.toggle("is-current", i + 1 === current);
+      dot.classList.toggle("is-done", i + 1 <= scene);
+      dot.classList.toggle("is-current", i + 1 === current && !revealed);
+    });
+    // Only the live step's hotspot is reachable, so a stale target cannot be
+    // tabbed to or clicked out of turn.
+    hotspots.forEach(function (spot) {
+      var mine = parseInt(spot.getAttribute("data-for"), 10) === current;
+      spot.hidden = !(mine && !revealed);
     });
   }
 
-  function goTo(index, moveFocus) {
+  function goTo(index, moveFocus, startRevealed) {
     current = index;
-    show(intro, index === 0);
+    revealed = Boolean(startRevealed);
+    intro.hidden = index !== 0;
+
     steps.forEach(function (step, i) {
-      show(step, i + 1 === index);
-      // A step re-entered after a restart should ask again, not show its answer.
-      var result = step.querySelector(".wt-step__result");
-      var action = step.querySelector(".wt-step__action");
-      if (i + 1 !== index) {
-        result.hidden = true;
-        action.removeAttribute("data-answered");
-        action.textContent = action.getAttribute("data-action-label");
-      }
+      var showing = i + 1 === index;
+      step.hidden = !showing;
+      step.querySelector(".wt-step__result").hidden = !(showing && revealed);
+      step.querySelector(".wt-next").hidden = !(showing && revealed);
     });
-    show(done, index > steps.length);
-    show(restartBtn, index > 0);
+
+    done.hidden = index <= steps.length;
+    restartBtn.hidden = index === 0;
     paint();
 
     if (moveFocus) {
-      var target = index === 0
-        ? startBtn
-        : index > steps.length
-          ? restartBtn
-          : steps[index - 1].querySelector(".wt-step__action");
+      var target;
+      if (index === 0) {
+        target = startBtn;
+      } else if (index > steps.length) {
+        target = done.querySelector(".wt-back");
+      } else if (revealed) {
+        target = steps[index - 1].querySelector(".wt-next");
+      } else {
+        target = hotspots[index - 1];
+      }
       if (target) {
         target.focus();
       }
     }
+  }
+
+  function reveal(index) {
+    revealed = true;
+    var step = steps[index - 1];
+    step.querySelector(".wt-step__result").hidden = false;
+    var next = step.querySelector(".wt-next");
+    next.hidden = false;
+    paint();
+    next.focus();
   }
 
   startBtn.addEventListener("click", function () {
@@ -85,24 +120,29 @@
     goTo(0, true);
   });
 
-  steps.forEach(function (step, i) {
-    var action = step.querySelector(".wt-step__action");
-    var result = step.querySelector(".wt-step__result");
-
-    action.addEventListener("click", function () {
-      if (action.getAttribute("data-answered")) {
-        // Second press moves on; the first revealed the explanation.
-        goTo(i + 2, true);
-        return;
-      }
-      result.hidden = false;
-      action.setAttribute("data-answered", "true");
-      action.textContent = action.getAttribute("data-next-label");
-      // Advancing the scene on reveal lets the illustration react immediately.
-      current = i + 1;
-      paint();
-      action.focus();
+  hotspots.forEach(function (spot) {
+    spot.addEventListener("click", function () {
+      reveal(parseInt(spot.getAttribute("data-for"), 10));
     });
+  });
+
+  steps.forEach(function (step, i) {
+    step.querySelector(".wt-next").addEventListener("click", function () {
+      goTo(i + 2, true);
+    });
+    step.querySelector(".wt-back").addEventListener("click", function () {
+      // Back from a revealed step re-asks it; back from an unanswered one
+      // goes to the step before, shown as already done so it can be reread.
+      if (revealed) {
+        goTo(i + 1, true);
+      } else {
+        goTo(i, true, i > 0);
+      }
+    });
+  });
+
+  done.querySelector(".wt-back").addEventListener("click", function () {
+    goTo(steps.length, true, true);
   });
 
   goTo(0, false);
