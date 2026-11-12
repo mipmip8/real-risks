@@ -918,6 +918,81 @@
               ]
             }
           ]
+        },
+        {
+          "title": "What happens at an MRI appointment",
+          "menu": "What happens at an MRI appointment",
+          "layout": "full",
+          "blocks": [
+            {
+              "type": "walkthrough",
+              "intro": "A breast MRI has more steps than most scans, and not knowing them is part of what makes it daunting. Walk through an appointment here, one step at a time.",
+              "startLabel": "Start the walk-through",
+              "nextLabel": "Next step",
+              "restartLabel": "Start over",
+              "stepLabel": "Step {n} of {total}",
+              "completeTitle": "That is the whole appointment",
+              "completeText": "About 15 minutes of preparation, then 15 to 20 minutes inside the machine. If any part of this would be hard for you, it is worth raising with your doctor before the appointment.",
+              "steps": [
+                {
+                  "id": "jewelry",
+                  "title": "Remove your jewellery",
+                  "prompt": "Earrings, necklaces and rings all come off before you go near the machine.",
+                  "action": "Take the jewellery off",
+                  "result": "Done. An MRI works with magnetic fields, and it cannot be performed if you have certain types of metal in your body — so metal stays outside."
+                },
+                {
+                  "id": "gown",
+                  "title": "Change into a gown",
+                  "prompt": "You undress from the waist up and put on a hospital gown.",
+                  "action": "Put the gown on",
+                  "result": "Changed. Your own clothes stay in the changing room."
+                },
+                {
+                  "id": "iv",
+                  "title": "Place the IV",
+                  "prompt": "A small IV goes into a vein in your arm. This is how the contrast dye will reach you later.",
+                  "action": "Place the IV",
+                  "result": "The IV is in. Some people are allergic to contrast dye, so tell your doctor if you have reacted to it before."
+                },
+                {
+                  "id": "lie-down",
+                  "title": "Lie face down",
+                  "prompt": "The table is padded. You lie on your stomach rather than your back.",
+                  "action": "Lie down on the table",
+                  "result": "You are on the table. A breast MRI is done lying face down."
+                },
+                {
+                  "id": "openings",
+                  "title": "Settle into the cushioned openings",
+                  "prompt": "There are two cushioned openings in the table for your breasts to rest in.",
+                  "action": "Settle into the openings",
+                  "result": "In position. Next you are given something to hold."
+                },
+                {
+                  "id": "safety",
+                  "title": "Take the safety button",
+                  "prompt": "You are given a button to hold during the scan.",
+                  "action": "Take the button",
+                  "result": "You have it. You can press it at any point if you need the staff."
+                },
+                {
+                  "id": "slide-in",
+                  "title": "Slide into the machine",
+                  "prompt": "The table slides into the opening of the MRI machine.",
+                  "action": "Slide the table in",
+                  "result": "You are inside. The machine can feel loud, narrow or uncomfortable for some people — worth saying beforehand if you think it might for you."
+                },
+                {
+                  "id": "scan",
+                  "title": "The scan",
+                  "prompt": "The contrast is given through your IV and the machine starts up.",
+                  "action": "Start the scan",
+                  "result": "You will hear loud tapping noises. You are inside the tunnel for about 15 to 20 minutes."
+                }
+              ]
+            }
+          ]
         }
       ]
     }

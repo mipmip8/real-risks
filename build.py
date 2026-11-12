@@ -52,6 +52,53 @@ CHEVRON = (
 )
 
 
+# A schematic side view of a breast MRI, built from shapes rather than an
+# illustration so it can be re-coloured and animated per step. Decorative: the
+# step text carries the meaning, so the SVG is hidden from screen readers.
+MRI_SCENE = """<svg class="mri-scene" viewBox="0 0 760 320" aria-hidden="true">
+  <rect class="floor" y="252" width="760" height="4"/>
+  <g class="patient-standing">
+    <circle class="head" cx="150" cy="118" r="19"/>
+    <rect class="torso" x="134" y="140" width="32" height="66" rx="15"/>
+    <rect class="limb" x="138" y="204" width="10" height="48" rx="5"/>
+    <rect class="limb" x="152" y="204" width="10" height="48" rx="5"/>
+    <circle class="necklace" cx="150" cy="141" r="6"/>
+  </g>
+  <!-- Drawn before the machine so sliding in reads as going inside it. The IV
+       pole travels with the bed, the way it is wheeled alongside, so the line
+       stays attached to the patient instead of dangling. -->
+  <g class="bed">
+    <g class="iv">
+      <rect class="pole" x="66" y="52" width="5" height="200"/>
+      <rect class="bag" x="46" y="58" width="30" height="42" rx="7"/>
+      <path class="line" d="M61 100 q0 34 32 42 h73"/>
+    </g>
+    <rect class="slab" x="150" y="168" width="330" height="18" rx="9"/>
+    <rect class="leg" x="300" y="186" width="26" height="66"/>
+    <g class="openings">
+      <circle cx="318" cy="177" r="7"/>
+      <circle cx="342" cy="177" r="7"/>
+    </g>
+    <g class="patient-prone">
+      <rect class="torso" x="170" y="140" width="190" height="30" rx="15"/>
+      <circle class="head" cx="380" cy="155" r="17"/>
+      <path class="arm" d="M398 152 h60"/>
+      <rect class="button" x="458" y="143" width="22" height="18" rx="6"/>
+    </g>
+  </g>
+  <g class="machine">
+    <rect x="496" y="46" width="248" height="206" rx="26"/>
+    <circle class="bore-outer" cx="620" cy="149" r="66"/>
+    <circle class="bore-inner" cx="620" cy="149" r="49"/>
+  </g>
+  <g class="waves">
+    <path d="M470 120 q-22 29 0 58"/>
+    <path d="M444 106 q-32 43 0 86"/>
+    <path d="M418 92 q-42 57 0 114"/>
+  </g>
+</svg>"""
+
+
 POSITIONS = 9      # notches on each slider
 MIDDLE_POS = 5     # the neutral notch, and the default
 
@@ -296,6 +343,79 @@ def r_schedule(b, _ctx):
     return '<div class="schedule">%s</div>' % "".join(cols)
 
 
+def r_walkthrough(b, ctx):
+    """An interactive run-through of an MRI appointment.
+
+    Both forms are rendered: a plain ordered list that reads fine on its own,
+    and the step-by-step game, which walkthrough.js swaps in. Without
+    JavaScript the reader still gets every step and every explanation instead
+    of buttons that do nothing.
+    """
+    ui = ctx["ui"]
+
+    static = "".join(
+        "<li><strong>%s</strong> %s</li>" % (e(s["title"]), e(s["result"]))
+        for s in b["steps"]
+    )
+
+    cards = []
+    for i, step in enumerate(b["steps"], 1):
+        cards.append(
+            """<li class="wt-step" data-step="{n}" hidden>
+  <p class="wt-step__count">{counter}</p>
+  <h3 class="wt-step__title">{title}</h3>
+  <p class="wt-step__prompt">{prompt}</p>
+  <p class="wt-step__result" hidden>{result}</p>
+  <button type="button" class="btn btn--primary wt-step__action"
+          data-action-label="{action}" data-next-label="{next}">{action}</button>
+</li>""".format(
+                n=i,
+                counter=e(b["stepLabel"].format(n=i, total=len(b["steps"]))),
+                title=e(step["title"]),
+                prompt=e(step["prompt"]),
+                action=e(step["action"]),
+                next=e(b["nextLabel"]),
+                result=e(step["result"]),
+            )
+        )
+
+    dots = "".join(
+        '<li class="wt-dot" data-dot="%d"><span class="visually-hidden">%s</span></li>'
+        % (i, e(b["stepLabel"].format(n=i, total=len(b["steps"]))))
+        for i in range(1, len(b["steps"]) + 1)
+    )
+
+    return """<div class="walkthrough">
+  <p class="walkthrough__intro">{intro}</p>
+  <ol class="walkthrough__static">{static}</ol>
+  <div class="walkthrough__game" hidden data-step="0">
+    {scene}
+    <ol class="wt-dots" aria-hidden="true">{dots}</ol>
+    <div class="wt-stage" aria-live="polite">
+      <div class="wt-intro">
+        <button type="button" class="btn btn--primary wt-start">{start}</button>
+      </div>
+      <ol class="wt-steps">{cards}</ol>
+      <div class="wt-done" hidden>
+        <h3>{done_title}</h3>
+        <p>{done_text}</p>
+      </div>
+    </div>
+    <button type="button" class="btn wt-restart" hidden>{restart}</button>
+  </div>
+</div>""".format(
+        intro=e(b["intro"]),
+        static=static,
+        scene=MRI_SCENE,
+        dots=dots,
+        start=e(b["startLabel"]),
+        cards="".join(cards),
+        done_title=e(b["completeTitle"]),
+        done_text=e(b["completeText"]),
+        restart=e(b["restartLabel"]),
+    )
+
+
 def r_factcards(b, _ctx):
     items = []
     for i in b["items"]:
@@ -380,6 +500,7 @@ def r_sliders(b, ctx):
 
 RENDERERS = {
     "sliders": r_sliders,
+    "walkthrough": r_walkthrough,
     "text": r_text,
     "callout": r_callout,
     "bullets": r_bullets,
@@ -465,6 +586,7 @@ def shell(ui, title, assets, links, toggle, body_attrs, breadcrumb, main,
 </footer>
 <script src="{assets}assets/js/progress.js"></script>
 <script src="{assets}assets/js/sliders.js"></script>
+<script src="{assets}assets/js/walkthrough.js"></script>
 </body>
 </html>
 """.format(

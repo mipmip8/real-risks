@@ -1479,3 +1479,353 @@ a {
     padding: 0;
   }
 }
+
+/* ==========================================================================
+   MRI walk-through
+   ========================================================================== */
+
+.walkthrough__intro {
+  font-size: 19px;
+  margin: 0 0 24px;
+}
+
+/* The prose fallback, shown when walkthrough.js has not run. */
+.walkthrough__static {
+  margin: 0;
+  padding-left: 24px;
+}
+
+.walkthrough__static li {
+  margin-bottom: 10px;
+}
+
+.walkthrough__game {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 26px 28px 30px;
+}
+
+/* ---- Scene ---- */
+
+.mri-scene {
+  display: block;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto 10px;
+}
+
+.mri-scene .floor {
+  fill: var(--rule);
+}
+
+.mri-scene .machine rect {
+  fill: #e9e6f0;
+  stroke: #cdc6dd;
+  stroke-width: 2;
+}
+
+.mri-scene .bore-outer {
+  fill: #7a6bb5;
+}
+
+.mri-scene .bore-inner {
+  fill: #453a5c;
+}
+
+.mri-scene .leg,
+.mri-scene .limb {
+  fill: #b7bfc8;
+}
+
+.mri-scene .slab {
+  fill: #cfd6dd;
+}
+
+.mri-scene .head,
+.mri-scene .torso {
+  fill: #e8b89a;
+}
+
+.mri-scene .arm {
+  stroke: #e8b89a;
+  stroke-width: 12;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.mri-scene .necklace {
+  fill: #d2962a;
+}
+
+.mri-scene .button {
+  fill: #c0392b;
+}
+
+/* Everything below reacts to how far the reader has got. */
+
+.walkthrough__game[data-step="0"] .mri-scene .bed,
+.walkthrough__game[data-step="1"] .mri-scene .bed,
+.walkthrough__game[data-step="2"] .mri-scene .bed,
+.walkthrough__game[data-step="3"] .mri-scene .bed {
+  opacity: 0.45;
+}
+
+/* 1 — jewellery comes off */
+.walkthrough__game:not([data-step="0"]) .mri-scene .necklace {
+  opacity: 0;
+}
+
+/* 2 — the gown goes on */
+.walkthrough__game[data-step="2"] .mri-scene .patient-standing .torso,
+.walkthrough__game[data-step="3"] .mri-scene .patient-standing .torso {
+  fill: #9fc2d6;
+}
+
+.walkthrough__game:not([data-step="0"]):not([data-step="1"])
+  .mri-scene .patient-prone .torso {
+  fill: #9fc2d6;
+}
+
+/* 3 — the IV appears */
+.mri-scene .iv {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mri-scene .iv .pole,
+.mri-scene .iv .bag {
+  fill: #b7bfc8;
+}
+
+.mri-scene .iv .bag {
+  fill: #cfe3ef;
+  stroke: #8fb3c7;
+  stroke-width: 2;
+}
+
+.mri-scene .iv .line {
+  stroke: #8fb3c7;
+  stroke-width: 3;
+  fill: none;
+}
+
+.walkthrough__game[data-step="3"] .mri-scene .iv,
+.walkthrough__game[data-step="4"] .mri-scene .iv,
+.walkthrough__game[data-step="5"] .mri-scene .iv,
+.walkthrough__game[data-step="6"] .mri-scene .iv,
+.walkthrough__game[data-step="7"] .mri-scene .iv,
+.walkthrough__game[data-step="8"] .mri-scene .iv,
+.walkthrough__game[data-step="9"] .mri-scene .iv {
+  opacity: 1;
+}
+
+/* 4 — standing becomes prone */
+.mri-scene .patient-prone {
+  opacity: 0;
+}
+
+.walkthrough__game[data-step="0"] .mri-scene .patient-standing,
+.walkthrough__game[data-step="1"] .mri-scene .patient-standing,
+.walkthrough__game[data-step="2"] .mri-scene .patient-standing,
+.walkthrough__game[data-step="3"] .mri-scene .patient-standing {
+  opacity: 1;
+}
+
+.walkthrough__game:not([data-step="0"]):not([data-step="1"]):not([data-step="2"]):not([data-step="3"])
+  .mri-scene .patient-standing {
+  opacity: 0;
+}
+
+.walkthrough__game:not([data-step="0"]):not([data-step="1"]):not([data-step="2"]):not([data-step="3"])
+  .mri-scene .patient-prone {
+  opacity: 1;
+}
+
+/* 5 — the cushioned openings */
+.mri-scene .openings circle {
+  fill: #9aa4ae;
+  transition: fill 0.3s ease;
+}
+
+.walkthrough__game[data-step="5"] .mri-scene .openings circle {
+  fill: #0f87ab;
+}
+
+/* 6 — the safety button */
+.mri-scene .button {
+  opacity: 0;
+}
+
+.walkthrough__game[data-step="6"] .mri-scene .button,
+.walkthrough__game[data-step="7"] .mri-scene .button,
+.walkthrough__game[data-step="8"] .mri-scene .button,
+.walkthrough__game[data-step="9"] .mri-scene .button {
+  opacity: 1;
+}
+
+/* 7 — the table slides in */
+.mri-scene .bed {
+  transition: transform 0.7s ease, opacity 0.3s ease;
+}
+
+.walkthrough__game[data-step="7"] .mri-scene .bed,
+.walkthrough__game[data-step="8"] .mri-scene .bed,
+.walkthrough__game[data-step="9"] .mri-scene .bed {
+  transform: translateX(170px);
+}
+
+/* 8 — the scan is running */
+.mri-scene .waves path {
+  stroke: #7a6bb5;
+  stroke-width: 4;
+  fill: none;
+  stroke-linecap: round;
+  opacity: 0;
+}
+
+.walkthrough__game[data-step="8"] .mri-scene .waves path,
+.walkthrough__game[data-step="9"] .mri-scene .waves path {
+  opacity: 0.75;
+  animation: wt-pulse 1.4s ease-in-out infinite;
+}
+
+.walkthrough__game .mri-scene .waves path:nth-child(2) {
+  animation-delay: 0.18s;
+}
+
+.walkthrough__game .mri-scene .waves path:nth-child(3) {
+  animation-delay: 0.36s;
+}
+
+@keyframes wt-pulse {
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.mri-scene .head,
+.mri-scene .torso,
+.mri-scene .necklace,
+.mri-scene .patient-standing,
+.mri-scene .patient-prone,
+.mri-scene .button {
+  transition: opacity 0.3s ease, fill 0.3s ease;
+}
+
+/* ---- Progress dots ---- */
+
+.wt-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+}
+
+.wt-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #cfcfd8;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.wt-dot.is-done {
+  background: var(--teal-active);
+}
+
+.wt-dot.is-current {
+  background: var(--purple-heading);
+  transform: scale(1.4);
+}
+
+/* ---- Stage ---- */
+
+.wt-stage {
+  min-height: 210px;
+  text-align: center;
+}
+
+.wt-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wt-step__count {
+  margin: 0 0 6px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.wt-step__title {
+  margin: 0 0 8px;
+  font-size: 24px;
+  color: var(--purple-heading);
+}
+
+.wt-step__prompt {
+  margin: 0 auto 20px;
+  max-width: 560px;
+}
+
+.wt-step__action {
+  cursor: pointer;
+  font-size: 18px;
+  padding: 14px 30px;
+}
+
+.wt-step__result {
+  max-width: 560px;
+  margin: 0 auto 22px;
+  padding: 16px 22px;
+  border-radius: var(--radius);
+  background: var(--panel-blue);
+  border-left: 5px solid var(--teal-active);
+  text-align: left;
+}
+
+.wt-done h3 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  color: var(--purple-heading);
+}
+
+.wt-done p {
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.wt-restart {
+  display: block;
+  margin: 26px auto 0;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mri-scene .bed,
+  .mri-scene .head,
+  .mri-scene .torso,
+  .mri-scene .iv,
+  .wt-dot {
+    transition: none;
+  }
+
+  .walkthrough__game[data-step="8"] .mri-scene .waves path,
+  .walkthrough__game[data-step="9"] .mri-scene .waves path {
+    animation: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .walkthrough__game {
+    padding: 20px 16px 24px;
+  }
+
+  .wt-step__title {
+    font-size: 21px;
+  }
+}

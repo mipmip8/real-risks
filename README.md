@@ -2,7 +2,7 @@
 
 A static educational website for women at high risk for breast cancer. This
 repository contains **Module 2: Breast Cancer Screening** in **English and
-Spanish**, built as 26 individual slide pages per language across 3 chapters,
+Spanish**, built as 27 individual slide pages per language across 3 chapters,
 styled to match the existing RealRisks design.
 
 There is no server and no build step at request time — GitHub Pages serves the
@@ -20,13 +20,15 @@ Clear them before making the repository public.
 index.html                English module home
 chapter-1/slide-N.html    Overview (5 slides)
 chapter-2/slide-N.html    Types of Screening Tests (11 slides)
-chapter-3/slide-N.html    Screening Recommendations (10 slides)
+chapter-3/slide-N.html    Screening Recommendations (11 slides)
 es/…                      The same tree in Spanish
 content/screening.en.json English slide text, image references and UI strings
 content/screening.es.json The same, in Spanish
 build.py                  Generates both language trees from the JSON
 assets/css/styles.css     Styles
 assets/js/progress.js     Progress tracking, accordion, arrow-key navigation
+assets/js/sliders.js      The tradeoff sliders
+assets/js/walkthrough.js  The interactive MRI walk-through
 assets/img/               Images
 assets/fonts/             Raleway, self-hosted (SIL OFL 1.1)
 ```
@@ -113,6 +115,8 @@ types, all defined in `build.py`:
 | `birads` | The colour-coded BI-RADS table |
 | `answer` | A large answer with explanatory notes |
 | `factcards` | A row of short highlighted facts |
+| `sliders` | The tradeoff sliders, with a printable summary |
+| `walkthrough` | The step-by-step MRI appointment, with an animated scene |
 
 ## Features
 

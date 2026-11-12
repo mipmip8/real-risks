@@ -43,6 +43,10 @@ grep -n '"translated"' content/screening.es.json
 ```
 
 - **`Preguntas para hacerle a su médico`** — 2 questions.
+- **`Qué pasa en una cita de resonancia magnética`** — the interactive MRI
+  walk-through: 8 steps, each with a title, a prompt, a button label and an
+  explanation, plus the intro and closing text. Its content is drawn from the
+  module's own breast MRI slides, but the Spanish wording is mine.
 - **`¿Qué es lo más importante para usted?`** — the slider tool: 5 dimensions
   × (title, both endpoint labels, 9 framings, 9 summary lines), plus the intro,
   the disclaimer and the summary heading. This is the bulk of the
