@@ -52,58 +52,228 @@ CHEVRON = (
 )
 
 
-# A schematic side view of a breast MRI, built from shapes rather than an
-# illustration so it can be re-coloured and animated per step. Decorative: the
-# step text carries the meaning, so the SVG is hidden from screen readers.
-MRI_SCENE = """<svg class="mri-scene" viewBox="0 0 760 320" aria-hidden="true">
-  <rect class="floor" y="252" width="760" height="4"/>
-  <g class="patient-standing">
-    <circle class="head" cx="150" cy="118" r="19"/>
-    <rect class="torso" x="134" y="140" width="32" height="66" rx="15"/>
-    <rect class="limb" x="138" y="204" width="10" height="48" rx="5"/>
-    <rect class="limb" x="152" y="204" width="10" height="48" rx="5"/>
-    <circle class="necklace" cx="150" cy="141" r="6"/>
+# ---------------------------------------------------------------------------
+# Walk-through scene
+#
+# Four rooms in one SVG, drawn in code so each step can change them. CSS shows
+# the room for the current step (data-current) and the state earned by the
+# steps already finished (data-step). Decorative throughout: the step text
+# carries the meaning, so the whole thing is hidden from screen readers.
+# ---------------------------------------------------------------------------
+
+SKIN = "#edb892"
+SKIN_DARK = "#c98f6a"
+
+
+def _figure(x, base, top, bottom, hair="#3b3147", skin=SKIN, cls="",
+            arms="down", head_r=17):
+    """A standing figure: hair, head, torso, two arms, two legs.
+
+    `base` is the floor line the feet rest on. `arms` is "down", "out" (one
+    arm reaching right) or "hold" (both forward).
+    """
+    head_y = base - 116
+    sh = base - 98          # shoulders
+    hip = base - 46
+    if arms == "out":
+        arm_path = ('<path class="limb-arm" d="M%d %d q16 10 30 2"/>'
+                    '<path class="limb-arm" d="M%d %d v34"/>'
+                    % (x + 12, sh + 10, x - 12, sh + 8))
+    elif arms == "hold":
+        arm_path = ('<path class="limb-arm" d="M%d %d q14 14 26 8"/>'
+                    '<path class="limb-arm" d="M%d %d q-14 14 -26 8"/>'
+                    % (x + 11, sh + 8, x - 11, sh + 8))
+    else:
+        arm_path = ('<path class="limb-arm" d="M%d %d v36"/>'
+                    '<path class="limb-arm" d="M%d %d v36"/>'
+                    % (x + 12, sh + 8, x - 12, sh + 8))
+    return (
+        '<g class="figure %s">'
+        '<ellipse class="shadow" cx="%d" cy="%d" rx="26" ry="5"/>'
+        '<rect class="leg-l" x="%d" y="%d" width="11" height="48" rx="5"/>'
+        '<rect class="leg-r" x="%d" y="%d" width="11" height="48" rx="5"/>'
+        '<rect class="top" x="%d" y="%d" width="32" height="%d" rx="14"/>'
+        '%s'
+        '<circle class="head" cx="%d" cy="%d" r="%d"/>'
+        '<path class="hair" d="M%d %d a%d %d 0 0 1 %d 0 q-%d 6 -%d 0z"/>'
+        '</g>'
+        % (cls,
+           x, base + 2,
+           x - 13, hip, x + 2, hip,
+           x - 16, sh, hip - sh + 6,
+           arm_path,
+           x, head_y, head_r,
+           x - head_r, head_y - 1, head_r, head_r, head_r * 2,
+           head_r, head_r)
+    )
+
+
+def _chair(x, base):
+    return (
+        '<g class="chair">'
+        '<rect x="%d" y="%d" width="46" height="10" rx="4"/>'
+        '<rect x="%d" y="%d" width="10" height="42" rx="4"/>'
+        '<rect x="%d" y="%d" width="8" height="42" rx="3"/>'
+        '<rect x="%d" y="%d" width="8" height="42" rx="3"/>'
+        '</g>' % (x, base - 52, x, base - 92, x + 4, base - 42, x + 34, base - 42)
+    )
+
+
+ROOM_WAITING = """<g class="room room--waiting">
+  <rect class="wall" width="760" height="244"/>
+  <rect class="floor-plane" y="244" width="760" height="76"/>
+  <rect class="skirting" y="238" width="760" height="7"/>
+  <g class="art">
+    <rect x="58" y="44" width="96" height="66" rx="4"/>
+    <rect class="art-in" x="66" y="52" width="80" height="50" rx="3"/>
   </g>
-  <g class="tech">
-    <circle class="head" cx="104" cy="122" r="16"/>
-    <rect class="torso" x="90" y="142" width="28" height="60" rx="13"/>
-    <rect class="limb" x="93" y="200" width="9" height="52" rx="4"/>
-    <rect class="limb" x="106" y="200" width="9" height="52" rx="4"/>
+  <g class="plant">
+    <rect x="690" y="196" width="40" height="48" rx="6"/>
+    <path d="M710 196 q-30 -34 -8 -62 q22 20 8 62z"/>
+    <path d="M710 196 q30 -30 10 -58 q-24 18 -10 58z"/>
   </g>
-  <!-- Drawn before the machine so sliding in reads as going inside it. The IV
-       pole travels with the bed, the way it is wheeled alongside, so the line
-       stays attached to the patient instead of dangling. -->
+  {chairs}
+  <g class="desk">
+    <rect x="470" y="156" width="190" height="88" rx="6"/>
+    <rect class="desk-top" x="458" y="146" width="214" height="16" rx="7"/>
+  </g>
+  {staff}
+  <g class="gown-offer">
+    <rect x="486" y="146" width="42" height="30" rx="5"/>
+    <path class="fold" d="M486 160 h42"/>
+  </g>
+  {patient}
+  <circle class="necklace" cx="404" cy="150" r="6"/>
+</g>"""
+
+ROOM_DRESSING = """<g class="room room--dressing">
+  <rect class="wall" width="760" height="244"/>
+  <rect class="floor-plane" y="244" width="760" height="76"/>
+  <rect class="skirting" y="238" width="760" height="7"/>
+  <g class="curtain">
+    <rect x="40" y="26" width="104" height="218" rx="4"/>
+    <path d="M62 26 v218M86 26 v218M110 26 v218"/>
+  </g>
+  <rect class="rail" x="32" y="20" width="124" height="7" rx="3"/>
+  <g class="mirror">
+    <rect x="196" y="58" width="76" height="112" rx="38"/>
+    <rect class="glass" x="203" y="65" width="62" height="98" rx="31"/>
+  </g>
+  <g class="bench">
+    <rect x="560" y="194" width="140" height="13" rx="6"/>
+    <rect x="572" y="207" width="9" height="37" rx="4"/>
+    <rect x="679" y="207" width="9" height="37" rx="4"/>
+  </g>
+  <g class="tray">
+    <rect x="588" y="178" width="46" height="12" rx="5"/>
+    <circle class="kept-jewellery" cx="611" cy="178" r="6"/>
+  </g>
+  <g class="hook">
+    <rect x="648" y="62" width="7" height="24" rx="3"/>
+    <path class="street-clothes" d="M634 86 h36 l10 52 h-56z"/>
+  </g>
+  {patient}
+  <circle class="necklace" cx="372" cy="150" r="6"/>
+</g>"""
+
+ROOM_PREP = """<g class="room room--prep">
+  <rect class="wall" width="760" height="244"/>
+  <rect class="floor-plane" y="244" width="760" height="76"/>
+  <rect class="skirting" y="238" width="760" height="7"/>
+  <g class="cabinet">
+    <rect x="556" y="108" width="140" height="136" rx="6"/>
+    <path d="M626 108 v136"/>
+    <circle cx="616" cy="176" r="4"/>
+    <circle cx="636" cy="176" r="4"/>
+  </g>
+  <g class="iv-stand">
+    <rect class="pole" x="150" y="48" width="6" height="196" rx="3"/>
+    <rect class="bag" x="128" y="52" width="32" height="46" rx="8"/>
+    <path class="drip" d="M153 98 v16"/>
+    <path class="line" d="M153 114 q0 36 38 42 h130"/>
+  </g>
+  <g class="chair">
+    <rect class="back" x="404" y="108" width="18" height="102" rx="8"/>
+    <rect class="seat" x="320" y="194" width="102" height="18" rx="8"/>
+    <rect class="leg" x="328" y="212" width="12" height="32" rx="5"/>
+    <rect class="leg" x="402" y="212" width="12" height="32" rx="5"/>
+  </g>
+  <g class="seated-patient">
+    <ellipse class="shadow" cx="372" cy="248" rx="54" ry="5"/>
+    <rect class="shin" x="322" y="206" width="14" height="38" rx="6"/>
+    <rect class="thigh" x="320" y="188" width="62" height="16" rx="8"/>
+    <rect class="top" x="368" y="122" width="36" height="78" rx="16"/>
+    <path class="limb-arm" d="M372 150 q-26 6 -46 8"/>
+    <circle class="head" cx="386" cy="106" r="17"/>
+    <path class="hair" d="M369 105 a17 17 0 0 1 34 0 q-17 6 -34 0z"/>
+  </g>
+  {nurse}
+</g>"""
+
+ROOM_SCAN = """<g class="room room--scan">
+  <rect class="wall" width="760" height="244"/>
+  <rect class="floor-plane" y="244" width="760" height="76"/>
+  <rect class="skirting" y="238" width="760" height="7"/>
+  <g class="window">
+    <rect x="44" y="52" width="130" height="80" rx="5"/>
+    <rect class="glass" x="52" y="60" width="114" height="64" rx="3"/>
+  </g>
+  {tech}
   <g class="bed">
-    <g class="iv">
-      <rect class="pole" x="66" y="52" width="5" height="200"/>
-      <rect class="bag" x="46" y="58" width="30" height="42" rx="7"/>
-      <path class="line" d="M61 100 q0 34 32 42 h73"/>
+    <g class="iv-ride">
+      <rect class="pole" x="206" y="58" width="6" height="186" rx="3"/>
+      <rect class="bag" x="184" y="62" width="32" height="46" rx="8"/>
+      <path class="line" d="M209 108 q0 38 34 46 h44"/>
     </g>
-    <rect class="slab" x="150" y="168" width="330" height="18" rx="9"/>
-    <rect class="leg" x="300" y="186" width="26" height="66"/>
+    <rect class="slab" x="190" y="170" width="316" height="20" rx="10"/>
+    <rect class="pedestal" x="314" y="190" width="30" height="54" rx="4"/>
+    <rect class="pedestal-foot" x="296" y="238" width="66" height="8" rx="4"/>
     <g class="openings">
-      <circle cx="318" cy="177" r="7"/>
-      <circle cx="342" cy="177" r="7"/>
+      <ellipse cx="330" cy="179" rx="9" ry="5"/>
+      <ellipse cx="356" cy="179" rx="9" ry="5"/>
     </g>
     <g class="patient-prone">
-      <rect class="torso" x="170" y="140" width="190" height="30" rx="15"/>
-      <circle class="head" cx="380" cy="155" r="17"/>
-      <path class="arm" d="M398 152 h60"/>
-      <rect class="button" x="458" y="143" width="22" height="18" rx="6"/>
+      <rect class="legs" x="196" y="148" width="106" height="24" rx="12"/>
+      <rect class="top" x="286" y="142" width="112" height="30" rx="15"/>
+      <circle class="head" cx="416" cy="157" r="17"/>
+      <path class="hair" d="M400 150 a17 17 0 0 1 32 0 q-16 8 -32 0z"/>
+      <path class="limb-arm" d="M432 152 h40"/>
+      <rect class="safety-button" x="470" y="146" width="24" height="18" rx="7"/>
     </g>
   </g>
   <g class="machine">
-    <rect x="496" y="46" width="248" height="206" rx="26"/>
-    <circle class="bore-outer" cx="620" cy="149" r="66"/>
-    <circle class="bore-inner" cx="620" cy="149" r="49"/>
+    <rect class="housing" x="524" y="40" width="226" height="204" rx="28"/>
+    <rect class="housing-base" x="508" y="226" width="258" height="20" rx="8"/>
+    <circle class="bore-outer" cx="638" cy="146" r="68"/>
+    <circle class="bore-mid" cx="638" cy="146" r="55"/>
+    <circle class="bore-inner" cx="638" cy="146" r="42"/>
+    <rect class="status" x="596" y="56" width="84" height="10" rx="5"/>
   </g>
   <g class="waves">
-    <path d="M470 120 q-22 29 0 58"/>
-    <path d="M444 106 q-32 43 0 86"/>
-    <path d="M418 92 q-42 57 0 114"/>
+    <path d="M500 112 q-20 34 0 68"/>
+    <path d="M474 98 q-30 48 0 96"/>
+    <path d="M448 84 q-40 62 0 124"/>
   </g>
-</svg>"""
+</g>"""
 
+MRI_SCENE = (
+    '<svg class="mri-scene" viewBox="0 0 760 320" aria-hidden="true">'
+    + ROOM_WAITING.format(
+        chairs="".join(_chair(x, 244) for x in (182, 248, 314)),
+        staff=_figure(566, 206, "staff", "staff", cls="staff", arms="out"),
+        patient=_figure(404, 244, "street", "street", cls="patient", arms="down"),
+    )
+    + ROOM_DRESSING.format(
+        patient=_figure(372, 244, "street", "street", cls="patient", arms="down"),
+    )
+    + ROOM_PREP.format(
+        nurse=_figure(268, 244, "staff", "staff", cls="staff nurse", arms="out"),
+    )
+    + ROOM_SCAN.format(
+        tech=_figure(132, 244, "staff", "staff", cls="staff tech", arms="out"),
+    )
+    + "</svg>"
+)
 
 POSITIONS = 9      # notches on each slider
 MIDDLE_POS = 5     # the neutral notch, and the default

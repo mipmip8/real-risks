@@ -1513,223 +1513,204 @@ a {
 
 /* ---- Scene ---- */
 
-.mri-scene {
-  display: block;
-  width: 100%;
-  max-width: 620px;
+.wt-scene {
+  position: relative;
+  max-width: 660px;
   margin: 0 auto 10px;
 }
 
-.mri-scene .floor {
-  fill: var(--rule);
+.mri-scene {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 
-.mri-scene .machine rect {
-  fill: #e9e6f0;
-  stroke: #cdc6dd;
-  stroke-width: 2;
+/* Rooms. The walk-through moves through four of them; only the one belonging
+   to the step being asked is drawn. */
+.mri-scene .room {
+  display: none;
 }
 
-.mri-scene .bore-outer {
-  fill: #7a6bb5;
+.walkthrough__game[data-current="0"] .room--waiting,
+.walkthrough__game[data-current="1"] .room--waiting,
+.walkthrough__game[data-current="2"] .room--dressing,
+.walkthrough__game[data-current="3"] .room--prep,
+.walkthrough__game[data-current="4"] .room--scan,
+.walkthrough__game[data-current="5"] .room--scan,
+.walkthrough__game[data-current="6"] .room--scan,
+.walkthrough__game[data-current="7"] .room--scan,
+.walkthrough__game[data-current="8"] .room--scan,
+.walkthrough__game[data-current="9"] .room--scan {
+  display: block;
 }
 
-.mri-scene .bore-inner {
-  fill: #453a5c;
-}
+/* Shared surfaces */
+.mri-scene .wall { fill: #edf0f6; }
+.mri-scene .room--dressing .wall { fill: #f2edf6; }
+.mri-scene .room--prep .wall { fill: #e9f2f3; }
+.mri-scene .room--scan .wall { fill: #ebedf5; }
+.mri-scene .floor-plane { fill: #d9dde7; }
+.mri-scene .skirting { fill: #c6cbd9; }
+.mri-scene .shadow { fill: rgba(60, 60, 80, 0.13); }
 
-.mri-scene .leg,
-.mri-scene .limb {
-  fill: #b7bfc8;
-}
-
-.mri-scene .slab {
-  fill: #cfd6dd;
-}
-
-.mri-scene .head,
-.mri-scene .torso {
-  fill: #e8b89a;
-}
-
-.mri-scene .arm {
-  stroke: #e8b89a;
-  stroke-width: 12;
+/* Figures */
+.mri-scene .head { fill: #edb892; }
+.mri-scene .hair { fill: #3b3147; }
+.mri-scene .limb-arm {
+  stroke: #edb892;
+  stroke-width: 11;
   stroke-linecap: round;
   fill: none;
 }
+.mri-scene .top { fill: #c4708a; }
+.mri-scene .leg-l,
+.mri-scene .leg-r { fill: #46506b; }
 
+.mri-scene .staff .top { fill: #4f93a8; }
+.mri-scene .staff .leg-l,
+.mri-scene .staff .leg-r { fill: #3f7d90; }
+
+.mri-scene .necklace { fill: #d9a327; }
+
+/* Waiting room */
+.mri-scene .art rect { fill: #cfd6e4; }
+.mri-scene .art .art-in { fill: #aebfd6; }
+.mri-scene .plant rect { fill: #bb8158; }
+.mri-scene .plant path { fill: #6fa07a; }
+.mri-scene .chair rect { fill: #b9c2d2; }
+.mri-scene .desk rect { fill: #b2a089; }
+.mri-scene .desk .desk-top { fill: #cbb89e; }
+.mri-scene .gown-offer rect { fill: #a8cfe0; }
+.mri-scene .gown-offer .fold { stroke: #86b4c9; stroke-width: 2; fill: none; }
+.mri-scene .gown-offer {
+  transition: transform 0.45s ease, opacity 0.3s ease;
+}
+
+/* Handed over. */
+.walkthrough__game[data-step="1"] .room--waiting .gown-offer {
+  transform: translate(-104px, 6px);
+}
+
+/* Changing room */
+.mri-scene .curtain rect { fill: #b9a7cf; }
+.mri-scene .curtain path { stroke: #a492bd; stroke-width: 2; fill: none; }
+.mri-scene .rail { fill: #9aa0b2; }
+.mri-scene .mirror rect { fill: #b4a089; }
+.mri-scene .mirror .glass { fill: #dbe6ee; }
+.mri-scene .bench rect { fill: #c3a98c; }
+.mri-scene .tray rect { fill: #b9c2d2; }
+.mri-scene .hook rect { fill: #9aa0b2; }
+.mri-scene .street-clothes { fill: #c4708a; opacity: 0; transition: opacity 0.3s ease; }
+.mri-scene .kept-jewellery { fill: #d9a327; opacity: 0; transition: opacity 0.3s ease; }
+
+/* Changed: gown on, jewellery off and left on the shelf, clothes on the hook. */
+.walkthrough__game[data-step="2"] .room--dressing .patient .top { fill: #a8cfe0; }
+.walkthrough__game[data-step="2"] .room--dressing .patient .leg-l,
+.walkthrough__game[data-step="2"] .room--dressing .patient .leg-r { fill: #8fb8cb; }
+.walkthrough__game[data-step="2"] .room--dressing .necklace { opacity: 0; }
+.walkthrough__game[data-step="2"] .room--dressing .street-clothes,
+.walkthrough__game[data-step="2"] .room--dressing .kept-jewellery { opacity: 1; }
+
+.mri-scene .room--dressing .patient .top,
+.mri-scene .room--dressing .patient .leg-l,
+.mri-scene .room--dressing .patient .leg-r,
 .mri-scene .necklace {
-  fill: #d2962a;
+  transition: fill 0.3s ease, opacity 0.3s ease;
 }
 
-.mri-scene .button {
-  fill: #c0392b;
-}
-
-/* Everything below reacts to how far the reader has got. */
-
-.walkthrough__game[data-step="0"] .mri-scene .bed,
-.walkthrough__game[data-step="1"] .mri-scene .bed,
-.walkthrough__game[data-step="2"] .mri-scene .bed,
-.walkthrough__game[data-step="3"] .mri-scene .bed {
-  opacity: 0.45;
-}
-
-/* 1 — jewellery comes off */
-.walkthrough__game:not([data-step="0"]) .mri-scene .necklace {
-  opacity: 0;
-}
-
-/* 2 — the gown goes on */
-.walkthrough__game[data-step="2"] .mri-scene .patient-standing .torso,
-.walkthrough__game[data-step="3"] .mri-scene .patient-standing .torso {
-  fill: #9fc2d6;
-}
-
-.walkthrough__game:not([data-step="0"]):not([data-step="1"])
-  .mri-scene .patient-prone .torso {
-  fill: #9fc2d6;
-}
-
-/* 3 — the IV appears */
-.mri-scene .iv {
+/* Prep area — the patient is already in the gown from here on. */
+.mri-scene .cabinet rect { fill: #cdd4e0; }
+.mri-scene .cabinet path { stroke: #b3bccb; stroke-width: 2; fill: none; }
+.mri-scene .room--prep .chair .back,
+.mri-scene .room--prep .chair .seat { fill: #8fa3bd; }
+.mri-scene .room--prep .chair .leg { fill: #76879f; }
+.mri-scene .seated-patient .top,
+.mri-scene .seated-patient .thigh { fill: #a8cfe0; }
+.mri-scene .seated-patient .shin { fill: #8fb8cb; }
+.mri-scene .iv-stand .pole { fill: #a8b0bf; }
+.mri-scene .iv-stand .bag { fill: #cfe6f2; stroke: #8fb4c8; stroke-width: 2; }
+.mri-scene .iv-stand .drip,
+.mri-scene .iv-stand .line {
+  stroke: #8fb4c8;
+  stroke-width: 3;
+  fill: none;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.mri-scene .iv .pole,
-.mri-scene .iv .bag {
-  fill: #b7bfc8;
-}
-
-.mri-scene .iv .bag {
-  fill: #cfe3ef;
-  stroke: #8fb3c7;
-  stroke-width: 2;
-}
-
-.mri-scene .iv .line {
-  stroke: #8fb3c7;
-  stroke-width: 3;
-  fill: none;
-}
-
-.walkthrough__game[data-step="3"] .mri-scene .iv,
-.walkthrough__game[data-step="4"] .mri-scene .iv,
-.walkthrough__game[data-step="5"] .mri-scene .iv,
-.walkthrough__game[data-step="6"] .mri-scene .iv,
-.walkthrough__game[data-step="7"] .mri-scene .iv,
-.walkthrough__game[data-step="8"] .mri-scene .iv,
-.walkthrough__game[data-step="9"] .mri-scene .iv {
+.walkthrough__game[data-step="3"] .room--prep .iv-stand .drip,
+.walkthrough__game[data-step="3"] .room--prep .iv-stand .line {
   opacity: 1;
 }
 
-/* 4 — standing becomes prone */
-.mri-scene .patient-prone {
-  opacity: 0;
-}
+/* Scan room */
+.mri-scene .window rect { fill: #aeb7c8; }
+.mri-scene .window .glass { fill: #2f3a52; }
+.mri-scene .machine .housing { fill: #e3e0ee; }
+.mri-scene .machine .housing-base { fill: #c9c4dc; }
+.mri-scene .bore-outer { fill: #8d7cc4; }
+.mri-scene .bore-mid { fill: #6a5aa0; }
+.mri-scene .bore-inner { fill: #38304f; }
+.mri-scene .machine .status { fill: #9fe0c0; }
+.mri-scene .slab { fill: #cfd6dd; }
+.mri-scene .pedestal,
+.mri-scene .pedestal-foot { fill: #aab3bf; }
+.mri-scene .bed .iv-ride .pole { fill: #a8b0bf; }
+.mri-scene .bed .iv-ride .bag { fill: #cfe6f2; stroke: #8fb4c8; stroke-width: 2; }
+.mri-scene .bed .iv-ride .line { stroke: #8fb4c8; stroke-width: 3; fill: none; }
+.mri-scene .patient-prone .top,
+.mri-scene .patient-prone .legs { fill: #a8cfe0; }
+.mri-scene .openings ellipse { fill: #9aa4ae; transition: fill 0.3s ease; }
+.mri-scene .safety-button { fill: #c0392b; opacity: 0; transition: opacity 0.3s ease; }
 
-.walkthrough__game[data-step="0"] .mri-scene .patient-standing,
-.walkthrough__game[data-step="1"] .mri-scene .patient-standing,
-.walkthrough__game[data-step="2"] .mri-scene .patient-standing,
-.walkthrough__game[data-step="3"] .mri-scene .patient-standing {
-  opacity: 1;
-}
+/* The patient only appears on the table once they are on it. */
+.mri-scene .patient-prone { opacity: 0; transition: opacity 0.35s ease; }
+.walkthrough__game[data-step="4"] .patient-prone,
+.walkthrough__game[data-step="5"] .patient-prone,
+.walkthrough__game[data-step="6"] .patient-prone,
+.walkthrough__game[data-step="7"] .patient-prone,
+.walkthrough__game[data-step="8"] .patient-prone { opacity: 1; }
 
-.walkthrough__game:not([data-step="0"]):not([data-step="1"]):not([data-step="2"]):not([data-step="3"])
-  .mri-scene .patient-standing {
-  opacity: 0;
-}
+.walkthrough__game[data-current="5"] .openings ellipse { fill: var(--teal-active); }
 
-.walkthrough__game:not([data-step="0"]):not([data-step="1"]):not([data-step="2"]):not([data-step="3"])
-  .mri-scene .patient-prone {
-  opacity: 1;
-}
+.walkthrough__game[data-step="6"] .safety-button,
+.walkthrough__game[data-step="7"] .safety-button,
+.walkthrough__game[data-step="8"] .safety-button { opacity: 1; }
 
-/* 5 — the cushioned openings */
-.mri-scene .openings circle {
-  fill: #9aa4ae;
-  transition: fill 0.3s ease;
-}
+.mri-scene .bed { transition: transform 0.75s ease; }
+.walkthrough__game[data-step="7"] .bed,
+.walkthrough__game[data-step="8"] .bed { transform: translateX(192px); }
 
-.walkthrough__game[data-step="5"] .mri-scene .openings circle {
-  fill: #0f87ab;
-}
-
-/* 6 — the safety button */
-.mri-scene .button {
-  opacity: 0;
-}
-
-.walkthrough__game[data-step="6"] .mri-scene .button,
-.walkthrough__game[data-step="7"] .mri-scene .button,
-.walkthrough__game[data-step="8"] .mri-scene .button,
-.walkthrough__game[data-step="9"] .mri-scene .button {
-  opacity: 1;
-}
-
-/* 7 — the table slides in */
-.mri-scene .bed {
-  transition: transform 0.7s ease, opacity 0.3s ease;
-}
-
-.walkthrough__game[data-step="7"] .mri-scene .bed,
-.walkthrough__game[data-step="8"] .mri-scene .bed,
-.walkthrough__game[data-step="9"] .mri-scene .bed {
-  transform: translateX(170px);
-}
-
-/* 8 — the scan is running */
 .mri-scene .waves path {
-  stroke: #7a6bb5;
+  stroke: #8d7cc4;
   stroke-width: 4;
   fill: none;
   stroke-linecap: round;
   opacity: 0;
 }
 
-.walkthrough__game[data-step="8"] .mri-scene .waves path,
-.walkthrough__game[data-step="9"] .mri-scene .waves path {
+.walkthrough__game[data-step="8"] .waves path {
   opacity: 0.75;
   animation: wt-pulse 1.4s ease-in-out infinite;
 }
 
-.walkthrough__game .mri-scene .waves path:nth-child(2) {
-  animation-delay: 0.18s;
-}
-
-.walkthrough__game .mri-scene .waves path:nth-child(3) {
-  animation-delay: 0.36s;
-}
+.mri-scene .waves path:nth-child(2) { animation-delay: 0.18s; }
+.mri-scene .waves path:nth-child(3) { animation-delay: 0.36s; }
 
 @keyframes wt-pulse {
-  50% {
-    opacity: 0.2;
-  }
+  50% { opacity: 0.2; }
 }
 
-.mri-scene .head,
-.mri-scene .torso,
-.mri-scene .necklace,
-.mri-scene .patient-standing,
-.mri-scene .patient-prone,
-.mri-scene .button {
-  transition: opacity 0.3s ease, fill 0.3s ease;
-}
+/* The technologist is in the scan room to help you on and settle you, and
+   has left by the time the scan starts. */
+.mri-scene .tech { opacity: 0; transition: opacity 0.35s ease; }
+.walkthrough__game[data-current="4"] .tech,
+.walkthrough__game[data-current="5"] .tech,
+.walkthrough__game[data-current="6"] .tech,
+.walkthrough__game[data-current="7"] .tech { opacity: 1; }
 
 /* ---- Clickable scene ---- */
-
-.wt-scene {
-  position: relative;
-  max-width: 620px;
-  margin: 0 auto 10px;
-}
-
-.wt-scene .mri-scene {
-  margin: 0;
-  max-width: none;
-}
 
 /* Hotspots are HTML buttons placed over the SVG from its viewBox
    coordinates, so they keep real keyboard and screen-reader behaviour while
@@ -1742,7 +1723,7 @@ a {
   padding: 0;
   border: 3px solid var(--teal-active);
   border-radius: 50%;
-  background: rgba(15, 135, 171, 0.12);
+  background: rgba(15, 135, 171, 0.14);
   cursor: pointer;
   animation: wt-beacon 1.6s ease-out infinite;
 }
@@ -1758,51 +1739,16 @@ a {
 }
 
 .wt-hotspot:hover {
-  background: rgba(15, 135, 171, 0.26);
+  background: rgba(15, 135, 171, 0.28);
 }
 
 @keyframes wt-beacon {
-  50% {
-    background: rgba(15, 135, 171, 0.3);
-  }
+  50% { background: rgba(15, 135, 171, 0.32); }
 }
 
 @keyframes wt-ring {
-  0% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  100% {
-    transform: scale(1.7);
-    opacity: 0;
-  }
-}
-
-/* ---- The technologist ---- */
-
-.mri-scene .tech {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.mri-scene .tech .torso {
-  fill: #5aa0b5;
-}
-
-.mri-scene .tech .limb {
-  fill: #4a8ca0;
-}
-
-/* data-step counts the steps already finished, so these are the states in
-   which the *pending* step is the IV or getting settled. The technologist is
-   there for those, and has left the room by the time the scan starts — which
-   is what step 7's explanation says happens. */
-.walkthrough__game[data-step="2"] .mri-scene .tech,
-.walkthrough__game[data-step="3"] .mri-scene .tech,
-.walkthrough__game[data-step="4"] .mri-scene .tech,
-.walkthrough__game[data-step="5"] .mri-scene .tech,
-.walkthrough__game[data-step="6"] .mri-scene .tech {
-  opacity: 1;
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.7); opacity: 0; }
 }
 
 @media (max-width: 560px) {

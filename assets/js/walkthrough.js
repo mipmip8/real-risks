@@ -57,6 +57,9 @@
   function paint() {
     var scene = completed();
     game.setAttribute("data-step", String(scene));
+    // The room follows the step being asked; the state inside it follows the
+    // steps already finished.
+    game.setAttribute("data-current", String(current));
     dots.forEach(function (dot, i) {
       dot.classList.toggle("is-done", i + 1 <= scene);
       dot.classList.toggle("is-current", i + 1 === current && !revealed);
@@ -131,13 +134,9 @@
       goTo(i + 2, true);
     });
     step.querySelector(".wt-back").addEventListener("click", function () {
-      // Back from a revealed step re-asks it; back from an unanswered one
-      // goes to the step before, shown as already done so it can be reread.
-      if (revealed) {
-        goTo(i + 1, true);
-      } else {
-        goTo(i, true, i > 0);
-      }
+      // Always one step back, shown as already done so it can be reread.
+      // Going forward again re-asks the step, so it stays replayable.
+      goTo(i, true, i > 0);
     });
   });
 

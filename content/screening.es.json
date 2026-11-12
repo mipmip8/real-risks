@@ -938,92 +938,92 @@
               "completeText": "Unos 15 minutos de preparación y luego entre 15 y 20 minutos dentro de la máquina. Si alguna parte de esto le resultaría difícil, conviene comentarlo con su médico antes de la cita.",
               "steps": [
                 {
-                  "id": "jewelry",
-                  "title": "Quítese las joyas",
-                  "prompt": "Haga clic en el collar para quitárselo.",
-                  "result": "Listo. La resonancia magnética funciona con campos magnéticos y no puede realizarse si tienen ciertos tipos de metal en el cuerpo, así que el metal se queda fuera.",
+                  "id": "s1",
+                  "title": "En la sala de espera",
+                  "prompt": "Haga clic en la bata que le ofrece el personal.",
                   "hotspot": {
-                    "x": 150,
-                    "y": 141,
-                    "label": "Quitarse el collar"
-                  }
+                    "x": 507,
+                    "y": 161,
+                    "label": "Tomar la bata"
+                  },
+                  "result": "Le entregan una bata y le piden que se quite las joyas. Por ahora sigue con su propia ropa; en la sala de espera no le hacen nada."
                 },
                 {
-                  "id": "gown",
-                  "title": "Póngase la bata",
-                  "prompt": "Haga clic sobre usted misma para ponerse la bata de hospital.",
-                  "result": "Cambiada. Su ropa se queda en el vestidor.",
+                  "id": "s2",
+                  "title": "En el vestidor",
+                  "prompt": "Haga clic sobre usted misma para quitarse las joyas y ponerse la bata.",
                   "hotspot": {
-                    "x": 150,
-                    "y": 173,
-                    "label": "Ponerse la bata"
-                  }
+                    "x": 372,
+                    "y": 170,
+                    "label": "Quitarse las joyas y ponerse la bata"
+                  },
+                  "result": "Joyas fuera, bata puesta. La resonancia magnética funciona con campos magnéticos y no puede realizarse si tienen ciertos tipos de metal en el cuerpo, así que el metal se queda fuera de la sala."
                 },
                 {
-                  "id": "iv",
+                  "id": "s3",
                   "title": "Colocación de la vía intravenosa",
                   "prompt": "Haga clic en su brazo. Un tecnólogo le coloca una pequeña vía intravenosa en una vena.",
-                  "result": "La vía está puesta, colocada por el tecnólogo. Algunas personas son alérgicas al contraste, así que dígale a su médico si ha tenido una reacción antes.",
                   "hotspot": {
-                    "x": 168,
-                    "y": 152,
+                    "x": 328,
+                    "y": 155,
                     "label": "Colocar la vía intravenosa en el brazo"
-                  }
+                  },
+                  "result": "La vía está puesta, colocada por el tecnólogo. Por ahí llegará después el contraste. Algunas personas son alérgicas al contraste, así que dígale a su médico si ha tenido una reacción antes."
                 },
                 {
-                  "id": "lie-down",
-                  "title": "Acuéstese boca abajo",
-                  "prompt": "Haga clic en la mesa para acostarse boca abajo.",
-                  "result": "Ya está en la mesa. La resonancia magnética de seno se hace boca abajo, y el tecnólogo permanece en la sala para ayudarle a acomodarse.",
+                  "id": "s4",
+                  "title": "A la mesa",
+                  "prompt": "Haga clic en la mesa. El tecnólogo le ayuda a acostarse boca abajo.",
                   "hotspot": {
-                    "x": 315,
-                    "y": 177,
-                    "label": "Acostarse en la mesa"
-                  }
+                    "x": 348,
+                    "y": 180,
+                    "label": "Subir a la mesa"
+                  },
+                  "result": "Ya está en la mesa, boca abajo. La resonancia magnética de seno se hace boca abajo, y el tecnólogo está ahí para ayudarle a subir."
                 },
                 {
-                  "id": "openings",
-                  "title": "Acomódese en las aberturas acolchadas",
-                  "prompt": "Haga clic en las aberturas acolchadas para acomodarse.",
-                  "result": "En posición. El tecnólogo sigue con usted. A continuación le dan algo para sostener.",
+                  "id": "s5",
+                  "title": "El tecnólogo le acomoda",
+                  "prompt": "Haga clic en las aberturas acolchadas. El tecnólogo le acomoda en ellas.",
                   "hotspot": {
-                    "x": 330,
-                    "y": 177,
+                    "x": 343,
+                    "y": 179,
                     "label": "Acomodarse en las aberturas acolchadas"
-                  }
+                  },
+                  "result": "En posición. El tecnólogo le revisa y hace pequeños ajustes antes de que algo se mueva."
                 },
                 {
-                  "id": "safety",
+                  "id": "s6",
                   "title": "Tome el botón de seguridad",
                   "prompt": "Haga clic en el botón de seguridad para tomarlo.",
-                  "result": "Ya lo tiene. Puede presionarlo en cualquier momento si necesita al personal.",
                   "hotspot": {
-                    "x": 469,
-                    "y": 152,
+                    "x": 482,
+                    "y": 155,
                     "label": "Tomar el botón de seguridad"
-                  }
+                  },
+                  "result": "Ya lo tiene. Puede presionarlo en cualquier momento del estudio si necesita al personal."
                 },
                 {
-                  "id": "slide-in",
-                  "title": "Entre en la máquina",
+                  "id": "s7",
+                  "title": "Dentro de la máquina",
                   "prompt": "Haga clic en la máquina para deslizar la mesa hacia dentro.",
-                  "result": "Ya está dentro, y el tecnólogo sale de la sala antes de que comience el estudio. La máquina puede resultar ruidosa, estrecha o incómoda para algunas personas; conviene decirlo antes si cree que puede ser su caso.",
                   "hotspot": {
-                    "x": 620,
-                    "y": 149,
+                    "x": 638,
+                    "y": 146,
                     "label": "Deslizar la mesa dentro de la máquina"
-                  }
+                  },
+                  "result": "Ya está dentro, y el tecnólogo sale de la sala antes de que comience el estudio. La máquina puede resultar ruidosa, estrecha o incómoda para algunas personas; conviene decirlo antes si cree que puede ser su caso."
                 },
                 {
-                  "id": "scan",
+                  "id": "s8",
                   "title": "El estudio",
                   "prompt": "Haga clic en la máquina para comenzar el estudio.",
-                  "result": "Escuchará ruidos fuertes de tipo golpeteo. Estará dentro del túnel entre 15 y 20 minutos.",
                   "hotspot": {
-                    "x": 620,
-                    "y": 149,
+                    "x": 638,
+                    "y": 146,
                     "label": "Comenzar el estudio"
-                  }
+                  },
+                  "result": "Escuchará ruidos fuertes de tipo golpeteo. Estará dentro del túnel entre 15 y 20 minutos."
                 }
               ]
             }

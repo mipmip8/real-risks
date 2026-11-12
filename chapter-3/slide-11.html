@@ -31,58 +31,140 @@
   <h1 class="slide__title">What happens at an MRI appointment</h1>
   <div class="slide__body"><div class="walkthrough">
   <p class="walkthrough__intro">A breast MRI has more steps than most scans, and not knowing them is part of what makes it daunting. Walk through an appointment here, one step at a time.</p>
-  <ol class="walkthrough__static"><li><strong>Remove your jewellery</strong> Done. An MRI works with magnetic fields, and it cannot be performed if you have certain types of metal in your body — so metal stays outside.</li><li><strong>Change into a gown</strong> Changed. Your own clothes stay in the changing room.</li><li><strong>Place the IV</strong> The IV is in, placed by the technologist. Some people are allergic to contrast dye, so tell your doctor if you have reacted to it before.</li><li><strong>Lie face down</strong> You are on the table. A breast MRI is done lying face down, and the technologist stays in the room to help you get settled.</li><li><strong>Settle into the cushioned openings</strong> In position. The technologist is still with you. Next you are given something to hold.</li><li><strong>Take the safety button</strong> You have it. You can press it at any point if you need the staff.</li><li><strong>Slide into the machine</strong> You are inside, and the technologist steps out of the room before the scan begins. The machine can feel loud, narrow or uncomfortable for some people — worth saying beforehand if you think it might for you.</li><li><strong>The scan</strong> You will hear loud tapping noises. You are inside the tunnel for about 15 to 20 minutes.</li></ol>
+  <ol class="walkthrough__static"><li><strong>In the waiting room</strong> You are handed a gown and asked to take your jewellery off. You are still in your own clothes at this point — nothing happens to you in the waiting room.</li><li><strong>In the changing room</strong> Jewellery off, gown on. An MRI works with magnetic fields, and it cannot be performed if you have certain types of metal in your body, so metal stays out of the scan room.</li><li><strong>The IV goes in</strong> The IV is in, placed by the technologist. It is how the contrast dye will reach you later. Some people are allergic to contrast dye, so tell your doctor if you have reacted to it before.</li><li><strong>Onto the table</strong> You are on the table, face down. A breast MRI is done lying on your stomach, and the technologist is there to help you on.</li><li><strong>The technologist adjusts you</strong> In position. The technologist checks you and makes small adjustments before anything moves.</li><li><strong>Take the safety button</strong> You have it. You can press it at any point during the scan if you need the staff.</li><li><strong>Into the machine</strong> You are inside, and the technologist steps out of the room before the scan begins. The machine can feel loud, narrow or uncomfortable for some people — worth saying beforehand if you think it might for you.</li><li><strong>The scan</strong> You will hear loud tapping noises. You are inside the tunnel for about 15 to 20 minutes.</li></ol>
   <div class="walkthrough__game" hidden data-step="0">
     <div class="wt-scene">
-      <svg class="mri-scene" viewBox="0 0 760 320" aria-hidden="true">
-  <rect class="floor" y="252" width="760" height="4"/>
-  <g class="patient-standing">
-    <circle class="head" cx="150" cy="118" r="19"/>
-    <rect class="torso" x="134" y="140" width="32" height="66" rx="15"/>
-    <rect class="limb" x="138" y="204" width="10" height="48" rx="5"/>
-    <rect class="limb" x="152" y="204" width="10" height="48" rx="5"/>
-    <circle class="necklace" cx="150" cy="141" r="6"/>
+      <svg class="mri-scene" viewBox="0 0 760 320" aria-hidden="true"><g class="room room--waiting">
+  <rect class="wall" width="760" height="244"/>
+  <rect class="floor-plane" y="244" width="760" height="76"/>
+  <rect class="skirting" y="238" width="760" height="7"/>
+  <g class="art">
+    <rect x="58" y="44" width="96" height="66" rx="4"/>
+    <rect class="art-in" x="66" y="52" width="80" height="50" rx="3"/>
   </g>
-  <g class="tech">
-    <circle class="head" cx="104" cy="122" r="16"/>
-    <rect class="torso" x="90" y="142" width="28" height="60" rx="13"/>
-    <rect class="limb" x="93" y="200" width="9" height="52" rx="4"/>
-    <rect class="limb" x="106" y="200" width="9" height="52" rx="4"/>
+  <g class="plant">
+    <rect x="690" y="196" width="40" height="48" rx="6"/>
+    <path d="M710 196 q-30 -34 -8 -62 q22 20 8 62z"/>
+    <path d="M710 196 q30 -30 10 -58 q-24 18 -10 58z"/>
   </g>
-  <!-- Drawn before the machine so sliding in reads as going inside it. The IV
-       pole travels with the bed, the way it is wheeled alongside, so the line
-       stays attached to the patient instead of dangling. -->
+  <g class="chair"><rect x="182" y="192" width="46" height="10" rx="4"/><rect x="182" y="152" width="10" height="42" rx="4"/><rect x="186" y="202" width="8" height="42" rx="3"/><rect x="216" y="202" width="8" height="42" rx="3"/></g><g class="chair"><rect x="248" y="192" width="46" height="10" rx="4"/><rect x="248" y="152" width="10" height="42" rx="4"/><rect x="252" y="202" width="8" height="42" rx="3"/><rect x="282" y="202" width="8" height="42" rx="3"/></g><g class="chair"><rect x="314" y="192" width="46" height="10" rx="4"/><rect x="314" y="152" width="10" height="42" rx="4"/><rect x="318" y="202" width="8" height="42" rx="3"/><rect x="348" y="202" width="8" height="42" rx="3"/></g>
+  <g class="desk">
+    <rect x="470" y="156" width="190" height="88" rx="6"/>
+    <rect class="desk-top" x="458" y="146" width="214" height="16" rx="7"/>
+  </g>
+  <g class="figure staff"><ellipse class="shadow" cx="566" cy="208" rx="26" ry="5"/><rect class="leg-l" x="553" y="160" width="11" height="48" rx="5"/><rect class="leg-r" x="568" y="160" width="11" height="48" rx="5"/><rect class="top" x="550" y="108" width="32" height="58" rx="14"/><path class="limb-arm" d="M578 118 q16 10 30 2"/><path class="limb-arm" d="M554 116 v34"/><circle class="head" cx="566" cy="90" r="17"/><path class="hair" d="M549 89 a17 17 0 0 1 34 0 q-17 6 -17 0z"/></g>
+  <g class="gown-offer">
+    <rect x="486" y="146" width="42" height="30" rx="5"/>
+    <path class="fold" d="M486 160 h42"/>
+  </g>
+  <g class="figure patient"><ellipse class="shadow" cx="404" cy="246" rx="26" ry="5"/><rect class="leg-l" x="391" y="198" width="11" height="48" rx="5"/><rect class="leg-r" x="406" y="198" width="11" height="48" rx="5"/><rect class="top" x="388" y="146" width="32" height="58" rx="14"/><path class="limb-arm" d="M416 154 v36"/><path class="limb-arm" d="M392 154 v36"/><circle class="head" cx="404" cy="128" r="17"/><path class="hair" d="M387 127 a17 17 0 0 1 34 0 q-17 6 -17 0z"/></g>
+  <circle class="necklace" cx="404" cy="150" r="6"/>
+</g><g class="room room--dressing">
+  <rect class="wall" width="760" height="244"/>
+  <rect class="floor-plane" y="244" width="760" height="76"/>
+  <rect class="skirting" y="238" width="760" height="7"/>
+  <g class="curtain">
+    <rect x="40" y="26" width="104" height="218" rx="4"/>
+    <path d="M62 26 v218M86 26 v218M110 26 v218"/>
+  </g>
+  <rect class="rail" x="32" y="20" width="124" height="7" rx="3"/>
+  <g class="mirror">
+    <rect x="196" y="58" width="76" height="112" rx="38"/>
+    <rect class="glass" x="203" y="65" width="62" height="98" rx="31"/>
+  </g>
+  <g class="bench">
+    <rect x="560" y="194" width="140" height="13" rx="6"/>
+    <rect x="572" y="207" width="9" height="37" rx="4"/>
+    <rect x="679" y="207" width="9" height="37" rx="4"/>
+  </g>
+  <g class="tray">
+    <rect x="588" y="178" width="46" height="12" rx="5"/>
+    <circle class="kept-jewellery" cx="611" cy="178" r="6"/>
+  </g>
+  <g class="hook">
+    <rect x="648" y="62" width="7" height="24" rx="3"/>
+    <path class="street-clothes" d="M634 86 h36 l10 52 h-56z"/>
+  </g>
+  <g class="figure patient"><ellipse class="shadow" cx="372" cy="246" rx="26" ry="5"/><rect class="leg-l" x="359" y="198" width="11" height="48" rx="5"/><rect class="leg-r" x="374" y="198" width="11" height="48" rx="5"/><rect class="top" x="356" y="146" width="32" height="58" rx="14"/><path class="limb-arm" d="M384 154 v36"/><path class="limb-arm" d="M360 154 v36"/><circle class="head" cx="372" cy="128" r="17"/><path class="hair" d="M355 127 a17 17 0 0 1 34 0 q-17 6 -17 0z"/></g>
+  <circle class="necklace" cx="372" cy="150" r="6"/>
+</g><g class="room room--prep">
+  <rect class="wall" width="760" height="244"/>
+  <rect class="floor-plane" y="244" width="760" height="76"/>
+  <rect class="skirting" y="238" width="760" height="7"/>
+  <g class="cabinet">
+    <rect x="556" y="108" width="140" height="136" rx="6"/>
+    <path d="M626 108 v136"/>
+    <circle cx="616" cy="176" r="4"/>
+    <circle cx="636" cy="176" r="4"/>
+  </g>
+  <g class="iv-stand">
+    <rect class="pole" x="150" y="48" width="6" height="196" rx="3"/>
+    <rect class="bag" x="128" y="52" width="32" height="46" rx="8"/>
+    <path class="drip" d="M153 98 v16"/>
+    <path class="line" d="M153 114 q0 36 38 42 h130"/>
+  </g>
+  <g class="chair">
+    <rect class="back" x="404" y="108" width="18" height="102" rx="8"/>
+    <rect class="seat" x="320" y="194" width="102" height="18" rx="8"/>
+    <rect class="leg" x="328" y="212" width="12" height="32" rx="5"/>
+    <rect class="leg" x="402" y="212" width="12" height="32" rx="5"/>
+  </g>
+  <g class="seated-patient">
+    <ellipse class="shadow" cx="372" cy="248" rx="54" ry="5"/>
+    <rect class="shin" x="322" y="206" width="14" height="38" rx="6"/>
+    <rect class="thigh" x="320" y="188" width="62" height="16" rx="8"/>
+    <rect class="top" x="368" y="122" width="36" height="78" rx="16"/>
+    <path class="limb-arm" d="M372 150 q-26 6 -46 8"/>
+    <circle class="head" cx="386" cy="106" r="17"/>
+    <path class="hair" d="M369 105 a17 17 0 0 1 34 0 q-17 6 -34 0z"/>
+  </g>
+  <g class="figure staff nurse"><ellipse class="shadow" cx="268" cy="246" rx="26" ry="5"/><rect class="leg-l" x="255" y="198" width="11" height="48" rx="5"/><rect class="leg-r" x="270" y="198" width="11" height="48" rx="5"/><rect class="top" x="252" y="146" width="32" height="58" rx="14"/><path class="limb-arm" d="M280 156 q16 10 30 2"/><path class="limb-arm" d="M256 154 v34"/><circle class="head" cx="268" cy="128" r="17"/><path class="hair" d="M251 127 a17 17 0 0 1 34 0 q-17 6 -17 0z"/></g>
+</g><g class="room room--scan">
+  <rect class="wall" width="760" height="244"/>
+  <rect class="floor-plane" y="244" width="760" height="76"/>
+  <rect class="skirting" y="238" width="760" height="7"/>
+  <g class="window">
+    <rect x="44" y="52" width="130" height="80" rx="5"/>
+    <rect class="glass" x="52" y="60" width="114" height="64" rx="3"/>
+  </g>
+  <g class="figure staff tech"><ellipse class="shadow" cx="132" cy="246" rx="26" ry="5"/><rect class="leg-l" x="119" y="198" width="11" height="48" rx="5"/><rect class="leg-r" x="134" y="198" width="11" height="48" rx="5"/><rect class="top" x="116" y="146" width="32" height="58" rx="14"/><path class="limb-arm" d="M144 156 q16 10 30 2"/><path class="limb-arm" d="M120 154 v34"/><circle class="head" cx="132" cy="128" r="17"/><path class="hair" d="M115 127 a17 17 0 0 1 34 0 q-17 6 -17 0z"/></g>
   <g class="bed">
-    <g class="iv">
-      <rect class="pole" x="66" y="52" width="5" height="200"/>
-      <rect class="bag" x="46" y="58" width="30" height="42" rx="7"/>
-      <path class="line" d="M61 100 q0 34 32 42 h73"/>
+    <g class="iv-ride">
+      <rect class="pole" x="206" y="58" width="6" height="186" rx="3"/>
+      <rect class="bag" x="184" y="62" width="32" height="46" rx="8"/>
+      <path class="line" d="M209 108 q0 38 34 46 h44"/>
     </g>
-    <rect class="slab" x="150" y="168" width="330" height="18" rx="9"/>
-    <rect class="leg" x="300" y="186" width="26" height="66"/>
+    <rect class="slab" x="190" y="170" width="316" height="20" rx="10"/>
+    <rect class="pedestal" x="314" y="190" width="30" height="54" rx="4"/>
+    <rect class="pedestal-foot" x="296" y="238" width="66" height="8" rx="4"/>
     <g class="openings">
-      <circle cx="318" cy="177" r="7"/>
-      <circle cx="342" cy="177" r="7"/>
+      <ellipse cx="330" cy="179" rx="9" ry="5"/>
+      <ellipse cx="356" cy="179" rx="9" ry="5"/>
     </g>
     <g class="patient-prone">
-      <rect class="torso" x="170" y="140" width="190" height="30" rx="15"/>
-      <circle class="head" cx="380" cy="155" r="17"/>
-      <path class="arm" d="M398 152 h60"/>
-      <rect class="button" x="458" y="143" width="22" height="18" rx="6"/>
+      <rect class="legs" x="196" y="148" width="106" height="24" rx="12"/>
+      <rect class="top" x="286" y="142" width="112" height="30" rx="15"/>
+      <circle class="head" cx="416" cy="157" r="17"/>
+      <path class="hair" d="M400 150 a17 17 0 0 1 32 0 q-16 8 -32 0z"/>
+      <path class="limb-arm" d="M432 152 h40"/>
+      <rect class="safety-button" x="470" y="146" width="24" height="18" rx="7"/>
     </g>
   </g>
   <g class="machine">
-    <rect x="496" y="46" width="248" height="206" rx="26"/>
-    <circle class="bore-outer" cx="620" cy="149" r="66"/>
-    <circle class="bore-inner" cx="620" cy="149" r="49"/>
+    <rect class="housing" x="524" y="40" width="226" height="204" rx="28"/>
+    <rect class="housing-base" x="508" y="226" width="258" height="20" rx="8"/>
+    <circle class="bore-outer" cx="638" cy="146" r="68"/>
+    <circle class="bore-mid" cx="638" cy="146" r="55"/>
+    <circle class="bore-inner" cx="638" cy="146" r="42"/>
+    <rect class="status" x="596" y="56" width="84" height="10" rx="5"/>
   </g>
   <g class="waves">
-    <path d="M470 120 q-22 29 0 58"/>
-    <path d="M444 106 q-32 43 0 86"/>
-    <path d="M418 92 q-42 57 0 114"/>
+    <path d="M500 112 q-20 34 0 68"/>
+    <path d="M474 98 q-30 48 0 96"/>
+    <path d="M448 84 q-40 62 0 124"/>
   </g>
-</svg>
-      <button type="button" class="wt-hotspot" data-for="1" hidden style="left:19.737%;top:44.062%"><span class="visually-hidden">Take the necklace off</span></button><button type="button" class="wt-hotspot" data-for="2" hidden style="left:19.737%;top:54.062%"><span class="visually-hidden">Put the gown on</span></button><button type="button" class="wt-hotspot" data-for="3" hidden style="left:22.105%;top:47.500%"><span class="visually-hidden">Place the IV in the arm</span></button><button type="button" class="wt-hotspot" data-for="4" hidden style="left:41.447%;top:55.312%"><span class="visually-hidden">Lie down on the table</span></button><button type="button" class="wt-hotspot" data-for="5" hidden style="left:43.421%;top:55.312%"><span class="visually-hidden">Settle into the cushioned openings</span></button><button type="button" class="wt-hotspot" data-for="6" hidden style="left:61.711%;top:47.500%"><span class="visually-hidden">Take the safety button</span></button><button type="button" class="wt-hotspot" data-for="7" hidden style="left:81.579%;top:46.562%"><span class="visually-hidden">Slide the table into the machine</span></button><button type="button" class="wt-hotspot" data-for="8" hidden style="left:81.579%;top:46.562%"><span class="visually-hidden">Start the scan</span></button>
+</g></svg>
+      <button type="button" class="wt-hotspot" data-for="1" hidden style="left:66.711%;top:50.313%"><span class="visually-hidden">Take the gown</span></button><button type="button" class="wt-hotspot" data-for="2" hidden style="left:48.947%;top:53.125%"><span class="visually-hidden">Take your jewellery off and change into the gown</span></button><button type="button" class="wt-hotspot" data-for="3" hidden style="left:43.158%;top:48.438%"><span class="visually-hidden">Place the IV in the arm</span></button><button type="button" class="wt-hotspot" data-for="4" hidden style="left:45.789%;top:56.250%"><span class="visually-hidden">Get onto the table</span></button><button type="button" class="wt-hotspot" data-for="5" hidden style="left:45.132%;top:55.937%"><span class="visually-hidden">Settle into the cushioned openings</span></button><button type="button" class="wt-hotspot" data-for="6" hidden style="left:63.421%;top:48.438%"><span class="visually-hidden">Take the safety button</span></button><button type="button" class="wt-hotspot" data-for="7" hidden style="left:83.947%;top:45.625%"><span class="visually-hidden">Slide the table into the machine</span></button><button type="button" class="wt-hotspot" data-for="8" hidden style="left:83.947%;top:45.625%"><span class="visually-hidden">Start the scan</span></button>
     </div>
     <ol class="wt-dots" aria-hidden="true"><li class="wt-dot" data-dot="1"><span class="visually-hidden">Step 1 of 8</span></li><li class="wt-dot" data-dot="2"><span class="visually-hidden">Step 2 of 8</span></li><li class="wt-dot" data-dot="3"><span class="visually-hidden">Step 3 of 8</span></li><li class="wt-dot" data-dot="4"><span class="visually-hidden">Step 4 of 8</span></li><li class="wt-dot" data-dot="5"><span class="visually-hidden">Step 5 of 8</span></li><li class="wt-dot" data-dot="6"><span class="visually-hidden">Step 6 of 8</span></li><li class="wt-dot" data-dot="7"><span class="visually-hidden">Step 7 of 8</span></li><li class="wt-dot" data-dot="8"><span class="visually-hidden">Step 8 of 8</span></li></ol>
     <div class="wt-stage" aria-live="polite">
@@ -91,45 +173,45 @@
       </div>
       <ol class="wt-steps"><li class="wt-step" data-step="1" hidden>
   <p class="wt-step__count">Step 1 of 8</p>
-  <h3 class="wt-step__title">Remove your jewellery</h3>
-  <p class="wt-step__prompt">Click the necklace to take it off.</p>
-  <p class="wt-step__result" hidden>Done. An MRI works with magnetic fields, and it cannot be performed if you have certain types of metal in your body — so metal stays outside.</p>
+  <h3 class="wt-step__title">In the waiting room</h3>
+  <p class="wt-step__prompt">Click the gown the staff member is holding out to you.</p>
+  <p class="wt-step__result" hidden>You are handed a gown and asked to take your jewellery off. You are still in your own clothes at this point — nothing happens to you in the waiting room.</p>
   <div class="wt-controls">
     <button type="button" class="wt-back">← Back a step</button>
     <button type="button" class="btn btn--primary wt-next" hidden>Next step</button>
   </div>
 </li><li class="wt-step" data-step="2" hidden>
   <p class="wt-step__count">Step 2 of 8</p>
-  <h3 class="wt-step__title">Change into a gown</h3>
-  <p class="wt-step__prompt">Click yourself to change into a hospital gown.</p>
-  <p class="wt-step__result" hidden>Changed. Your own clothes stay in the changing room.</p>
+  <h3 class="wt-step__title">In the changing room</h3>
+  <p class="wt-step__prompt">Click yourself to take your jewellery off and change into the gown.</p>
+  <p class="wt-step__result" hidden>Jewellery off, gown on. An MRI works with magnetic fields, and it cannot be performed if you have certain types of metal in your body, so metal stays out of the scan room.</p>
   <div class="wt-controls">
     <button type="button" class="wt-back">← Back a step</button>
     <button type="button" class="btn btn--primary wt-next" hidden>Next step</button>
   </div>
 </li><li class="wt-step" data-step="3" hidden>
   <p class="wt-step__count">Step 3 of 8</p>
-  <h3 class="wt-step__title">Place the IV</h3>
+  <h3 class="wt-step__title">The IV goes in</h3>
   <p class="wt-step__prompt">Click your arm. A technologist places a small IV in a vein there.</p>
-  <p class="wt-step__result" hidden>The IV is in, placed by the technologist. Some people are allergic to contrast dye, so tell your doctor if you have reacted to it before.</p>
+  <p class="wt-step__result" hidden>The IV is in, placed by the technologist. It is how the contrast dye will reach you later. Some people are allergic to contrast dye, so tell your doctor if you have reacted to it before.</p>
   <div class="wt-controls">
     <button type="button" class="wt-back">← Back a step</button>
     <button type="button" class="btn btn--primary wt-next" hidden>Next step</button>
   </div>
 </li><li class="wt-step" data-step="4" hidden>
   <p class="wt-step__count">Step 4 of 8</p>
-  <h3 class="wt-step__title">Lie face down</h3>
-  <p class="wt-step__prompt">Click the table to lie face down on it.</p>
-  <p class="wt-step__result" hidden>You are on the table. A breast MRI is done lying face down, and the technologist stays in the room to help you get settled.</p>
+  <h3 class="wt-step__title">Onto the table</h3>
+  <p class="wt-step__prompt">Click the table. The technologist helps you lie face down on it.</p>
+  <p class="wt-step__result" hidden>You are on the table, face down. A breast MRI is done lying on your stomach, and the technologist is there to help you on.</p>
   <div class="wt-controls">
     <button type="button" class="wt-back">← Back a step</button>
     <button type="button" class="btn btn--primary wt-next" hidden>Next step</button>
   </div>
 </li><li class="wt-step" data-step="5" hidden>
   <p class="wt-step__count">Step 5 of 8</p>
-  <h3 class="wt-step__title">Settle into the cushioned openings</h3>
-  <p class="wt-step__prompt">Click the cushioned openings to settle into them.</p>
-  <p class="wt-step__result" hidden>In position. The technologist is still with you. Next you are given something to hold.</p>
+  <h3 class="wt-step__title">The technologist adjusts you</h3>
+  <p class="wt-step__prompt">Click the cushioned openings. The technologist settles you into them.</p>
+  <p class="wt-step__result" hidden>In position. The technologist checks you and makes small adjustments before anything moves.</p>
   <div class="wt-controls">
     <button type="button" class="wt-back">← Back a step</button>
     <button type="button" class="btn btn--primary wt-next" hidden>Next step</button>
@@ -138,14 +220,14 @@
   <p class="wt-step__count">Step 6 of 8</p>
   <h3 class="wt-step__title">Take the safety button</h3>
   <p class="wt-step__prompt">Click the safety button to take it.</p>
-  <p class="wt-step__result" hidden>You have it. You can press it at any point if you need the staff.</p>
+  <p class="wt-step__result" hidden>You have it. You can press it at any point during the scan if you need the staff.</p>
   <div class="wt-controls">
     <button type="button" class="wt-back">← Back a step</button>
     <button type="button" class="btn btn--primary wt-next" hidden>Next step</button>
   </div>
 </li><li class="wt-step" data-step="7" hidden>
   <p class="wt-step__count">Step 7 of 8</p>
-  <h3 class="wt-step__title">Slide into the machine</h3>
+  <h3 class="wt-step__title">Into the machine</h3>
   <p class="wt-step__prompt">Click the machine to slide the table in.</p>
   <p class="wt-step__result" hidden>You are inside, and the technologist steps out of the room before the scan begins. The machine can feel loud, narrow or uncomfortable for some people — worth saying beforehand if you think it might for you.</p>
   <div class="wt-controls">

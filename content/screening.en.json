@@ -936,92 +936,92 @@
               "completeText": "About 15 minutes of preparation, then 15 to 20 minutes inside the machine. If any part of this would be hard for you, it is worth raising with your doctor before the appointment.",
               "steps": [
                 {
-                  "id": "jewelry",
-                  "title": "Remove your jewellery",
-                  "prompt": "Click the necklace to take it off.",
-                  "result": "Done. An MRI works with magnetic fields, and it cannot be performed if you have certain types of metal in your body — so metal stays outside.",
+                  "id": "s1",
+                  "title": "In the waiting room",
+                  "prompt": "Click the gown the staff member is holding out to you.",
                   "hotspot": {
-                    "x": 150,
-                    "y": 141,
-                    "label": "Take the necklace off"
-                  }
+                    "x": 507,
+                    "y": 161,
+                    "label": "Take the gown"
+                  },
+                  "result": "You are handed a gown and asked to take your jewellery off. You are still in your own clothes at this point — nothing happens to you in the waiting room."
                 },
                 {
-                  "id": "gown",
-                  "title": "Change into a gown",
-                  "prompt": "Click yourself to change into a hospital gown.",
-                  "result": "Changed. Your own clothes stay in the changing room.",
+                  "id": "s2",
+                  "title": "In the changing room",
+                  "prompt": "Click yourself to take your jewellery off and change into the gown.",
                   "hotspot": {
-                    "x": 150,
-                    "y": 173,
-                    "label": "Put the gown on"
-                  }
+                    "x": 372,
+                    "y": 170,
+                    "label": "Take your jewellery off and change into the gown"
+                  },
+                  "result": "Jewellery off, gown on. An MRI works with magnetic fields, and it cannot be performed if you have certain types of metal in your body, so metal stays out of the scan room."
                 },
                 {
-                  "id": "iv",
-                  "title": "Place the IV",
+                  "id": "s3",
+                  "title": "The IV goes in",
                   "prompt": "Click your arm. A technologist places a small IV in a vein there.",
-                  "result": "The IV is in, placed by the technologist. Some people are allergic to contrast dye, so tell your doctor if you have reacted to it before.",
                   "hotspot": {
-                    "x": 168,
-                    "y": 152,
+                    "x": 328,
+                    "y": 155,
                     "label": "Place the IV in the arm"
-                  }
+                  },
+                  "result": "The IV is in, placed by the technologist. It is how the contrast dye will reach you later. Some people are allergic to contrast dye, so tell your doctor if you have reacted to it before."
                 },
                 {
-                  "id": "lie-down",
-                  "title": "Lie face down",
-                  "prompt": "Click the table to lie face down on it.",
-                  "result": "You are on the table. A breast MRI is done lying face down, and the technologist stays in the room to help you get settled.",
+                  "id": "s4",
+                  "title": "Onto the table",
+                  "prompt": "Click the table. The technologist helps you lie face down on it.",
                   "hotspot": {
-                    "x": 315,
-                    "y": 177,
-                    "label": "Lie down on the table"
-                  }
+                    "x": 348,
+                    "y": 180,
+                    "label": "Get onto the table"
+                  },
+                  "result": "You are on the table, face down. A breast MRI is done lying on your stomach, and the technologist is there to help you on."
                 },
                 {
-                  "id": "openings",
-                  "title": "Settle into the cushioned openings",
-                  "prompt": "Click the cushioned openings to settle into them.",
-                  "result": "In position. The technologist is still with you. Next you are given something to hold.",
+                  "id": "s5",
+                  "title": "The technologist adjusts you",
+                  "prompt": "Click the cushioned openings. The technologist settles you into them.",
                   "hotspot": {
-                    "x": 330,
-                    "y": 177,
+                    "x": 343,
+                    "y": 179,
                     "label": "Settle into the cushioned openings"
-                  }
+                  },
+                  "result": "In position. The technologist checks you and makes small adjustments before anything moves."
                 },
                 {
-                  "id": "safety",
+                  "id": "s6",
                   "title": "Take the safety button",
                   "prompt": "Click the safety button to take it.",
-                  "result": "You have it. You can press it at any point if you need the staff.",
                   "hotspot": {
-                    "x": 469,
-                    "y": 152,
+                    "x": 482,
+                    "y": 155,
                     "label": "Take the safety button"
-                  }
+                  },
+                  "result": "You have it. You can press it at any point during the scan if you need the staff."
                 },
                 {
-                  "id": "slide-in",
-                  "title": "Slide into the machine",
+                  "id": "s7",
+                  "title": "Into the machine",
                   "prompt": "Click the machine to slide the table in.",
-                  "result": "You are inside, and the technologist steps out of the room before the scan begins. The machine can feel loud, narrow or uncomfortable for some people — worth saying beforehand if you think it might for you.",
                   "hotspot": {
-                    "x": 620,
-                    "y": 149,
+                    "x": 638,
+                    "y": 146,
                     "label": "Slide the table into the machine"
-                  }
+                  },
+                  "result": "You are inside, and the technologist steps out of the room before the scan begins. The machine can feel loud, narrow or uncomfortable for some people — worth saying beforehand if you think it might for you."
                 },
                 {
-                  "id": "scan",
+                  "id": "s8",
                   "title": "The scan",
                   "prompt": "Click the machine to start the scan.",
-                  "result": "You will hear loud tapping noises. You are inside the tunnel for about 15 to 20 minutes.",
                   "hotspot": {
-                    "x": 620,
-                    "y": 149,
+                    "x": 638,
+                    "y": 146,
                     "label": "Start the scan"
-                  }
+                  },
+                  "result": "You will hear loud tapping noises. You are inside the tunnel for about 15 to 20 minutes."
                 }
               ]
             }
