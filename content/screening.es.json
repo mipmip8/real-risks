@@ -946,7 +946,7 @@
                     "y": 161,
                     "label": "Tomar la bata"
                   },
-                  "result": "Le entregan una bata y le piden que se quite las joyas. Por ahora sigue con su propia ropa; en la sala de espera no le hacen nada."
+                  "result": "Se registra en su cita, le entregan una bata y le piden que se quite las joyas en el vestidor."
                 },
                 {
                   "id": "s2",

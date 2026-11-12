@@ -944,11 +944,11 @@
                     "y": 161,
                     "label": "Take the gown"
                   },
-                  "result": "You are handed a gown and asked to take your jewellery off. You are still in your own clothes at this point — nothing happens to you in the waiting room."
+                  "result": "You check in at your appointment, are given a gown, and are asked to take your jewellery off in the dressing room."
                 },
                 {
                   "id": "s2",
-                  "title": "In the changing room",
+                  "title": "In the dressing room",
                   "prompt": "Click yourself to take your jewellery off and change into the gown.",
                   "hotspot": {
                     "x": 372,

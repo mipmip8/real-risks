@@ -186,12 +186,6 @@ ROOM_PREP = """<g class="room room--prep">
     <circle cx="616" cy="176" r="4"/>
     <circle cx="636" cy="176" r="4"/>
   </g>
-  <g class="iv-stand">
-    <rect class="pole" x="150" y="48" width="6" height="196" rx="3"/>
-    <rect class="bag" x="128" y="52" width="32" height="46" rx="8"/>
-    <path class="drip" d="M153 98 v16"/>
-    <path class="line" d="M153 114 q0 36 38 42 h130"/>
-  </g>
   <g class="chair">
     <rect class="back" x="404" y="108" width="18" height="102" rx="8"/>
     <rect class="seat" x="320" y="194" width="102" height="18" rx="8"/>
@@ -204,6 +198,10 @@ ROOM_PREP = """<g class="room room--prep">
     <rect class="thigh" x="320" y="188" width="62" height="16" rx="8"/>
     <rect class="top" x="368" y="122" width="36" height="78" rx="16"/>
     <path class="limb-arm" d="M372 150 q-26 6 -46 8"/>
+    <g class="iv-port">
+      <rect class="tape" x="330" y="149" width="18" height="12" rx="4"/>
+      <circle class="port" cx="339" cy="155" r="3"/>
+    </g>
     <circle class="head" cx="386" cy="106" r="17"/>
     <path class="hair" d="M369 105 a17 17 0 0 1 34 0 q-17 6 -34 0z"/>
   </g>
@@ -220,11 +218,6 @@ ROOM_SCAN = """<g class="room room--scan">
   </g>
   {tech}
   <g class="bed">
-    <g class="iv-ride">
-      <rect class="pole" x="206" y="58" width="6" height="186" rx="3"/>
-      <rect class="bag" x="184" y="62" width="32" height="46" rx="8"/>
-      <path class="line" d="M209 108 q0 38 34 46 h44"/>
-    </g>
     <rect class="slab" x="190" y="170" width="316" height="20" rx="10"/>
     <rect class="pedestal" x="314" y="190" width="30" height="54" rx="4"/>
     <rect class="pedestal-foot" x="296" y="238" width="66" height="8" rx="4"/>
@@ -238,6 +231,10 @@ ROOM_SCAN = """<g class="room room--scan">
       <circle class="head" cx="416" cy="157" r="17"/>
       <path class="hair" d="M400 150 a17 17 0 0 1 32 0 q-16 8 -32 0z"/>
       <path class="limb-arm" d="M432 152 h40"/>
+      <g class="iv-port">
+        <rect class="tape" x="436" y="146" width="18" height="12" rx="4"/>
+        <circle class="port" cx="445" cy="152" r="3"/>
+      </g>
       <rect class="safety-button" x="470" y="146" width="24" height="18" rx="7"/>
     </g>
   </g>

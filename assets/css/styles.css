@@ -1628,19 +1628,17 @@ a {
 .mri-scene .seated-patient .top,
 .mri-scene .seated-patient .thigh { fill: #a8cfe0; }
 .mri-scene .seated-patient .shin { fill: #8fb8cb; }
-.mri-scene .iv-stand .pole { fill: #a8b0bf; }
-.mri-scene .iv-stand .bag { fill: #cfe6f2; stroke: #8fb4c8; stroke-width: 2; }
-.mri-scene .iv-stand .drip,
-.mri-scene .iv-stand .line {
-  stroke: #8fb4c8;
-  stroke-width: 3;
-  fill: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
+/* The IV is just a port taped to the arm — no pole, no drip. */
+.mri-scene .iv-port { opacity: 0; transition: opacity 0.3s ease; }
+.mri-scene .iv-port .tape { fill: #f3f0e6; stroke: #cfc8b4; stroke-width: 1.5; }
+.mri-scene .iv-port .port { fill: #7fa7bd; }
 
-.walkthrough__game[data-step="3"] .room--prep .iv-stand .drip,
-.walkthrough__game[data-step="3"] .room--prep .iv-stand .line {
+.walkthrough__game[data-step="3"] .room--prep .iv-port,
+.walkthrough__game[data-step="4"] .iv-port,
+.walkthrough__game[data-step="5"] .iv-port,
+.walkthrough__game[data-step="6"] .iv-port,
+.walkthrough__game[data-step="7"] .iv-port,
+.walkthrough__game[data-step="8"] .iv-port {
   opacity: 1;
 }
 
@@ -1656,9 +1654,6 @@ a {
 .mri-scene .slab { fill: #cfd6dd; }
 .mri-scene .pedestal,
 .mri-scene .pedestal-foot { fill: #aab3bf; }
-.mri-scene .bed .iv-ride .pole { fill: #a8b0bf; }
-.mri-scene .bed .iv-ride .bag { fill: #cfe6f2; stroke: #8fb4c8; stroke-width: 2; }
-.mri-scene .bed .iv-ride .line { stroke: #8fb4c8; stroke-width: 3; fill: none; }
 .mri-scene .patient-prone .top,
 .mri-scene .patient-prone .legs { fill: #a8cfe0; }
 .mri-scene .openings ellipse { fill: #9aa4ae; transition: fill 0.3s ease; }
@@ -1709,6 +1704,10 @@ a {
 .walkthrough__game[data-current="5"] .tech,
 .walkthrough__game[data-current="6"] .tech,
 .walkthrough__game[data-current="7"] .tech { opacity: 1; }
+
+/* ...but gone the moment the table goes in, not one card later. */
+.walkthrough__game[data-step="7"] .tech,
+.walkthrough__game[data-step="8"] .tech { opacity: 0; }
 
 /* ---- Clickable scene ---- */
 
